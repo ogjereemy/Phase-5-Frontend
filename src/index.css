@@ -1,68 +1,290 @@
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* src/index.css */
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.dashboard {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100vh;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.sidebar-link {
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
+.sidebar-link:hover {
+  background-color: #ec9c08;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.activity-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.activity-card {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.schedule-goals {
+  display: flex;
+  gap: 20px;
+}
+
+.schedule, .goals {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.progress-chart {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+
+/* Login.css */
+
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.login-left {
+  flex: 1;
+  background: linear-gradient(135deg, #f1a32d, #e48509);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-left img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.login-left h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.login-left p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #1c1c64;
+}
+
+.login-form .btn-google {
+  background: white;
+  color: #1c1c64;
+  border: 1px solid #1c1c64;
+  margin-bottom: 20px;
+}
+
+.login-form .btn-google:hover {
+  background: #1c1c64;
+  color: white;
+}
+
+.login-form .form-control {
+  margin-bottom: 15px;
+}
+
+.login-form .form-check-label {
+  color: #1c1c64;
+}
+
+.login-form .btn-primary {
+  background: #e63946;
+  border: none;
+}
+
+
+/* Signup.css */
+
+.signup-container {
+  display: flex;
+  height: 100vh;
+}
+
+.signup-left {
+  flex: 1;
+  background: linear-gradient(135deg, #f1a32d, #e48509);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.signup-left img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.signup-left h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.signup-left p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.signup-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.signup-form h2 {
+  margin-bottom: 20px;
+  color: #1c1c64;
+}
+
+.signup-form .btn-google {
+  background: white;
+  color: #1c1c64;
+  border: 1px solid #1c1c64;
+  margin-bottom: 20px;
+}
+
+.signup-form .btn-google:hover {
+  background: #1c1c64;
+  color: white;
+}
+
+.signup-form .form-control {
+  margin-bottom: 15px;
+}
+
+.signup-form .form-check-label {
+  color: #1c1c64;
+}
+
+.signup-form .btn-primary {
+  background: #e63946;
+  border: none;
+}
+
+/* Home.css */
+/* src/components/Home.css */
+.home-container {
+  background: #f7f7f7;
+  padding: 2rem 0;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff7f50;
+}
+
+.home-container p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.btn-signup {
+  background-color: #ff7f50;
+  border-color: #ff7f50;
+}
+
+.btn-login {
+  background-color: #555;
+  border-color: #555;
+}
+
+.btn-signup:hover,
+.btn-login:hover {
+  background-color: #333;
+  border-color: #333;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
