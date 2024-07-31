@@ -1,0 +1,61 @@
+.workout {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.workout-header h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.workout-header p {
+  font-size: 14px;
+  color: #777;
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.workout-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.workout-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.trainer-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.trainer-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.workout-info h5 {
+  font-size: 18px;
+  color: #333;
+}
+
+.workout-info button {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}

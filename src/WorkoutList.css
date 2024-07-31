@@ -1,0 +1,26 @@
+.workout-list {
+    margin-top: 20px;
+  }
+  
+  .workout-list h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .workout-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .workout-day {
+    font-weight: bold;
+  }
+  
+  .workout-details {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+  }
+  
