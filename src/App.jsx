@@ -8,7 +8,7 @@ import UserDashboard from './components/dashboard/UserDashboard';
 import UserProfile from './components/dashboard/UserProfile';
 import CoachDashboard from './components/dashboard/CoachDashboard';
 import Overview from './components/Overview';
-import WorkoutLogs from './components/dashboard/WorkoutLogs';
+import WorkoutList from './components/WorkoutList';
 import NutritionLogs from './components/dashboard/NutritionLogs';
 import ProgressCharts from './components/dashboard/ProgressCharts';
 import PasswordReset from './components/auth/PasswordReset';
@@ -25,7 +25,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/password-reset" element={<PasswordReset />} />
                     <Route path="/overview" element={<Overview />} />
-                    <Route path='/workout' element={<WorkoutLogs/>}/>
+                    <Route path='/workout' element={<WorkoutList/>}/>
                     <Route path="/diet-plan" element={<NutritionLogs />} />
                     <Route path="/progress" element={<ProgressCharts />} />
                     <Route path="/user-dashboard" element={<UserDashboard />} />
