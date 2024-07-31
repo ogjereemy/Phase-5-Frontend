@@ -1,14 +1,25 @@
-import { useState } from 'react'
-
-import './App.css'
+import React from 'react';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import Workout from './components/Workout';
+import MySchedule from './components/MySchedule';
+import Achievements from './components/Achievement';
+import './App.css';
 
 function App() {
-
   return (
-    <>
-      <h1>Group 6</h1>
-    </>
-  )
+    <div className="app">
+      <Sidebar />
+      <div className="main-content">
+        <Header />
+        <div className="content">
+          <Workout />
+          <MySchedule />
+          <Achievements />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
