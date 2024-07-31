@@ -1,33 +1,13 @@
-// import React from 'react';
-// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import Navbar from './components/Navbar';
 
-// // import Profile from './pages/Profile';
-// // import Progress from './pages/Progress';
-// // import Workouts from './pages/Workouts';
-// import GoalForm from './pages/GoalForm';
-// const App = () => (
-//   <div>
-//     <Navbar />
-//   <Routes>
-    
-    
-      
-//     <Route path="/form" element={<GoalForm />} />
-
-      
-    
-//   </Routes>
-//   </div>
-  
-// );
 
 import React from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
-import Workout from './components/Workout';
+import Workout from './components/pages/Workout';
 import MySchedule from './components/MySchedule';
 import Achievements from './components/Achievement';
+import GoalTracker from './components/pages/goaltracker';
+import { Route, Routes } from 'react-router';
 import './App.css';
 
 function App() {
@@ -40,6 +20,9 @@ function App() {
           <Workout />
           <MySchedule />
           <Achievements />
+          <Routes>
+            <Route path='goaltrack' element={<GoalTracker />}/>
+          </Routes>
         </div>
       </div>
     </div>
