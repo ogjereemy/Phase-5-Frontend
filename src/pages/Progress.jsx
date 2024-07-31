@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // // src/components/Progress.js
 // import React, { useState, useEffect } from 'react';
 // import { Bar } from 'react-chartjs-2';
@@ -54,3 +55,15 @@
 // };
 
 // export default Progress;
+=======
+
+// const Progress = () => (
+//     <div>
+//       <h2>Progress</h2>  
+//     </div>
+//   );
+  
+//   export default Progress;
+  
+
+>>>>>>> main

@@ -1,0 +1,16 @@
+.app {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f3f5;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

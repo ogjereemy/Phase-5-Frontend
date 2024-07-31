@@ -1,0 +1,36 @@
+/* src/components/dashboard/CoachDashboard.css */
+.coach-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .users-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Adjust width as needed */
+    max-width: 800px; /* Adjust max width as needed */
+  }
+  
+  .user-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 10px;
+    width: 100%; /* Adjust width as needed */
+    max-width: 400px; /* Adjust max width as needed */
+    text-align: center; /* Center text inside card */
+  }
+  
+  .user-card h3 {
+    margin: 0 0 10px 0;
+  }
+  
+  .user-card p {
+    margin: 0;
+  }
+  
