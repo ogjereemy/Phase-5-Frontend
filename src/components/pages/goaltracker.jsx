@@ -14,8 +14,8 @@ const GoalTracker = () => {
         <div className="cardContainer">
           <div className="card">
             <h4>Weight</h4>
-            <p className="metric">63.2 kg</p>
-            <p className="goal">Goal: 5.91 kg</p>
+            <p className="metric">61.2 kg</p>
+            <p className="goal">Goal: 5.81 kg</p>
             <div className="chart"></div>
           </div>
           <div className="card">
