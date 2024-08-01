@@ -1,0 +1,50 @@
+.achievement {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f7f3f3;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .achievement {
+    text-align: center;
+  }
+  
+  .achievement-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6f61;
+  }
+  
+  .achievement-label {
+    font-size: 14px;
+    color: #110e0e;
+  }
+  
+  .achievements {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #fffbfb;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .achievement {
+    text-align: center;
+  }
+  
+  .achievement h4 {
+    font-size: 24px;
+    color: #ff6f61;
+    margin: 0;
+  }
+  
+  .achievement p {
+    font-size: 14px;
+    color: #777;
+  }
+  
