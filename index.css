@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #ec9c08;
 }
 
 .dashboard {
@@ -12,7 +12,7 @@ body {
 
 .sidebar {
   width: 250px;
-  background-color: #fff;
+  background-color: #ec9c08;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 100vh;
@@ -287,4 +287,212 @@ body {
 
 .me-2 {
   margin-right: 0.5rem;
+}
+
+
+/* Achievements.css */
+.achievement {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f7f3f3;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.achievement {
+  text-align: center;
+}
+
+.achievement-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff6f61;
+}
+
+.achievement-label {
+  font-size: 14px;
+  color: #110e0e;
+}
+
+.achievements {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #fffbfb;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.achievement {
+  text-align: center;
+}
+
+.achievement h4 {
+  font-size: 24px;
+  color: #ff6f61;
+  margin: 0;
+}
+
+.achievement p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* featuredworkouts.css */
+
+.featured-workout {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.featured-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.trainer-info {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.trainer-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.trainer-info div {
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-info {
+  margin-left: 20px;
+}
+
+.workout-info h4 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.workout-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+ 
+/*Header.css*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.greeting h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #333;
+}
+
+.greeting span {
+  font-size: 14px;
+  color: #777;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-actions input {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 5px 15px;
+  margin-right: 20px;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+
+/* myschedule.css */
+
+.my-schedule {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.my-schedule h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.my-schedule ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.schedule-item:last-child {
+  border-bottom: none;
+}
+
+.activity-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.schedule-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-day {
+  font-weight: bold;
+  color: #555;
+}
+
+.schedule-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.activity-name {
+  font-size: 16px;
+  color: #333;
+}
+
+.activity-time, .activity-details {
+  font-size: 14px;
+  color: #777;
 }

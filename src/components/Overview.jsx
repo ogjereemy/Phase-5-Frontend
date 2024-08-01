@@ -39,7 +39,8 @@ const Overview = () => {
                 <Link to ="/coach-dashboard" className='sidebar-link'>Coach Dashboard</Link>
                 <Link to="/diet-plan" className="sidebar-link">Diet Plan</Link>
                 <Link to="/goals" className="sidebar-link">Goals</Link>
-                <Link to="/user-dashboard" className="sidebar-link">My Schedule</Link>
+                <Link to="/user-dashboard" className="sidebar-link">User Dashboard</Link>
+                <Link to="/user-schedule" className="sidebar-link">My Schedule</Link>
                 <Link to="/progress" className="sidebar-link">Progress</Link>
                 <Link to="/help" className="sidebar-link">Help</Link>
                 <button onClick={logout} className="btn btn-danger">Logout</button>
