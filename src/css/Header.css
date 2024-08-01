@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .greeting h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .greeting span {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-actions input {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin-right: 20px;
+  }
+  
+  .profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
