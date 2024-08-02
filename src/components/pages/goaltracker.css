@@ -63,7 +63,7 @@ body {
   
   .stepsChart {
     height: 100px;
-    background: conic-gradient(#ADFF2F 0% 89%, #444 89% 100%);
+    background: conic-gradient(#f1ff2f 0% 89%, #444 89% 100%);
     border-radius: 50%;
     margin: 0 auto;
     width: 100px;
