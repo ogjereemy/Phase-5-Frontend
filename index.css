@@ -68,7 +68,7 @@ body {
 .activity-card {
   flex: 1;
   padding: 20px;
-  background-color: #fff;
+  background-color: #15ced4;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   text-align: center;
@@ -496,3 +496,5 @@ body {
   font-size: 14px;
   color: #777;
 }
+
+
