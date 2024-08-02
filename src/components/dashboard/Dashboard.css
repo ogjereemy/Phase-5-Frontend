@@ -1,0 +1,81 @@
+/* Dashboard.css */
+
+:root {
+    --primary-color: #FF7F50;
+    --background-color: #1C1C1C;
+    --card-background-color: #e79d2c;
+    --text-color: #FFFFFF;
+    --secondary-text-color: #AAAAAA;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .card {
+    background-color: var(--card-background-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--text-color);
+  }
+  
+  .card-title {
+    color: var(--text-color);
+  }
+  
+  .card-body p {
+    color: var(--secondary-text-color);
+  }
+  
+  button, .btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+  }
+  
+  button:hover, .btn-primary:hover {
+    background-color: #FF6347;
+  }
+  
+  .profile-container, .dashboard-container {
+    padding: 20px;
+  }
+  
+  .user-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--card-background-color);
+    margin-bottom: 20px;
+  }
+  
+  .stat-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .stat-card .stat-info {
+    margin-left: 20px;
+  }
+  
+  .stat-card .stat-info h5 {
+    margin: 0;
+    color: var(--text-color);
+  }
+  
+  .stat-card .stat-info p {
+    margin: 0;
+    color: var(--secondary-text-color);
+  }
+  
+
+  
