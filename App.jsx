@@ -1,14 +1,15 @@
 
 
 import React from 'react';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import Workout from './components/pages/Workout';
-import MySchedule from './components/MySchedule';
-import Achievements from './components/Achievement';
-import GoalTracker from './components/pages/goaltracker';
+import Sidebar from './src/components/Sidebar';
+import Header from './src/components/Header';
+import Workout from './src/components/pages/Workout';
+import MySchedule from './src/components/MySchedule';
+import Achievements from './src/components/Achievement';
+import GoalTracker from './src/components/pages/goaltracker';
 import { Route, Routes } from 'react-router';
 import './App.css';
+import GoalForm from './src/pages/GoalForm';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Achievements />
           <Routes>
             <Route path='goaltrack' element={<GoalTracker />}/>
+            <Route path='goalform' element={<GoalForm />}/>
+
           </Routes>
         </div>
       </div>
