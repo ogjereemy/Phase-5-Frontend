@@ -105,5 +105,6 @@ const NutritionLogging = () => {
       </div>
     </div>
   );
+}
 
 export default NutritionLogging;
