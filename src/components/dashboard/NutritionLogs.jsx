@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 
@@ -104,6 +105,6 @@ const NutritionLogging = () => {
       </div>
     </div>
   );
-};
+}
 
 export default NutritionLogging;

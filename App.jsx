@@ -10,7 +10,7 @@ import CoachDashboard from './src/components/dashboard/CoachDashboard';
 import CoachLogin from './src/components/dashboard/CoachesLogin';
 import Overview from './src/components/Overview';
 import GoalForm from './src/pages/GoalForm';
-import WorkoutList from './src/components/WorkoutList';
+import Workout from './src/components/pages/Workout';
 import NutritionLogs from './src/components/dashboard/NutritionLogs';
 import ProgressCharts from './src/components/dashboard/ProgressCharts';
 import PasswordReset from './src/components/auth/PasswordReset';
@@ -28,7 +28,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/password-reset" element={<PasswordReset />} />
                     <Route path="/overview" element={<Overview />} />
-                    <Route path='/workout' element={<WorkoutList/>}/>
+                    <Route path='/workout' element={<Workout/>}/>
                     <Route path="/diet-plan" element={<NutritionLogs />} />
                     <Route path="/progress" element={<ProgressCharts />} />
                     <Route path='/goals' element ={<GoalForm />}  />
