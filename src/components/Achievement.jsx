@@ -1,29 +1,15 @@
 import React from 'react';
-import '../Achievement.css'
+import '../Achievement.css';
 
-function Achievements() {
+function Achievements({ achievements }) {
   return (
     <div className="achievements">
-      <div className="achievement">
-        <h4>15</h4>
-        <p>hours</p>
-      </div>
-      <div className="achievement">
-        <h4>550</h4>
-        <p>Kcal</p>
-      </div>
-      <div className="achievement">
-        <h4>15</h4>
-        <p>Poses</p>
-      </div>
-      <div className="achievement">
-        <h4>5</h4>
-        <p>Sets</p>
-      </div>
-      <div className="achievement">
-        <h4>5</h4>
-        <p>Sets</p>
-      </div>
+      {achievements.map((achievement, index) => (
+        <div key={index} className="achievement">
+          <h4>{achievement.value}</h4>
+          <p>{achievement.label}</p>
+        </div>
+      ))}
     </div>
   );
 }
