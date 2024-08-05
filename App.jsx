@@ -1,4 +1,4 @@
-// src/App.js
+// App.jsx (at the project root)
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './src/components/Home';
@@ -10,7 +10,7 @@ import CoachDashboard from './src/components/dashboard/CoachDashboard';
 import CoachLogin from './src/components/dashboard/CoachesLogin';
 import Overview from './src/components/Overview';
 import GoalForm from './src/pages/GoalForm';
-import Workout from './src/components/pages/Workout';
+import WorkoutList from './src/components/WorkoutList';
 import NutritionLogs from './src/components/dashboard/NutritionLogs';
 import ProgressCharts from './src/components/dashboard/ProgressCharts';
 import PasswordReset from './src/components/auth/PasswordReset';
@@ -28,15 +28,19 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/password-reset" element={<PasswordReset />} />
                     <Route path="/overview" element={<Overview />} />
-                    <Route path='/workout' element={<Workout/>}/>
+                    <Route path='/workout' element={<WorkoutList/>}/>
                     <Route path="/diet-plan" element={<NutritionLogs />} />
                     <Route path="/progress" element={<ProgressCharts />} />
-                    <Route path='/goals' element ={<GoalForm />}  />
+                    <Route path="/goals" element={<GoalForm />} />
                     <Route path="/user-dashboard" element={<UserDashboard />} />
                     <Route path="/user-profile" element={<UserProfile />} />
-                    <Route path='/user-schedule' element={<MySchedule/>}/>
+                    <Route path="/user-schedule" element={<MySchedule />} />
                     <Route path="/coach-dashboard" element={<CoachDashboard />} />
-                    <Route path='/coaches-login' element={<CoachLogin/>}/>
+                    <Route path="/coaches-login" element={<CoachLogin />} />
+                    <Route path="/client-list" element={<ClientList />} />
+                    <Route path="/client-progress" element={<ClientProgress />} />
+                    <Route path="/workout-plans" element={<WorkoutPlanList />} />
+                    <Route path="/workout-plans/:clientId" element={<WorkoutPlanList />} />
                 </Routes>
             </>
         </AuthProvider>

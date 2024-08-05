@@ -1,10 +1,11 @@
 .home-container {
   font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: white;
 }
 
-/* Hero Section */
 .hero-section {
-  background-image: url('path_to_hero_image.jpg');
+  background-image: url('https://images.pexels.com/photos/4164761/pexels-photo-4164761.jpeg?auto=compress&cs=tinysrgb&w=600');
   background-size: cover;
   background-position: center;
   color: white;
