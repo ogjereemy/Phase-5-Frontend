@@ -1,26 +1,79 @@
-.workout-list {
-    margin-top: 20px;
-  }
-  
-  .workout-list h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .workout-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .workout-day {
-    font-weight: bold;
-  }
-  
-  .workout-details {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-  }
-  
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+
+form h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+form div {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+  flex: 1;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+form button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Add/Delete Buttons */
+.add-exercise-btn,
+.delete-exercise-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.delete-exercise-btn {
+  background-color: #dc3545;
+}
+
+.delete-exercise-btn:hover {
+  background-color: #c82333;
+}
+
+
+input::placeholder {
+  color: #aaa;
+}
+
+form button:focus,
+form input:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
