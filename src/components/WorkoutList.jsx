@@ -7,11 +7,13 @@ const WorkoutLogging = () => {
   const [loggedWorkouts, setLoggedWorkouts] = useState([]);
 
   useEffect(() => {
+    
     const storedWorkouts = JSON.parse(localStorage.getItem('loggedWorkouts')) || [];
     setLoggedWorkouts(storedWorkouts);
   }, []);
 
   useEffect(() => {
+   
     localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
   }, [loggedWorkouts]);
 
@@ -101,18 +103,10 @@ const WorkoutLogging = () => {
               required
             />
             <input
-              type="number"
+              type="text"
               name="duration"
               placeholder="Duration (minutes)"
               value={item.duration}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-            />
-            <input
-              type="text"
-              name="category"
-              placeholder="Category (e.g., Yoga)"
-              value={item.category}
               onChange={(e) => handleChange(index, e)}
             />
             <input
@@ -132,7 +126,6 @@ const WorkoutLogging = () => {
             </button>
           </div>
         ))}
-        <button type="button" onClick={handleAdd}>Add Exercise</button>
         <button type="submit">Save Workout</button>
       </form>
       <Achievements achievements={achievements} />
