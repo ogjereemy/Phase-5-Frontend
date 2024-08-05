@@ -8,6 +8,7 @@ import MySchedule from './components/MySchedule';
 import Achievements from './components/Achievement';
 import GoalTracker from './components/pages/goaltracker';
 import { Route, Routes } from 'react-router';
+import WorkoutLogging from './components/WorkoutList';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Workout />
           <MySchedule />
           <Achievements />
+          <WorkoutLogging />
           <Routes>
             <Route path='goaltrack' element={<GoalTracker />}/>
           </Routes>

@@ -34,3 +34,89 @@
     font-weight: bold;
   }
   
+
+  
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333; 
+  
+  padding: 20px;
+}
+
+
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 300px;
+  background-color: #ff5722; 
+  
+  border-radius: 20px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+
+
+.stat-item .icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+.stat-item.hours .icon {
+  background-image: url('path/to/your/clock-icon.png');
+}
+
+.stat-item.kcal .icon {
+  background-image: url('path/to/your/calories-icon.png');
+}
+
+.stat-item.poses .icon {
+  background-image: url('path/to/your/poses-icon.png');
+}
+
+.stat-item.sets .icon {
+  background-image: url('path/to/your/sets-icon.png');
+}
+
+.stat-item.steps .icon {
+  background-image: url('path/to/your/steps-icon.png');
+}
+
+
+
+.stat-item .value {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.stat-item .label {
+  font-size: 18px;
+}
+
+
+
+@media (max-width: 768px) {
+  .stats-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-item {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}

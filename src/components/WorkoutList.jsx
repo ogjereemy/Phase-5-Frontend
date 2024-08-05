@@ -7,13 +7,12 @@ const WorkoutLogging = () => {
   const [loggedWorkouts, setLoggedWorkouts] = useState([]);
 
   useEffect(() => {
-    // Load workouts from local storage
     const storedWorkouts = JSON.parse(localStorage.getItem('loggedWorkouts')) || [];
     setLoggedWorkouts(storedWorkouts);
   }, []);
 
   useEffect(() => {
-    // Save workouts to local storage
+   
     localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
   }, [loggedWorkouts]);
 
