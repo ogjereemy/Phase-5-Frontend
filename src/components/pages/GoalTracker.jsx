@@ -27,25 +27,27 @@ const GoalTracker = () => {
   };
 
   return (
-    <div className="container">
-      <div className="header">
-        <h1>Goal Tracker</h1>
-        <h2>Record Changes</h2>
-      </div>
-      <div className="dailyContainer">
-        <h3>Daily</h3>
-        <div className="cardContainer">
-          {goals.map((goal) => (
-            <div className="card" key={goal.id}>
-              <h4>{goal.type}</h4>
-              <p className="metric">{goal.metric}</p>
-              {goal.goal && <p className="goal">Goal: {goal.goal}</p>}
-              {goal.average && <p>Weekly Average: {goal.average}</p>}
-              <div className="chart"></div>
-              <button onClick={() => deleteGoal(goal.id)}>Delete</button>
-              <button onClick={() => updateGoal(goal.id, { ...goal, metric: 'Updated Metric' })}>Update</button>
-            </div>
-          ))}
+    <div className=''>
+      <div className="container">
+        <div className="header">
+          <h1>Goal Tracker</h1>
+          <h2>Record Changes</h2>
+        </div>
+        <div className="dailyContainer">
+          <h3>Daily</h3>
+          <div className="cardContainer">
+            {goals.map((goal) => (
+              <div className="card" key={goal.id}>
+                <h4>{goal.type}</h4>
+                <p className="metric">{goal.metric}</p>
+                {goal.goal && <p className="goal">Goal: {goal.goal}</p>}
+                {goal.average && <p>Weekly Average: {goal.average}</p>}
+                <div className="chart"></div>
+                <button onClick={() => deleteGoal(goal.id)}>Delete</button>
+                <button onClick={() => updateGoal(goal.id, { ...goal, metric: 'Updated Metric' })}>Update</button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
