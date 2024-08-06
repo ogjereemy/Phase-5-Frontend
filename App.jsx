@@ -10,8 +10,8 @@ import CoachDashboard from './src/components/dashboard/CoachDashboard';
 import CoachLogin from './src/components/dashboard/CoachesLogin';
 import Overview from './src/components/Overview';
 import GoalForm from './src/pages/GoalForm';
-// import GoalTracker from './src/components/pages/GoalTracker';
-import Workout from './src/components/pages/Workout';
+import GoalTracker from './src/components/pages/GoalTracker';
+import WorkoutLogging from './src/components/WorkoutList';
 import NutritionLogs from './src/components/dashboard/NutritionLogs';
 import ProgressCharts from './src/components/dashboard/ProgressCharts';
 import PasswordReset from './src/components/auth/PasswordReset';
@@ -29,13 +29,13 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/password-reset" element={<PasswordReset />} />
                     <Route path="/overview" element={<Overview />} />
-                    <Route path='/workout' element={<Workout/>}/>
+                    <Route path='/workout' element={<WorkoutLogging/>}/>
                     <Route path="/diet-plan" element={<NutritionLogs />} />
                     <Route path="/progress" element={<ProgressCharts />} />
-                    <Route path='/goals' element ={<GoalForm />}  />
+                    <Route path='/goals' element ={<GoalTracker />}  />
                     <Route path="/user-dashboard" element={<UserDashboard />} />
                     <Route path="/user-profile" element={<UserProfile />} />
-                    <Route path='/user-schedule' element={<MySchedule/>}/>
+                    {/* <Route path='/user-schedule' element={<MySchedule/>}/> */}
                     <Route path="/coach-dashboard" element={<CoachDashboard />} />
                     {/* <Route path='goaltrack' element={<GoalTracker />}/> */}
                     <Route path='/coaches-login' element={<CoachLogin/>}/>
