@@ -1,136 +1,162 @@
+/* home.css */
 .home-container {
   font-family: Arial, sans-serif;
-  background-color: #1a1a1a;
-  color: white;
+  background-color: burlywood;
+  margin-top: 30px;
 }
 
 .hero-section {
-  background-image: url('https://images.pexels.com/photos/4164761/pexels-photo-4164761.jpeg?auto=compress&cs=tinysrgb&w=600');
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  background: url('https://images.pexels.com/photos/163351/girl-boxer-ring-boxing-pear-163351.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+  height: 100vh;
   color: white;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: fadeIn 2s ease-in-out;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .hero-content h1 {
   font-size: 3rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   animation: slideIn 1.5s ease-out;
 }
 
 .hero-content p {
   font-size: 1.5rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   animation: slideIn 1.5s ease-out 0.5s;
   animation-fill-mode: backwards;
+  color: azure;
 }
 
 .cta-button {
-  background-color: #ff6600;
+  background: #ff0000;
   color: white;
-  border: none;
   padding: 10px 20px;
-  font-size: 1rem;
+  border: none;
+  margin: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background 0.3s ease;
   animation: pulse 1.5s infinite;
 }
 
 .cta-button:hover {
-  background-color: #cc5200;
+  background: #cc0000;
+  /* color: white; */
 }
 
-/* Features Section */
-.features-section {
+.about-section {
   padding: 50px 20px;
+  text-align: center;
+  background-color: black;
+  animation: fadeIn 2s ease-in-out;
+
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  animation: slideIn 1.5s ease-out;
+
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* background-color: black; */
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+  margin: 20px;
+}
+
+.about-text h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: azure;
+  margin-bottom: 20px;
+}
+
+.about-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.stat {
   text-align: center;
 }
 
-.features-section h2 {
-  margin-bottom: 30px;
-  animation: slideIn 1.5s ease-out;
+.stat h4 {
+  font-size: 2rem;
+  color: #ff0000;
 }
 
-.features-cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+.about-images {
+  flex: 1;
+  min-width: 300px;
+  margin: 20px;
 }
 
-.feature-card {
-  background: #f9f9f9;
-  border-radius: 8px;
-  padding: 20px;
-  width: 300px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-  animation: fadeInUp 1s ease-in-out;
+.about-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
-
-.feature-card img {
-  max-width: 100%;
-  border-radius: 8px;
+@keyframes fadeIn{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
 }
-
-.feature-card h3 {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  font-family: 'Roboto', sans-serif; /* Change to your desired font */
-  color: black; /* Set the color to black */
-}
-
-.feature-card p {
-  margin-top: 10px;
-  color: #666;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-}
-
-/* Keyframes */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  0% {
+@keyframes slideIn{
+  0%{
     transform: translateY(20px);
     opacity: 0;
   }
-  100% {
+  100%{
     transform: translateY(0);
     opacity: 1;
   }
 }
-
-@keyframes fadeInUp {
-  0% {
-    transform: translateY(30px);
+@keyframes fadeInUp{
+  0%{
+    transform: translateX(30px);
     opacity: 0;
   }
-  100% {
-    transform: translateY(0);
+  100%{
+    transform: translateX(0);
     opacity: 1;
   }
 }
-
-@keyframes pulse {
-  0%, 100% {
+@keyframes pulse{
+  0%{
     transform: scale(1);
   }
-  50% {
+  50%{
     transform: scale(1.1);
   }
+  100%{
+    transform: scale(1);
+  }
+}
+.p-t{
+  color: aliceblue;
 }

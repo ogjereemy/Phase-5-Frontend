@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import fitnessLogo from "../../../src/picsvg_download.svg"
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,7 +25,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-left">
-        <img src="logo.png" alt="Logo" />
+      <img src={fitnessLogo} className='' alt="calorie tracker logo" />
         <h1>Welcome Back!!</h1>
         <p>Let's keep Fit</p>
       </div>
