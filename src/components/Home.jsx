@@ -1,76 +1,9 @@
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import './home.css';
-
-// function Home() {
-//   const navigate = useNavigate();
-
-//   const handleGetStarted = () => {
-//     navigate('/signup');
-//   };
-
-//   const handleLogin = () => {
-//     navigate('/login');
-//   };
-
-//   const handleExpertCoaches = () => {
-//     navigate('/coaches-login');
-//   };
-
-//   return (
-//     <div className="home-container">
-//       <div className="hero-section">
-//         <div className="hero-content">
-//           <h1>Fit-Track</h1>
-//           <p>
-//             A one-of-a-kind fitness program that combines strength, flexibility, and
-//             cardiovascular exercise to create a powerful, enduring workout.
-//           </p>
-//           <p>25+ Years Of Experience</p>
-//           <div className="hero-buttons">
-//             <button className="cta-button" onClick={handleGetStarted}>
-//               Sign Up
-//             </button>
-//             <button className="cta-button" onClick={handleLogin}>
-//               Log in
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="about-section">
-//         <h2>About Us</h2>
-//         <div className="about-content">
-//           <div className="about-text">
-//             <h3>Everybody Welcome Favourite Gym</h3>
-//             <p>
-//               The next situation is in a program in which the trainer wants his powerlifter to hit
-//               a triple at 95% of his most recent best competition squat. This means starting with a
-//               single at 75% and going up by 10% each set. The lifter has used this method to achieve
-//               a new personal record.
-//             </p>
-//             <p>
-//               32+ Years of Experience
-//               76+ Worldwide Location
-//             </p>
-//           </div>
-//           <div className="about-images">
-//             <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Gym Image 1" />
-//             <img src="https://images.pexels.com/photos/1153370/pexels-photo-1153370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Gym Image 2" />
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Home;
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import fitnessLogo from "../../src/picsvg_download.svg";
 import axios from 'axios';
 import './home.css';
+import CustomNavbar from './Navbar';
 
 function Home() {
   const navigate = useNavigate();
@@ -125,6 +58,7 @@ function Home() {
 
   return (
     <div className="home-container">
+      <CustomNavbar />
       <div className="hero-section">
         <div className="hero-content">
           <img src={fitnessLogo} className='' alt="calorie tracker logo" />
@@ -171,7 +105,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="featured-workouts-section">
+      {/* <div className="featured-workouts-section">
         <h2>Featured Workout Plans</h2>
         <div className="workouts-container">
           {featuredWorkouts.map((workout) => (
@@ -181,9 +115,9 @@ function Home() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
-      <div className="top-coaches-section">
+      {/* <div className="top-coaches-section">
         <h2>Top Coaches</h2>
         <div className="coaches-container">
           {topCoaches.map((coach) => (
@@ -193,9 +127,9 @@ function Home() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
-      <div className="success-stories-section">
+      {/* <div className="success-stories-section">
         <h2>Success Stories</h2>
         <div className="stories-container">
           {successStories.map((story) => (
@@ -204,8 +138,8 @@ function Home() {
               <p>{story.content}</p>
             </div>
           ))}
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 }

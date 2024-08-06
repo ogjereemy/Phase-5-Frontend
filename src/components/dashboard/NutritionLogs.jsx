@@ -509,25 +509,9 @@ const NutritionLogging = () => {
 
   return (
     <div className="dashboard">
-      <div className="sidebar">
-        <img src={fitnessLogo} className='app-logo' alt="calorie tracker logo" />
-        <Link to="/overview" className="sidebar-link">Overview</Link>
-        <Link to="/workout" className="sidebar-link">Workout</Link>
-        <Link to="/coach-dashboard" className='sidebar-link'>Coach Dashboard</Link>
-        <Link to="/diet-plan" className="sidebar-link">Diet Plan</Link>
-        <Link to="/goals" className="sidebar-link">Goals</Link>
-        <Link to="/user-dashboard" className="sidebar-link">User Dashboard</Link>
-        <Link to="/user-schedule" className="sidebar-link">My Schedule</Link>
-        <Link to="/progress" className="sidebar-link">Progress</Link>
-        <Link to="/help" className="sidebar-link">Help</Link>
-        <button className="btn btn-danger">Logout</button>
-      </div>
       <div className="main-content">
         <header className="header">
           <h1>Welcome Back!</h1>
-          <div className="search-bar">
-            <input type="text" placeholder="Search" />
-          </div>
           <div className="profile-info">
             <Link to="/user-profile" className="sidebar-link">Profile</Link>
           </div>
@@ -537,6 +521,7 @@ const NutritionLogging = () => {
             <div className="diet-plan-overview">
               <h2>Plan Your Diet Plan This Week</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <img src="https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="diet-plan" />
             </div>
             <div className="week-plan">
               <h2>Week Plan</h2>

@@ -4,7 +4,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
-  /* color:#f1a32 ; */
   overflow-y: auto;
 
 }
@@ -43,9 +42,8 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
-  /* background-color: #ec9c08; */
   overflow-y: auto;
-  margin-top: 60px;
+  margin-top: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -109,18 +107,16 @@ body {
 
 
 .top-section {
-  /* display: flex; */
   justify-content: space-between;
   margin-bottom: 20px;
-
 }
+
 .activity-overview h2, p, li{
   margin-bottom: 10px;
   line-height: 1.5;
   font-weight: bold;
   font-size: 1.2rem;
-  /* color: #333; */
-  font-family: 'Roboto', sans-serif; /* Change to your desired font */
+  font-family: 'Roboto', sans-serif;
   padding: 20px;
 }
 
@@ -178,7 +174,6 @@ body {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
 .schedule h2, .goals h2, .premium-membership h2 {
@@ -226,7 +221,6 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* flex-wrap: wrap;   */
   cursor: pointer;
   margin-left: 10%; 
 }
@@ -238,12 +232,10 @@ body {
   background-size: cover;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
-  /* text-align: center; */
   align-items: center;
   font-size: 1.99em;
   color: #f1f1f1;
-  /* height: 20vh; */
-  /* width: 50vh; */
+
 }
 
 .activity-card2 {
@@ -253,7 +245,6 @@ body {
   background-size: cover;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
-  /* text-align: center; */
   font-size: 1.99em;
   color: #f1f1f1;
 
@@ -266,7 +257,6 @@ body {
   background-size: cover;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
-  /* text-align: center; */
   font-size: 1.99em;
   color: #f1f1f1;
 
@@ -447,12 +437,6 @@ body {
 }
 
 /* Home.css */
-/* src/components/Home.css */
-/* .home-container {
-  background: #f7f7f7;
-  padding: 2rem 0;
-} */
-
 .home-container h1 {
   font-size: 2.5rem;
   font-weight: bold;
@@ -559,11 +543,7 @@ body {
   text-decoration: none;
 }
 
-/* .main-content {
-  flex-grow: 1;
-  padding: 20px;
-  overflow-y: auto;
-} */
+
 
 .header {
   display: flex;
@@ -581,10 +561,6 @@ body {
   font-size: 1rem;
 }
 
-.content {
-  /* display: flex; */
-  /* flex-direction: column; */
-}
 
 .top-section {
   display: flex;
@@ -715,13 +691,6 @@ body {
   width: 0;
 }
 
-/* .main-content {
-  flex-grow: 1;
-  transition: margin-left 0.3s ease;
-  padding: 20px;
-  overflow-y: auto;
-} */
-
 .sidebar-open .main-content {
   margin-left: 250px;
 }
@@ -734,6 +703,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .toggle-button {
@@ -741,5 +711,91 @@ body {
   border: none;
   cursor: pointer;
 }
+.side-svg {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  fill: #333;
+  padding: -10px;
+  margin-right: 10px;
+
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.app-logo {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.sidebar-link:hover {
+  text-decoration: underline;
+}
+
+.btn-danger {
+  margin-top: 20px;
+}
 
 
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-image: url('/src/background.png');
+  background-size: cover;
+}
+
+.sidebar {
+  width: 210px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  flex-shrink: 0; 
+  height: 100vh; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+}
+
+.main-content {
+  margin-left: 90px; 
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.nav{
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+#basic-navbar-nav{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px; 
+  font-size: 20px;
+  color: #ccc;
+}
