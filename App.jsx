@@ -57,8 +57,8 @@ const MainContent = () => {
                     <Route path='/about' element={<About/>}/>
                     <Route path='/contact' element={<Contact/>}/>
                     <Route path="/client-list" element={<ClientList />} />
-                    <Route path="/workout-plans" element={<WorkoutPlanList />} />
-                    <Route path="/workout-plans/:clientId" element={<WorkoutPlanList />} />
+                    <Route path="/workout-plans" element={<WorkoutLogging/>} />
+                    <Route path="/workout-plans/:clientId" element={<WorkoutLogging/>} />
                 </Routes>
             </div>
         </>
