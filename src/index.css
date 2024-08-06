@@ -4,7 +4,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
-  color:#f1a32d ;
+  /* color:#f1a32 ; */
+  overflow-y: auto;
+
 }
 .app-logo{
   width: 160px;
@@ -21,6 +23,7 @@ body {
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   height: 100vh;
+  overflow-y: auto;
 }
 
 .sidebar-link {
@@ -40,6 +43,12 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
+  /* background-color: #ec9c08; */
+  overflow-y: auto;
+  margin-top: 60px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .header {
@@ -78,6 +87,7 @@ body {
 .main-content {
   flex-grow: 1;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .header {
@@ -96,10 +106,7 @@ body {
   font-size: 1rem;
 }
 
-.content {
-   display: flex; 
-   flex-direction: column; 
-}
+
 
 .top-section {
   /* display: flex; */
@@ -112,18 +119,19 @@ body {
   line-height: 1.5;
   font-weight: bold;
   font-size: 1.2rem;
-  color: #333;
+  /* color: #333; */
   font-family: 'Roboto', sans-serif; /* Change to your desired font */
   padding: 20px;
 }
 
 .activity-overview  {
-  background-image: url("https://i.pinimg.com/564x/75/68/08/756808cf8924f4d31771e40c90f5f430.jpg");
+  background-image: url("https://images.pexels.com/photos/3076516/pexels-photo-3076516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-size: cover;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-right: 20px;
   margin-bottom: 40px;
+  color: azure;
 }
 
 .activity-cards {
@@ -211,13 +219,6 @@ body {
   width: 900px;
 }
 
-/* .content {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-right: 0%;
-  gap: 20px;
-} */
 
 .activity-cards {
   display: flex;
@@ -447,10 +448,10 @@ body {
 
 /* Home.css */
 /* src/components/Home.css */
-.home-container {
+/* .home-container {
   background: #f7f7f7;
   padding: 2rem 0;
-}
+} */
 
 .home-container h1 {
   font-size: 2.5rem;
@@ -460,7 +461,6 @@ body {
 
 .home-container p {
   font-size: 1.1rem;
-  color: #555;
 }
 
 .btn-signup {
@@ -533,4 +533,213 @@ body {
   width: 100px;
   margin-bottom: 20px;
 }
+
+
+/*  */
+
+.dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.app-logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.sidebar-link {
+  display: block;
+  margin: 10px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+/* .main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+} */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 5px 10px;
+  width: 200px;
+}
+
+.profile-info {
+  font-size: 1rem;
+}
+
+.content {
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.diet-plan-overview {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.week-plan {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.week-plan ul {
+  list-style: none;
+  padding: 0;
+}
+
+.week-plan li {
+  margin: 10px 0;
+}
+
+.nutrition-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.nutrition-entries {
+  display: flex;
+  flex-direction: column;
+}
+
+.nutrition-entry {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.nutrition-entry input {
+  margin-right: 10px;
+  padding: 5px;
+  width: 100px;
+}
+
+.remove-button {
+  background-color: #ff7f50;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nutrition-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.add-button, .clear-button, .submit-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nutrition-summary {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  padding: 2rem;
+  background-color: #f8f9fa;
+  margin-top: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 900px;
+}
+
+.progress-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.progress-card {
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.progress-card .card-body {
+  padding: 2rem;
+}
+
+
+/* App.css */
+.dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  transition: width 0.3s ease;
+}
+
+.sidebar.closed {
+  width: 0;
+}
+
+/* .main-content {
+  flex-grow: 1;
+  transition: margin-left 0.3s ease;
+  padding: 20px;
+  overflow-y: auto;
+} */
+
+.sidebar-open .main-content {
+  margin-left: 250px;
+}
+
+.sidebar-closed .main-content {
+  margin-left: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 

@@ -10,6 +10,7 @@ import CoachDashboard from './src/components/dashboard/CoachDashboard';
 import CoachLogin from './src/components/dashboard/CoachesLogin';
 import Overview from './src/components/Overview';
 import GoalForm from './src/pages/GoalForm';
+// import GoalTracker from './src/components/pages/GoalTracker';
 import Workout from './src/components/pages/Workout';
 import NutritionLogs from './src/components/dashboard/NutritionLogs';
 import ProgressCharts from './src/components/dashboard/ProgressCharts';
@@ -36,6 +37,7 @@ function App() {
                     <Route path="/user-profile" element={<UserProfile />} />
                     <Route path='/user-schedule' element={<MySchedule/>}/>
                     <Route path="/coach-dashboard" element={<CoachDashboard />} />
+                    {/* <Route path='goaltrack' element={<GoalTracker />}/> */}
                     <Route path='/coaches-login' element={<CoachLogin/>}/>
                 </Routes>
             </>

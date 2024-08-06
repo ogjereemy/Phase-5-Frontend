@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
+import fitnessLogo from "../../../src/picsvg_download.svg"
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 
@@ -28,7 +28,7 @@ const Signup = () => {
   return (
     <div className="signup-container">
       <div className="signup-left">
-        <img src="logo.png" alt="Logo" />
+      <img src={fitnessLogo} className='' alt="calorie tracker logo" />
         <h1>Start Your Fitness Journey Today</h1>
         <p>Join our Team!</p>
       </div>
@@ -44,7 +44,7 @@ const Signup = () => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="name@gmail.com"
+                placeholder="email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -54,7 +54,7 @@ const Signup = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Password..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -64,7 +64,7 @@ const Signup = () => {
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="Confirm Password..."
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
@@ -84,46 +84,3 @@ const Signup = () => {
 };
 
 export default Signup;
-// import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import './signin.css';
-
-// function SignIn() {
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const navigate = useNavigate(); 
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-
-    
-//     navigate('/coaches');
-//   };
-
-//   return (
-//     <div className="signin-container">
-//       <h2>Sign In</h2>
-//       <form onSubmit={handleSubmit}>
-//         <label htmlFor="email">Email:</label>
-//         <input
-//           type="email"
-//           id="email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           required
-//         />
-//         <label htmlFor="password">Password:</label>
-//         <input
-//           type="password"
-//           id="password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           required
-//         />
-//         <button type="submit">Sign In</button>
-//       </form>
-//     </div>
-//   );
-// }
-
-// export default SignIn;
