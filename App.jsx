@@ -17,6 +17,8 @@ import PasswordReset from './src/components/auth/PasswordReset';
 import { AuthProvider } from './src/context/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MySchedule from './src/components/MySchedule';
+import ClientList from './src/components/dashboard/ClientList';
+import WorkoutPlanList from './src/components/dashboard/WorkoutPlanList';
 
 function App() {
     return (
@@ -38,7 +40,6 @@ function App() {
                     <Route path="/coach-dashboard" element={<CoachDashboard />} />
                     <Route path="/coaches-login" element={<CoachLogin />} />
                     <Route path="/client-list" element={<ClientList />} />
-                    <Route path="/client-progress" element={<ClientProgress />} />
                     <Route path="/workout-plans" element={<WorkoutPlanList />} />
                     <Route path="/workout-plans/:clientId" element={<WorkoutPlanList />} />
                 </Routes>

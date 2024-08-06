@@ -220,7 +220,7 @@ const UserProfile = () => {
   });
 
   useEffect(() => {
-    axios.get('/api/user/profile').then(response => {
+    axios.get('http://127.0.0.1:5000/app/profile').then(response => {
       setUser(response.data);
     });
   }, []);
