@@ -57,7 +57,7 @@ const Progress = () => {
   });
 
   return (
-    <>
+    <div className='main-content'>
       <h1 className="progress-title">Your Progress</h1>
       <Container className="progress-container">
         <Card className="progress-card">
@@ -80,7 +80,7 @@ const Progress = () => {
         </Card>
         <GoalTracker />
       </Container>
-    </>
+    </div>
   );
 };
 

@@ -55,84 +55,86 @@ const WorkoutLogging = () => {
   ];
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit}>
-        <h2>Log Your Workout</h2>
-        {workout.map((item, index) => (
-          <div key={index}>
-            <input
-              type="date"
-              name="date"
-              value={item.date}
-              onChange={(e) => handleChange(index, e)}
-              required
-            />
-            <input
-              type="text"
-              name="exercise"
-              placeholder="Exercise"
-              value={item.exercise}
-              onChange={(e) => handleChange(index, e)}
-              required
-            />
-            <input
-              type="number"
-              name="sets"
-              placeholder="Sets"
-              value={item.sets}
-              onChange={(e) => handleChange(index, e)}
-              min="1"
-              required
-            />
-            <input
-              type="number"
-              name="reps"
-              placeholder="Reps"
-              value={item.reps}
-              onChange={(e) => handleChange(index, e)}
-              min="1"
-              required
-            />
-            <input
-              type="number"
-              name="weight"
-              placeholder="Weight (lbs)"
-              value={item.weight}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-              required
-            />
-            <input
-              type="text"
-              name="duration"
-              placeholder="Duration (minutes)"
-              value={item.duration}
-              onChange={(e) => handleChange(index, e)}
-            />
-            <input
-              type="number"
-              name="caloriesBurned"
-              placeholder="Calories Burned"
-              value={item.caloriesBurned}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-            />
-            <button
-              type="button"
-              className="delete-exercise-btn"
-              onClick={() => handleDelete(index)}
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-        <button type="submit">Save Workout</button>
-      </form>
-      <Achievements achievements={achievements} />
-      <div className="summary">
-        <h3>Summary</h3>
-        <p>Total Weight Lifted: {totalWeightLifted.toFixed(0)} lbs</p>
-        <p>Total Calories Burned: {totalCaloriesBurned.toFixed(0)} kcal</p>
+    <div className='main-content'>
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <h2>Log Your Workout</h2>
+          {workout.map((item, index) => (
+            <div key={index}>
+              <input
+                type="date"
+                name="date"
+                value={item.date}
+                onChange={(e) => handleChange(index, e)}
+                required
+              />
+              <input
+                type="text"
+                name="exercise"
+                placeholder="Exercise"
+                value={item.exercise}
+                onChange={(e) => handleChange(index, e)}
+                required
+              />
+              <input
+                type="number"
+                name="sets"
+                placeholder="Sets"
+                value={item.sets}
+                onChange={(e) => handleChange(index, e)}
+                min="1"
+                required
+              />
+              <input
+                type="number"
+                name="reps"
+                placeholder="Reps"
+                value={item.reps}
+                onChange={(e) => handleChange(index, e)}
+                min="1"
+                required
+              />
+              <input
+                type="number"
+                name="weight"
+                placeholder="Weight (lbs)"
+                value={item.weight}
+                onChange={(e) => handleChange(index, e)}
+                min="0"
+                required
+              />
+              <input
+                type="text"
+                name="duration"
+                placeholder="Duration (minutes)"
+                value={item.duration}
+                onChange={(e) => handleChange(index, e)}
+              />
+              <input
+                type="number"
+                name="caloriesBurned"
+                placeholder="Calories Burned"
+                value={item.caloriesBurned}
+                onChange={(e) => handleChange(index, e)}
+                min="0"
+              />
+              <button
+                type="button"
+                className="delete-exercise-btn"
+                onClick={() => handleDelete(index)}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+          <button type="submit">Save Workout</button>
+        </form>
+        <Achievements achievements={achievements} />
+        <div className="summary">
+          <h3>Summary</h3>
+          <p>Total Weight Lifted: {totalWeightLifted.toFixed(0)} lbs</p>
+          <p>Total Calories Burned: {totalCaloriesBurned.toFixed(0)} kcal</p>
+        </div>
       </div>
     </div>
   );
