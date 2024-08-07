@@ -1,58 +1,58 @@
-import React, { useState } from 'react';
-import './goaltracker.css';
+// import React, { useState } from 'react';
+// import './goaltracker.css';
 
-const GoalTracker = () => {
-  const [goal, setGoal] = useState(null);
-  const [goals, setGoals] = useState([
-    { id: 1, type: 'Weight', metric: '61.2 kg', goal: '5.81 kg' },
-    { id: 2, type: 'Steps', metric: '3560/4000' },
-    { id: 3, type: 'Workout', metric: '19 min', average: '16 min' },
-    { id: 4, type: 'Calories', metric: '80 cal', average: '102 cal' }
-  ]);
+// const GoalTracker = () => {
+//   const [goal, setGoal] = useState(null);
+//   const [goals, setGoals] = useState([
+//     { id: 1, type: 'Weight', metric: '61.2 kg', goal: '5.81 kg' },
+//     { id: 2, type: 'Steps', metric: '3560/4000' },
+//     { id: 3, type: 'Workout', metric: '19 min', average: '16 min' },
+//     { id: 4, type: 'Calories', metric: '80 cal', average: '102 cal' }
+//   ]);
 
-  const addGoal = (goal) => {
-    setGoals([...goals, goal]);
-  };
+//   const addGoal = (goal) => {
+//     setGoals([...goals, goal]);
+//   };
 
-  const deleteGoal = (goalId) => {
-    const updatedGoals = goals.filter((goal) => goal.id !== goalId);
-    setGoals(updatedGoals);
-  };
+//   const deleteGoal = (goalId) => {
+//     const updatedGoals = goals.filter((goal) => goal.id !== goalId);
+//     setGoals(updatedGoals);
+//   };
 
-  const updateGoal = (goalId, updatedGoal) => {
-    const updatedGoals = goals.map((goal) =>
-      goal.id === goalId ? updatedGoal : goal
-    );
-    setGoals(updatedGoals);
-  };
+//   const updateGoal = (goalId, updatedGoal) => {
+//     const updatedGoals = goals.map((goal) =>
+//       goal.id === goalId ? updatedGoal : goal
+//     );
+//     setGoals(updatedGoals);
+//   };
 
-  return (
-    <div className="container">
-      <div className="header">
-        <h1>Goal Tracker</h1>
-        <h2>Record Changes</h2>
-      </div>
-      <div className="dailyContainer">
-        <h3>Daily</h3>
-        <div className="cardContainer">
-          {goals.map((goal) => (
-            <div className="card" key={goal.id}>
-              <h4>{goal.type}</h4>
-              <p className="metric">{goal.metric}</p>
-              {goal.goal && <p className="goal">Goal: {goal.goal}</p>}
-              {goal.average && <p>Weekly Average: {goal.average}</p>}
-              <div className="chart"></div>
-              <button onClick={() => deleteGoal(goal.id)}>Delete</button>
-              <button onClick={() => updateGoal(goal.id, { ...goal, metric: 'Updated Metric' })}>Update</button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className="container">
+//       <div className="header">
+//         <h1>Goal Tracker</h1>
+//         <h2>Record Changes</h2>
+//       </div>
+//       <div className="dailyContainer">
+//         <h3>Daily</h3>
+//         <div className="cardContainer">
+//           {goals.map((goal) => (
+//             <div className="card" key={goal.id}>
+//               <h4>{goal.type}</h4>
+//               <p className="metric">{goal.metric}</p>
+//               {goal.goal && <p className="goal">Goal: {goal.goal}</p>}
+//               {goal.average && <p>Weekly Average: {goal.average}</p>}
+//               <div className="chart"></div>
+//               <button onClick={() => deleteGoal(goal.id)}>Delete</button>
+//               <button onClick={() => updateGoal(goal.id, { ...goal, metric: 'Updated Metric' })}>Update</button>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
-export default GoalTracker;
+// export default GoalTracker;
 
 
 
@@ -135,4 +135,93 @@ export default GoalTracker;
 // };
 
 // export default GoalTracker;
+
+import React, { useState } from 'react';
+import './goaltracker.css';
+
+const GoalTracker = () => {
+  const [goalType, setGoalType] = useState('');
+  const [metric, setMetric] = useState('');
+  const [goalValue, setGoalValue] = useState('');
+  const [goals, setGoals] = useState([
+    { id: 1, type: 'Weight', metric: '61.2 kg', goal: '5.81 kg' },
+    { id: 2, type: 'Steps', metric: '3560/4000' },
+    { id: 3, type: 'Workout', metric: '19 min', average: '16 min' },
+    { id: 4, type: 'Calories', metric: '80 cal', average: '102 cal' }
+  ]);
+
+  const addGoal = () => {
+    const newGoal = {
+      id: goals.length + 1,
+      type: goalType,
+      metric,
+      goal: goalValue || undefined,
+    };
+    setGoals([...goals, newGoal]);
+    setGoalType('');
+    setMetric('');
+    setGoalValue('');
+  };
+
+  const deleteGoal = (goalId) => {
+    const updatedGoals = goals.filter((goal) => goal.id !== goalId);
+    setGoals(updatedGoals);
+  };
+
+  const updateGoal = (goalId, updatedMetric) => {
+    const updatedGoals = goals.map((goal) =>
+      goal.id === goalId ? { ...goal, metric: updatedMetric } : goal
+    );
+    setGoals(updatedGoals);
+  };
+
+  return (
+    <div className="container">
+      <div className="header">
+        <h1>Goal Tracker</h1>
+        <h2>Record Changes</h2>
+      </div>
+      <div className="formContainer">
+        <input
+          type="text"
+          placeholder="Goal Type"
+          value={goalType}
+          onChange={(e) => setGoalType(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Metric"
+          value={metric}
+          onChange={(e) => setMetric(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Goal (optional)"
+          value={goalValue}
+          onChange={(e) => setGoalValue(e.target.value)}
+        />
+        <button onClick={addGoal}>Add Goal</button>
+      </div>
+      <div className="dailyContainer">
+        <h3>Daily</h3>
+        <div className="cardContainer">
+          {goals.map((goal) => (
+            <div className="card" key={goal.id}>
+              <h4>{goal.type}</h4>
+              <p className="metric">{goal.metric}</p>
+              {goal.goal && <p className="goal">Goal: {goal.goal}</p>}
+              {goal.average && <p>Weekly Average: {goal.average}</p>}
+              <div className="chart"></div>
+              <button onClick={() => deleteGoal(goal.id)}>Delete</button>
+              <button onClick={() => updateGoal(goal.id, 'Updated Metric')}>Update</button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default GoalTracker;
+
 
