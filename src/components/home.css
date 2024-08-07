@@ -2,7 +2,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* Hero Section */
+
 .hero-section {
   background-image: url('path_to_hero_image.jpg');
   background-size: cover;
@@ -44,7 +44,6 @@
   background-color: #cc5200;
 }
 
-/* Features Section */
 .features-section {
   padding: 50px 20px;
   text-align: center;

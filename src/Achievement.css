@@ -1,50 +1,43 @@
 .achievements {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px; 
-    padding: 20px; 
-    background-color: #f7f7f7; 
-    border-radius: 10px; 
-  }
-  
-  .achievement {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 120px;
-    padding: 20px 10px; 
-    background: linear-gradient(to bottom, #ff7e5f, #feb47b); 
-    border-radius: 50px; 
-    box-shadow : 0 4px 6px rgba(0, 0, 0, 0.1); 
-    color: #fff; 
-    box-shadow: 0 4px 6px rgba (0,0,0, 0.1 );
-    color: #f7f7f7;
-    text-align: center; 
-  }
-  
-  .achievement h4 {
-    font-size: 2rem; 
-    margin: 0; 
-  }
-  
-  .achievement p {
-    font-size: 1rem; 
-    margin: 0; 
-    font-weight: bold;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; 
+  padding: 20px; 
+  background-color: #f7f7f7; 
+  border-radius: 10px; 
+}
 
-  
+.achievement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  padding: 20px 10px; 
+  background: linear-gradient(to bottom, #ff7e5f, #feb47b); 
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  color: #fff; 
+  text-align: center; 
+}
+
+.achievement h4 {
+  font-size: 2rem; 
+  margin: 0; 
+}
+
+.achievement p {
+  font-size: 1rem; 
+  margin: 0; 
+  font-weight: bold;
+}
+
 .stats-container {
   display: flex;
   justify-content: space-around;
   background-color: #333; 
-  
   padding: 20px;
 }
-
-
 
 .stat-item {
   display: flex;
@@ -54,15 +47,12 @@
   width: 150px;
   height: 300px;
   background-color: #ff5722; 
-  
   border-radius: 20px;
   padding: 20px;
   color: #fff;
   text-align: center;
   position: relative;
 }
-
-
 
 .stat-item .icon {
   width: 50px;
@@ -73,29 +63,25 @@
   background-position: center;
 }
 
-
-
 .stat-item.hours .icon {
-  background-image: url('path/to/your/clock-icon.png');
+  background-image: url('https://media.istockphoto.com/id/1436812846/vector/round-clock-white-transparent-clock-face-circle-arrow-icon-vector.jpg?s=612x612&w=0&k=20&c=SPJuSEnt5ux_Bj7xoN2EO1OHQmrYw3j2iXMZvxg8YOU=');
+  background-color: #333;
 }
 
 .stat-item.kcal .icon {
-  background-image: url('path/to/your/calories-icon.png');
-}
-
-.stat-item.poses .icon {
-  background-image: url('path/to/your/poses-icon.png');
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWtclUaIL2kbRs1tyDSTaNhESqrpO_zOYo4w&s');
+  background-color: #333;
 }
 
 .stat-item.sets .icon {
-  background-image: url('path/to/your/sets-icon.png');
+  background-image: url('https://cdn-icons-png.flaticon.com/128/2460/2460850.png');
+  background-color: #333;
 }
 
 .stat-item.steps .icon {
-  background-image: url('path/to/your/steps-icon.png');
+  background-image: url('https://cdn-icons-png.flaticon.com/512/992/992700.png');
+  background-color: #333;
 }
-
-
 
 .stat-item .value {
   font-size: 36px;
@@ -106,8 +92,6 @@
 .stat-item .label {
   font-size: 18px;
 }
-
-
 
 @media (max-width: 768px) {
   .stats-container {
