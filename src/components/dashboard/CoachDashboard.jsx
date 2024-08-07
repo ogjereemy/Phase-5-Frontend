@@ -1,7 +1,7 @@
 // src/components/dashboard/CoachDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './CoachDashboard.css'; // Import the CSS file for styling
+import './CoachDashboard.css';
 
 function CoachDashboard() {
     const [clients, setClients] = useState([]);
@@ -32,19 +32,18 @@ function CoachDashboard() {
                 <h2>Your Clients</h2>
                 <div className="client-cards">
                     {clients.map(client => (
-                        <Link to={`/user/${client.id}`} key={client.id} className="client-card">
+                        <div key={client.id} className="client-card">
                             <img src={client.photo} alt={client.username} className="client-picture" />
                             <div className="client-info">
                                 <h3>{client.username}</h3>
+                                <div className="client-actions">
+                                    <Link to={`/workout-plans/${client.id}`} className="btn btn-primary btn-small">Manage Workout Plans</Link>
+                                    <Link to={`/client-progress/${client.id}`} className="btn btn-secondary btn-small">Track Client Progress</Link>
+                                </div>
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
-            </div>
-
-            <div className="actions">
-                <Link to="/workout-plans" className="btn btn-primary">Manage Workout Plans</Link>
-                <Link to="/client-progress" className="btn btn-primary">Track Client Progress</Link>
             </div>
         </div>
     );

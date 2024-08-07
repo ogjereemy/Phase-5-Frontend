@@ -42,6 +42,7 @@ function App() {
                     <Route path="/client-list" element={<ClientList />} />
                     <Route path="/workout-plans" element={<WorkoutPlanList />} />
                     <Route path="/workout-plans/:clientId" element={<WorkoutPlanList />} />
+                    <Route path="/client-progress/:clientId" element={<ProgressCharts/>} />
                 </Routes>
             </>
         </AuthProvider>

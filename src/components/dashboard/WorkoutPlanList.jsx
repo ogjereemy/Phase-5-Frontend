@@ -12,7 +12,7 @@ const WorkoutPlanList = () => {
   useEffect(() => {
     const fetchWorkoutPlans = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/api/clients/${clientId}/workout-plans`);
+        const response = await axios.get(`http://127.0.0.1:5000/app/workout_plans?client_id=${clientId}`);
         setWorkoutPlans(response.data);
       } catch (err) {
         setError('Failed to load workout plans. Please try again later.');
