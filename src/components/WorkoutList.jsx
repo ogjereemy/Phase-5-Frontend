@@ -7,13 +7,13 @@ const WorkoutLogging = () => {
   const [loggedWorkouts, setLoggedWorkouts] = useState([]);
 
   useEffect(() => {
-    // Load workouts from local storage
+  
     const storedWorkouts = JSON.parse(localStorage.getItem('loggedWorkouts')) || [];
     setLoggedWorkouts(storedWorkouts);
   }, []);
 
   useEffect(() => {
-    // Save workouts to local storage
+ 
     localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
   }, [loggedWorkouts]);
 
@@ -45,12 +45,10 @@ const WorkoutLogging = () => {
   const totalCaloriesBurned = loggedWorkouts.reduce((acc, curr) => acc + (parseFloat(curr.caloriesBurned) || 0), 0);
   const totalHours = loggedWorkouts.reduce((acc, curr) => acc + (parseFloat(curr.duration) || 0) / 60, 0);
   const totalSets = loggedWorkouts.reduce((acc, curr) => acc + (parseFloat(curr.sets) || 0), 0);
-  const totalPoses = loggedWorkouts.filter(curr => curr.category.toLowerCase() === 'yoga').reduce((acc, curr) => acc + (parseFloat(curr.reps) || 0), 0);
 
   const achievements = [
     { value: totalHours.toFixed(2), label: 'hours' },
     { value: totalCaloriesBurned.toFixed(0), label: 'Kcal' },
-    { value: totalPoses, label: 'Poses' },
     { value: totalSets, label: 'Sets' },
   ];
 
