@@ -19,6 +19,7 @@ import Sidebar from './src/components/Sidebar';
 import About from './src/pages/About';
 import Contact from './src/pages/Contact';
 import ClientList from './src/components/dashboard/ClientList';
+import CoachSignup from './src/components/dashboard/CoachSignup';
 
 function App() {
     return (
@@ -34,7 +35,7 @@ function App() {
 
 const MainContent = () => {
     const location = useLocation();
-    const pathsWithoutSidebar = ['/', '/signup', '/login', '/coaches-login', '/password-reset', '/about', '/contact'];
+    const pathsWithoutSidebar = ['/', '/signup', '/login', '/coaches-login', '/password-reset', '/about', '/contact', '/coach-signup', '/client-list'];
 
     return (
         <>
@@ -59,6 +60,7 @@ const MainContent = () => {
                     <Route path="/client-list" element={<ClientList />} />
                     <Route path="/workout-plans" element={<WorkoutLogging/>} />
                     <Route path="/workout-plans/:clientId" element={<WorkoutLogging/>} />
+                    <Route path="/coach-signup" element={<CoachSignup/>} />
                 </Routes>
             </div>
         </>
