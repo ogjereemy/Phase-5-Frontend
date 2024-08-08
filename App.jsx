@@ -20,6 +20,7 @@ import About from './src/pages/About';
 import Contact from './src/pages/Contact';
 import ClientList from './src/components/dashboard/ClientList';
 import CoachSignup from './src/components/dashboard/CoachSignup';
+import PasswordResetRequest from './src/components/auth/PasswordResetRequest';
 
 function App() {
     return (
@@ -45,7 +46,7 @@ const MainContent = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/password-reset" element={<PasswordReset />} />
+                    <Route path="/password-reset" element={<PasswordResetRequest />} />
                     <Route path="/overview" element={<Overview />} />
                     <Route path='/workout' element={<WorkoutLogging />} />
                     <Route path="/diet-plan" element={<NutritionLogs />} />

@@ -20,10 +20,7 @@ const Signup = () => {
       setErrorMessage("Passwords do not match");
       return;
     }
-    if (isCoach && !bio) {
-      setErrorMessage("Bio is required for coaches.");
-      return;
-    }
+    
     try {
       const payload = {
         username,
