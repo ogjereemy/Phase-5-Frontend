@@ -1,10 +1,36 @@
 /* src/components/dashboard/CoachDashboard.css */
 .coach-dashboard {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* .coach-dashboard-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+} */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .clients-section {
   margin-top: 20px;
+  width: 100%;
 }
 
 .client-cards {
@@ -14,7 +40,7 @@
 }
 
 .client-card {
-  background: #fff;
+  background: burlywood; 
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
@@ -22,6 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #fff; /* Ensure text is readable on dark background */
 }
 
 .client-picture {
