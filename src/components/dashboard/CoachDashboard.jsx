@@ -5,11 +5,17 @@ import './CoachDashboard.css';
 
 function CoachDashboard() {
     const [clients, setClients] = useState([]);
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzIwMTI0NSwianRpIjoiMGQyODhjNzktNzEzNi00MTBmLThmNmQtOGY3ZjY2MzI2MTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6NCwidHlwZSI6ImNvYWNoIn0sIm5iZiI6MTcyMzIwMTI0NSwiY3NyZiI6IjYzNjk3MjIyLWI1MzgtNGMxYy05YjBiLTFkOTQ2YTgwMWI1ZSIsImV4cCI6MTcyMzIwMjc0NX0.9DALMg_VOsNcU95hgf-NOQKGII1km2jZe1Vh7if4IFQ';
 
     useEffect(() => {
         const fetchClients = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:5000/app/users');
+                const response = await fetch('http://127.0.0.1:5000/app/users', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -22,7 +28,7 @@ function CoachDashboard() {
         };
 
         fetchClients();
-    }, []);
+    }, [token]);
 
     return (
         <div className="coach-dashboard">
@@ -50,3 +56,4 @@ function CoachDashboard() {
 }
 
 export default CoachDashboard;
+
