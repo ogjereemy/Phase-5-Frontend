@@ -1,31 +1,37 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
-import fitnessLogo from "../../../src/picsvg_download.svg"
+import fitnessLogo from "../../../src/picsvg_download.svg";
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
-
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', { email, password });
+      const payload = { email, password };
+      console.log(payload);
+      const response = await axios.post('http://127.0.0.1:5000/auth/login', payload);
       localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
+      navigate('/overview');
     } catch (error) {
       setErrorMessage('Login failed. Please check your email and password.');
     }
   };
 
+  
+  
+
   return (
     <div className="login-container">
       <div className="login-left">
-      <img src={fitnessLogo} className='' alt="calorie tracker logo" />
+        <img src={fitnessLogo} alt="calorie tracker logo" />
         <h1>Welcome Back!!</h1>
         <p>Let's keep Fit</p>
       </div>
@@ -41,7 +47,7 @@ const Login = () => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="email..."
+                placeholder="Email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -51,7 +57,7 @@ const Login = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Password..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -74,4 +80,3 @@ const Login = () => {
 };
 
 export default Login;
-

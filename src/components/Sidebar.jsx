@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import fitnessLogo from "../../src/picsvg_download.svg";
 import progressLogo from "../../src/progress.svg";
 import diet from "../../src/diet.svg";
@@ -10,6 +10,12 @@ import coach from "../../src/coach.svg";
 import help from "../../src/help.svg";
 
 const Sidebar = ({ logout }) => {
+  const navigate = useNavigate(); 
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/');
+  }
   return (
     <div className="sidebar">
         <img src={fitnessLogo} className='app-logo' alt="calorie tracker logo" />
@@ -34,7 +40,7 @@ const Sidebar = ({ logout }) => {
         <Link to="/help" className="sidebar-link">
         <img src={help} className='side-svg' alt="help logo" />
         Help</Link>
-        <button onClick={logout} className="btn btn-danger">Logout</button>
+        <button onClick={handleLogout} className="btn btn-danger">Logout</button>
       </div>
   );
 };
