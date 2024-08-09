@@ -19,6 +19,9 @@ import Sidebar from './src/components/Sidebar';
 import About from './src/pages/About';
 import Contact from './src/pages/Contact';
 import ClientList from './src/components/dashboard/ClientList';
+import CoachSignup from './src/components/dashboard/CoachSignup';
+import PasswordResetRequest from './src/components/auth/PasswordResetRequest';
+import AddProgressLog from './src/components/dashboard/AddProgressLog';
 
 function App() {
     return (
@@ -34,7 +37,7 @@ function App() {
 
 const MainContent = () => {
     const location = useLocation();
-    const pathsWithoutSidebar = ['/', '/signup', '/login', '/coaches-login', '/password-reset', '/about', '/contact'];
+    const pathsWithoutSidebar = ['/', '/signup', '/login', '/coaches-login', '/password-reset', '/about', '/contact', '/coach-signup', '/client-list'];
 
     return (
         <>
@@ -44,11 +47,12 @@ const MainContent = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/password-reset" element={<PasswordReset />} />
+                    <Route path="/password-reset" element={<PasswordResetRequest />} />
                     <Route path="/overview" element={<Overview />} />
                     <Route path='/workout' element={<WorkoutLogging />} />
                     <Route path="/diet-plan" element={<NutritionLogs />} />
                     <Route path="/progress" element={<ProgressCharts />} />
+                    <Route path="/add-progress" element={<AddProgressLog />} />
                     <Route path='/goals' element={<GoalTracker />} />
                     <Route path="/user-dashboard" element={<UserDashboard />} />
                     <Route path="/user-profile" element={<UserProfile />} />
@@ -59,6 +63,7 @@ const MainContent = () => {
                     <Route path="/client-list" element={<ClientList />} />
                     <Route path="/workout-plans" element={<WorkoutLogging/>} />
                     <Route path="/workout-plans/:clientId" element={<WorkoutLogging/>} />
+                    <Route path="/coach-signup" element={<CoachSignup/>} />
                     <Route path="/client-progress/:clientId" element={<ProgressCharts/>} />
                 </Routes>
             </div>
