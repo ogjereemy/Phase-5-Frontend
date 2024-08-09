@@ -21,6 +21,7 @@ import Contact from './src/pages/Contact';
 import ClientList from './src/components/dashboard/ClientList';
 import CoachSignup from './src/components/dashboard/CoachSignup';
 import PasswordResetRequest from './src/components/auth/PasswordResetRequest';
+import AddProgressLog from './src/components/dashboard/AddProgressLog';
 
 function App() {
     return (
@@ -51,6 +52,7 @@ const MainContent = () => {
                     <Route path='/workout' element={<WorkoutLogging />} />
                     <Route path="/diet-plan" element={<NutritionLogs />} />
                     <Route path="/progress" element={<ProgressCharts />} />
+                    <Route path="/add-progress" element={<AddProgressLog />} />
                     <Route path='/goals' element={<GoalTracker />} />
                     <Route path="/user-dashboard" element={<UserDashboard />} />
                     <Route path="/user-profile" element={<UserProfile />} />
