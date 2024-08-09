@@ -1,11 +1,14 @@
+// src/components/dashboard/Progress.jsx
 import React, { useState, useEffect } from 'react';
 import { Container, Card } from 'react-bootstrap';
-import GoalTracker from '../pages/GoalTracker';
+import { useParams } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import AddProgressLog from './AddProgressLog';
+import GoalTracker from '../pages/GoalTracker';
 
 const Progress = () => {
+  const { clientId } = useParams();
   const [progressData, setProgressData] = useState({
     weight: [],
     bodyMeasurements: [],
@@ -23,6 +26,7 @@ const Progress = () => {
         const data = response.data;
     
         // Parse and set data
+
         setProgressData({
           weight: data.map(log => ({ date: log.date, value: log.weight })),
           bodyMeasurements: data.map(log => ({ date: log.date, value: log.body_fat_percentage })),
@@ -34,7 +38,7 @@ const Progress = () => {
     };
 
     fetchProgressData();
-  }, []);
+  }, [clientId]);
 
   const createChartData = (label, data, color) => ({
     labels: data.map(entry => entry.date),

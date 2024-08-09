@@ -64,6 +64,8 @@ const MainContent = () => {
                     <Route path="/workout-plans" element={<WorkoutLogging/>} />
                     <Route path="/workout-plans/:clientId" element={<WorkoutLogging/>} />
                     <Route path="/coach-signup" element={<CoachSignup/>} />
+                    <Route path="/client-progress/:clientId" element={<ProgressCharts/>} />
+>>>
                 </Routes>
             </div>
         </>
