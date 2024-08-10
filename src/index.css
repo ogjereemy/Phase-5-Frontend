@@ -5,6 +5,7 @@ body {
   padding: 0;
   background-color: whitesmoke;
   overflow-y: auto;
+  color: white;
 
 }
 .app-logo{
@@ -172,6 +173,7 @@ body {
 .schedule, .goals, .premium-membership {
   margin-bottom: 20px;
   background-color: #fff;
+  color: #000;
   padding: 20px;
   border-radius: 8px;
 }
@@ -517,7 +519,11 @@ body {
   width: 100px;
   margin-bottom: 20px;
 }
-
+.logo-profile{
+  width: 100px;
+  margin-bottom: 20px;
+  color: white;
+}
 
 /*  */
 
@@ -760,7 +766,8 @@ body {
 .app-container {
   display: flex;
   min-height: 100vh;
-  background-image: url('/src/background.png');
+  background-color: #212529;
+  /* background-image: url('/src/background.png'); */
   background-size: cover;
 }
 
@@ -875,4 +882,109 @@ body {
   width: 100%;
   height: auto;
   border-radius: 10px;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.exercise-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.exercise-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.exercise-card:hover {
+  transform: translateY(-5px);
+}
+
+.exercise-card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.exercise-card p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.exercise-card strong {
+  color: #212529;
+}
+
+
+.help-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.help-page h1 {
+  text-align: center;
+  color: #333;
+}
+
+.help-page h2 {
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.help-page h3 {
+  color: #004080;
+}
+
+.help-page ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.help-page ul li {
+  margin-bottom: 10px;
+}
+
+.help-page p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.help-page section {
+  margin-bottom: 30px;
+}
+
+.help-page hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+.help-page .contact-info ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.help-page .contact-info ul li {
+  margin-bottom: 10px;
+}
+
+.help-page .contact-info strong {
+  color: #333;
+}
+
+.mt-4.container{
+  color: #333;
 }

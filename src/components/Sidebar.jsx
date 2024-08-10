@@ -14,7 +14,7 @@ const Sidebar = ({ logout }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/');
+    navigate('/login');
   }
   return (
     <div className="sidebar">
@@ -22,12 +22,12 @@ const Sidebar = ({ logout }) => {
         <Link to="/overview" className="sidebar-link">
         <img src={overview} className='side-svg' alt="overview logo" />
         Overview</Link>
-        <Link to="/workout" className="sidebar-link">
+        <Link to="/users-workouts" className="sidebar-link">
         <img src={workout} className='side-svg' alt="workout logo" />
         Workout</Link>
-        <Link to="/coach-dashboard" className='sidebar-link'>
+        {/* <Link to="/coach-dashboard" className='sidebar-link'>
         <img src={coach} className='side-svg' alt="coach logo" />
-        Coach</Link>
+        Coach</Link> */}
         <Link to="/diet-plan" className="sidebar-link">
         <img src={diet} className='side-svg' alt="diet logo" />
         Diet Plan</Link>

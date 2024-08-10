@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
-import './goaltracker.css';
+
 
 const GoalTracker = () => {
   const [goalTitle, setGoalTitle] = useState('');
@@ -91,6 +91,8 @@ const GoalTracker = () => {
   };
 
   return (
+    <div className='main-content'>
+
     <Container className="mt-4">
       <h1>Goal Tracker</h1>
       <h2>Record Changes</h2>
@@ -151,6 +153,7 @@ const GoalTracker = () => {
         </div>
       </div>
     </Container>
+    </div>
   );
 };
 

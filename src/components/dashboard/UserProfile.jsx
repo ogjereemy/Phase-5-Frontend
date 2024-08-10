@@ -65,7 +65,7 @@ const UserProfile = () => {
                 <img src={user.photo || 'path-to-default-image.jpg'} alt="User" className="user-image" />
                 <div className="ms-3">
                   <h5 className="card-title">{user.username}</h5>
-                  <p className="card-text">Coach: {user.coach || 'Not Assigned'}</p>
+                  <p className="card-text">Coach: {user.coach_id || 'Not Assigned'}</p>
                 </div>
               </div>
               <Form onSubmit={handleSubmit} className="mt-4">
