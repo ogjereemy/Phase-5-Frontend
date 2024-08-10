@@ -75,9 +75,9 @@ const Progress = () => {
             <Line data={createChartData('Muscle Mass', progressData.performanceMetrics, ['rgba(255,159,64,0.2)', 'rgba(255,159,64,1)'])} />
           </Card.Body>
         </Card>
-        <GoalTracker />
+        <AddProgressLog/>
       </Container>
-      <AddProgressLog/>
+        <GoalTracker />
     </div>
   );
 };
