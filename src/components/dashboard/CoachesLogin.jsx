@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import fitnessLogo from "../../../src/picsvg_download.svg";
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+import CustomNavbar from '../Navbar';
 
 const CoachLogin = () => {
   const [username, setUsername] = useState('');
@@ -25,46 +27,56 @@ const CoachLogin = () => {
   };
 
   return (
-    <div className="coach-login-container">
-      <Container>
-        <Form className="coach-login-form" onSubmit={handleSubmit}>
-          <h2>Coach Log In</h2>
-          {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-          <Form.Group controlId="formBasicUsername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Username..."
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </Form.Group>
+    <div>
+      <CustomNavbar />
+      <div className="login-container">
+        <div className="login-left">
+          <img src={fitnessLogo} alt="calorie tracker logo" />
+          <h1>Welcome Back, Coach!</h1>
+          <p>Ready to help others get fit?</p>
+        </div>
+        <div className="login-right">
+          <Container>
+            <Form className="login-form" onSubmit={handleSubmit}>
+              <h2>Coach Log In</h2>
+              {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+              <Form.Group controlId="formBasicUsername">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Username..."
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </Form.Group>
 
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Email..."
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Email..."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password..."
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
 
-          <Button variant="primary" type="submit" block>
-            Log In
-          </Button>
-        </Form>
-      </Container>
+              <Button variant="primary" type="submit" block>
+                Log In
+              </Button>
+            </Form>
+          </Container>
+        </div>
+      </div>
     </div>
   );
 };
