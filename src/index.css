@@ -422,7 +422,7 @@ body {
 
 .signup-form .btn-google:hover {
   background: #1c1c64;
-  color: white;
+  /* color: white; */
 }
 
 .signup-form .form-control {
@@ -987,4 +987,15 @@ body {
 
 .mt-4.container{
   color: #333;
+}
+
+label.form-label{
+  color: #333;
+}
+div.mt-2{
+  color: #333;
+}
+a.nav-link{
+  color: #ff7f50;
+  text-decoration: none;
 }

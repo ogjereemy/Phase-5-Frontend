@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './NutritionLogging.css';
+import '../../../src/NutritionLogging.css';
 
 const NutritionLogging = () => {
   const [logs, setLogs] = useState([]);
@@ -62,7 +62,7 @@ const NutritionLogging = () => {
   }, [mealType]);
 
   return (
-    <div className="food-logger-container">
+    <div className="main-content">
       <div className="header-section">
         <h2>Plan Your Diet Plan This Week</h2>
         <p>
