@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 
-
 const NutritionLogging = () => {
   const [nutrition, setNutrition] = useState([{ meal: '', calories: '', protein: '', carbs: '', fats: '' }]);
 
@@ -31,7 +30,6 @@ const NutritionLogging = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     localStorage.setItem('nutritionData', JSON.stringify(nutrition));
     console.log(nutrition);
   };
@@ -105,5 +103,6 @@ const NutritionLogging = () => {
       </div>
     </div>
   );
+};
 
 export default NutritionLogging;
