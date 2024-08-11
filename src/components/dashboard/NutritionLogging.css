@@ -1,0 +1,81 @@
+.food-logger-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    background-color: #f4f4f4;
+    max-width: 1200px;
+    margin: auto;
+    border-radius: 10px;
+  }
+  
+  .header-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header-section h2 {
+    font-size: 24px;
+    color: #ff7f50;
+  }
+  
+  .header-section p {
+    color: #888;
+  }
+  
+  .form-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .form-section input, 
+  .form-section textarea {
+    width: 30%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff7f50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .form-section button:hover {
+    background-color: #ff6347;
+  }
+  
+  .log-table {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .log-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .log-table th, 
+  .log-table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .log-table th {
+    background-color: #ff7f50;
+    color: #fff;
+  }
+  
+  .log-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
