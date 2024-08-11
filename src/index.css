@@ -4,7 +4,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
-  color:#f1a32d ;
+  overflow-y: auto;
+  color: white;
+
 }
 .app-logo{
   width: 160px;
@@ -21,6 +23,7 @@ body {
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   height: 100vh;
+  overflow-y: auto;
 }
 
 .sidebar-link {
@@ -40,6 +43,11 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
+  overflow-y: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .header {
@@ -78,6 +86,7 @@ body {
 .main-content {
   flex-grow: 1;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .header {
@@ -96,34 +105,30 @@ body {
   font-size: 1rem;
 }
 
-.content {
-   display: flex; 
-   flex-direction: column; 
-}
+
 
 .top-section {
-  /* display: flex; */
   justify-content: space-between;
   margin-bottom: 20px;
-
 }
+
 .activity-overview h2, p, li{
   margin-bottom: 10px;
   line-height: 1.5;
   font-weight: bold;
   font-size: 1.2rem;
-  color: #333;
-  font-family: 'Roboto', sans-serif; /* Change to your desired font */
+  font-family: 'Roboto', sans-serif;
   padding: 20px;
 }
 
 .activity-overview  {
-  background-image: url("https://i.pinimg.com/564x/75/68/08/756808cf8924f4d31771e40c90f5f430.jpg");
+  background-image: url("https://images.pexels.com/photos/3076516/pexels-photo-3076516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-size: cover;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-right: 20px;
   margin-bottom: 40px;
+  color: azure;
 }
 
 .activity-cards {
@@ -168,9 +173,9 @@ body {
 .schedule, .goals, .premium-membership {
   margin-bottom: 20px;
   background-color: #fff;
+  color: #000;
   padding: 20px;
   border-radius: 8px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
 .schedule h2, .goals h2, .premium-membership h2 {
@@ -211,13 +216,6 @@ body {
   width: 900px;
 }
 
-/* .content {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-right: 0%;
-  gap: 20px;
-} */
 
 .activity-cards {
   display: flex;
@@ -225,7 +223,6 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* flex-wrap: wrap;   */
   cursor: pointer;
   margin-left: 10%; 
 }
@@ -237,12 +234,10 @@ body {
   background-size: cover;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
-  /* text-align: center; */
   align-items: center;
   font-size: 1.99em;
   color: #f1f1f1;
-  /* height: 20vh; */
-  /* width: 50vh; */
+
 }
 
 .activity-card2 {
@@ -252,7 +247,6 @@ body {
   background-size: cover;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
-  /* text-align: center; */
   font-size: 1.99em;
   color: #f1f1f1;
 
@@ -265,7 +259,6 @@ body {
   background-size: cover;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
-  /* text-align: center; */
   font-size: 1.99em;
   color: #f1f1f1;
 
@@ -446,12 +439,6 @@ body {
 }
 
 /* Home.css */
-/* src/components/Home.css */
-.home-container {
-  background: #f7f7f7;
-  padding: 2rem 0;
-}
-
 .home-container h1 {
   font-size: 2.5rem;
   font-weight: bold;
@@ -460,7 +447,6 @@ body {
 
 .home-container p {
   font-size: 1.1rem;
-  color: #555;
 }
 
 .btn-signup {
@@ -533,4 +519,472 @@ body {
   width: 100px;
   margin-bottom: 20px;
 }
+.logo-profile{
+  width: 100px;
+  margin-bottom: 20px;
+  color: white;
+}
 
+/*  */
+
+.dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.app-logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.sidebar-link {
+  display: block;
+  margin: 10px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 5px 10px;
+  width: 200px;
+}
+
+.profile-info {
+  font-size: 1rem;
+}
+
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.diet-plan-overview {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.week-plan {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.week-plan ul {
+  list-style: none;
+  padding: 0;
+}
+
+.week-plan li {
+  margin: 10px 0;
+}
+
+.nutrition-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.nutrition-entries {
+  display: flex;
+  flex-direction: column;
+}
+
+.nutrition-entry {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.nutrition-entry input {
+  margin-right: 10px;
+  padding: 5px;
+  width: 100px;
+}
+
+.remove-button {
+  background-color: #ff7f50;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nutrition-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.add-button, .clear-button, .submit-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nutrition-summary {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  padding: 2rem;
+  background-color: #f8f9fa;
+  margin-top: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 900px;
+}
+
+.progress-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.progress-card {
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.progress-card .card-body {
+  padding: 2rem;
+}
+
+
+/* App.css */
+.dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  transition: width 0.3s ease;
+}
+
+.sidebar.closed {
+  width: 0;
+}
+
+.sidebar-open .main-content {
+  margin-left: 250px;
+}
+
+.sidebar-closed .main-content {
+  margin-left: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.side-svg {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  fill: #333;
+  padding: -10px;
+  margin-right: 10px;
+
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.app-logo {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.sidebar-link:hover {
+  text-decoration: underline;
+}
+
+.btn-danger {
+  margin-top: 20px;
+}
+
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #212529;
+  /* background-image: url('/src/background.png'); */
+  background-size: cover;
+}
+
+.sidebar {
+  width: 210px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  flex-shrink: 0; 
+  height: 100vh; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+}
+
+.main-content {
+  margin-left: 90px; 
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.nav{
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+#basic-navbar-nav{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px; 
+  font-size: 20px;
+  color: #ccc;
+}
+
+/* home.css */
+
+.home-container {
+  font-family: Arial, sans-serif;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content img {
+  width: 100px;
+}
+
+.cards-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.user-card {
+  background-color: #1690a5; /* Light blue for user actions */
+}
+
+.coach-card {
+  background-color: #22345a; /* Light gray for coach actions */
+}
+
+.cta-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+.about-section {
+  padding: 20px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.exercise-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.exercise-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.exercise-card:hover {
+  transform: translateY(-5px);
+}
+
+.exercise-card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.exercise-card p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.exercise-card strong {
+  color: #212529;
+}
+
+
+.help-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.help-page h1 {
+  text-align: center;
+  color: #333;
+}
+
+.help-page h2 {
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.help-page h3 {
+  color: #004080;
+}
+
+.help-page ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.help-page ul li {
+  margin-bottom: 10px;
+}
+
+.help-page p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.help-page section {
+  margin-bottom: 30px;
+}
+
+.help-page hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+.help-page .contact-info ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.help-page .contact-info ul li {
+  margin-bottom: 10px;
+}
+
+.help-page .contact-info strong {
+  color: #333;
+}
+
+.mt-4.container{
+  color: #333;
+}

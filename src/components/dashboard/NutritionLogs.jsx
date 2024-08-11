@@ -1,108 +1,120 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './NutritionLogging.css';
 
 const NutritionLogging = () => {
-  const [nutrition, setNutrition] = useState([{ meal: '', calories: '', protein: '', carbs: '', fats: '' }]);
+  const [logs, setLogs] = useState([]);
+  const [userId, setUserId] = useState('');
+  const [date, setDate] = useState('');
+  const [mealType, setMealType] = useState('');
+  const [calories, setCalories] = useState('');
+  const [protein, setProtein] = useState('');
+  const [fat, setFat] = useState('');
+  const [carbs, setCarbs] = useState('');
+  const [notes, setNotes] = useState('');
 
-  const handleChange = (index, e) => {
-    const { name, value } = e.target;
-    if (isNaN(value) && (name === 'calories' || name === 'protein' || name === 'carbs' || name === 'fats')) {
-      return; 
+ 
+  const fetchNutritionInfo = async (mealType) => {
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/app/nutrition_logs?mealType=${mealType}`);
+      const data = await response.json();
+
+      if (data && data.hits && data.hits.length > 0) {
+        const { calories, protein, fat, carbs } = data.hits[0].fields;
+        setCalories(calories);
+        setProtein(protein);
+        setFat(fat);
+        setCarbs(carbs);
+      }
+    } catch (error) {
+      console.error('Error fetching nutrition info:', error);
     }
-    const values = [...nutrition];
-    values[index][name] = value;
-    setNutrition(values);
   };
 
-  const handleAdd = () => {
-    setNutrition([...nutrition, { meal: '', calories: '', protein: '', carbs: '', fats: '' }]);
+  const handleAddLog = () => {
+    const newLog = {
+      userId,
+      date,
+      mealType,
+      calories,
+      protein,
+      fat,
+      carbs,
+      notes,
+    };
+
+    setLogs([...logs, newLog]);
+
+    setUserId('');
+    setDate('');
+    setMealType('');
+    setCalories('');
+    setProtein('');
+    setFat('');
+    setCarbs('');
+    setNotes('');
   };
 
-  const handleRemove = (index) => {
-    const values = [...nutrition];
-    values.splice(index, 1);
-    setNutrition(values);
-  };
 
-  const handleClear = () => {
-    setNutrition([{ meal: '', calories: '', protein: '', carbs: '', fats: '' }]);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    localStorage.setItem('nutritionData', JSON.stringify(nutrition));
-    console.log(nutrition);
-  };
-
-  const calculateTotal = (type) => {
-    return nutrition.reduce((total, entry) => total + (parseFloat(entry[type]) || 0), 0);
-  };
+  useEffect(() => {
+    if (mealType) {
+      fetchNutritionInfo(mealType);
+    }
+  }, [mealType]);
 
   return (
-    <div className="nutrition-container">
-      <form onSubmit={handleSubmit} className="nutrition-form">
-        {nutrition.map((nutrient, index) => (
-          <div key={index} className="nutrition-entry">
-            <input
-              type="text"
-              name="meal"
-              placeholder="Meal"
-              value={nutrient.meal}
-              onChange={(e) => handleChange(index, e)}
-              required
-            />
-            <input
-              type="number"
-              name="calories"
-              placeholder="Calories"
-              value={nutrient.calories}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-              required
-            />
-            <input
-              type="number"
-              name="protein"
-              placeholder="Protein (g)"
-              value={nutrient.protein}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-              required
-            />
-            <input
-              type="number"
-              name="carbs"
-              placeholder="Carbs (g)"
-              value={nutrient.carbs}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-              required
-            />
-            <input
-              type="number"
-              name="fats"
-              placeholder="Fats (g)"
-              value={nutrient.fats}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-              required
-            />
-            <button type="button" onClick={() => handleRemove(index)} className="remove-button">Remove</button>
-          </div>
-        ))}
-        <button type="button" onClick={handleAdd} className="add-button">Add Meal</button>
-        <button type="button" onClick={handleClear} className="clear-button">Clear All</button>
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
-      <div className="nutrition-summary">
-        <h3>Nutrition Summary</h3>
-        <p>Total Calories: {calculateTotal('calories')}</p>
-        <p>Total Protein: {calculateTotal('protein')} g</p>
-        <p>Total Carbs: {calculateTotal('carbs')} g</p>
-        <p>Total Fats: {calculateTotal('fats')} g</p>
+    <div className="food-logger-container">
+      <div className="header-section">
+        <h2>Plan Your Diet Plan This Week</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+      
+      <div className="form-section">
+        <input type="text" placeholder="User ID" value={userId} onChange={(e) => setUserId(e.target.value)} />
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <input type="text" placeholder="Meal Type" value={mealType} onChange={(e) => setMealType(e.target.value)} />
+        <input type="number" placeholder="Calories" value={calories} onChange={(e) => setCalories(e.target.value)} />
+        <input type="number" placeholder="Protein (g)" value={protein} onChange={(e) => setProtein(e.target.value)} />
+        <input type="number" placeholder="Fat (g)" value={fat} onChange={(e) => setFat(e.target.value)} />
+        <input type="number" placeholder="Carbs (g)" value={carbs} onChange={(e) => setCarbs(e.target.value)} />
+        <textarea placeholder="Notes" value={notes} onChange={(e) => setNotes(e.target.value)} />
+        <button onClick={handleAddLog}>Add Log</button>
+      </div>
+
+      <div className="log-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Food</th>
+              <th>Meal</th>
+              <th>Calories</th>
+              <th>Protein</th>
+              <th>Fat</th>
+              <th>Carbs</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {logs.map((log, index) => (
+              <tr key={index}>
+                <td>{log.userId}</td>
+                <td>{log.mealType}</td>
+                <td>{log.calories}</td>
+                <td>{log.protein}g</td>
+                <td>{log.fat}g</td>
+                <td>{log.carbs}g</td>
+                <td>{log.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
 export default NutritionLogging;
+
+        
+    

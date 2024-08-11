@@ -1,9 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../WorkoutList.css';
+import Achievements from './Achievement';
 
 const WorkoutLogging = () => {
-  const [workout, setWorkout] = useState([{ exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);
+  const [workout, setWorkout] = useState([{ date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);
   const [loggedWorkouts, setLoggedWorkouts] = useState([]);
-  
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('jwtToken');
+    setToken(storedToken);
+
+    if (storedToken) {
+      const loadWorkouts = async () => {
+        try {
+          const response = await axios.get('http://127.0.0.1:5000/app/workouts', {
+            headers: {
+              Authorization: `Bearer ${storedToken}`
+            }
+          });
+          setLoggedWorkouts(response.data);
+        } catch (error) {
+          console.error('Error fetching workouts:', error);
+        }
+      };
+
+      loadWorkouts();
+    }
+  }, []);
+
+  useEffect(() => {
+    // Optionally, save workouts to local storage or sync with the backend
+    // localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
+  }, [loggedWorkouts]);
+
   const handleChange = (index, e) => {
     const values = [...workout];
     values[index][e.target.name] = e.target.value;
@@ -11,119 +42,147 @@ const WorkoutLogging = () => {
   };
 
   const handleAdd = () => {
-    setWorkout([...workout, { exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);
+    setWorkout([...workout, { date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async (index) => {
     if (window.confirm('Are you sure you want to delete this entry?')) {
-      const values = [...workout];
-      values.splice(index, 1);
-      setWorkout(values);
+      const workoutToDelete = workout[index];
+      try {
+        await axios.delete('http://127.0.0.1:5000/app/workouts', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          data: { workout_id: workoutToDelete.id } // Assuming you have an ID for the workout to delete
+        });
+        const updatedWorkouts = loggedWorkouts.filter((_, i) => i !== index);
+        setLoggedWorkouts(updatedWorkouts);
+      } catch (error) {
+        console.error('Error deleting workout:', error);
+      }
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoggedWorkouts([...loggedWorkouts, ...workout]);
-    setWorkout([{ exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]); // Reset the form
+    if (!token) {
+      console.error('No JWT token found.');
+      return;
+    }
+    try {
+      await axios.post('http://127.0.0.1:5000/app/workouts', workout, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const response = await axios.get('http://127.0.0.1:5000/app/workouts', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setLoggedWorkouts(response.data);
+      setWorkout([{ date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]); // Reset the form
+    } catch (error) {
+      console.error('Error submitting workout:', error);
+    }
   };
 
   const totalWeightLifted = loggedWorkouts.reduce((acc, curr) => acc + (parseFloat(curr.weight) || 0) * (parseFloat(curr.sets) || 0) * (parseFloat(curr.reps) || 0), 0);
-  
   const totalCaloriesBurned = loggedWorkouts.reduce((acc, curr) => acc + (parseFloat(curr.caloriesBurned) || 0), 0);
+  const totalHours = loggedWorkouts.reduce((acc, curr) => acc + (parseFloat(curr.duration) || 0) / 60, 0);
+  const totalSets = loggedWorkouts.reduce((acc, curr) => acc + (parseFloat(curr.sets) || 0), 0);
+  const totalPoses = loggedWorkouts.filter(curr => curr.category.toLowerCase() === 'yoga').reduce((acc, curr) => acc + (parseFloat(curr.reps) || 0), 0);
 
-  const getWeeklySummary = () => {
-    const weeks = {};
-    loggedWorkouts.forEach(workout => {
-      const date = new Date(workout.date);
-      const weekNumber = Math.ceil(date.getDate() / 7);
-      const year = date.getFullYear();
-      const key = `${year}-W${weekNumber}`;
-      if (!weeks[key]) weeks[key] = 0;
-      weeks[key] += (parseFloat(workout.weight) || 0) * (parseFloat(workout.sets) || 0) * (parseFloat(workout.reps) || 0);
-    });
-    return weeks;
-  };
+  const achievements = [
+    { value: totalHours.toFixed(2), label: 'hours' },
+    { value: totalCaloriesBurned.toFixed(0), label: 'Kcal' },
+    { value: totalPoses, label: 'Poses' },
+    { value: totalSets, label: 'Sets' },
+  ];
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Log Your Workout</h2>
-        {workout.map((item, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              name="exercise"
-              placeholder="Exercise"
-              value={item.exercise}
-              onChange={(e) => handleChange(index, e)}
-              required
-            />
-            <input
-              type="number"
-              name="sets"
-              placeholder="Sets"
-              value={item.sets}
-              onChange={(e) => handleChange(index, e)}
-              min="1"
-              required
-            />
-            <input
-              type="number"
-              name="reps"
-              placeholder="Reps"
-              value={item.reps}
-              onChange={(e) => handleChange(index, e)}
-              min="1"
-              required
-            />
-            <input
-              type="number"
-              name="weight"
-              placeholder="Weight (lbs)"
-              value={item.weight}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-              required
-            />
-            <input
-              type="text"
-              name="duration"
-              placeholder="Duration (minutes)"
-              value={item.duration}
-              onChange={(e) => handleChange(index, e)}
-            />
-            <input
-              type="text"
-              name="category"
-              placeholder="Category (e.g., Cardio, Strength)"
-              value={item.category}
-              onChange={(e) => handleChange(index, e)}
-            />
-            <input
-              type="number"
-              name="caloriesBurned"
-              placeholder="Calories Burned"
-              value={item.caloriesBurned}
-              onChange={(e) => handleChange(index, e)}
-              min="0"
-            />
-            <button type="button" onClick={() => handleDelete(index)}>Delete</button>
-          </div>
-        ))}
-        <button type="button" onClick={handleAdd}>Add Exercise</button>
-        <button type="submit">Submit</button>
-      </form>
-      <h2>Total Weight Lifted</h2>
-      <p>{totalWeightLifted} lbs</p>
-      <h2>Total Calories Burned</h2>
-      <p>{totalCaloriesBurned} calories</p>
-      <h2>Weekly Workout Summary</h2>
-      <ul>
-        {Object.entries(getWeeklySummary()).map(([week, totalWeight], index) => (
-          <li key={index}>{week}: {totalWeight} lbs</li>
-        ))}
-      </ul>
+    <div className='main-content'>
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <h2>Log Your Workout</h2>
+          {workout.map((item, index) => (
+            <div key={index}>
+              <input
+                type="date"
+                name="date"
+                value={item.date}
+                onChange={(e) => handleChange(index, e)}
+                required
+              />
+              <input
+                type="text"
+                name="exercise"
+                placeholder="Exercise"
+                value={item.exercise}
+                onChange={(e) => handleChange(index, e)}
+                required
+              />
+              <input
+                type="number"
+                name="sets"
+                placeholder="Sets"
+                value={item.sets}
+                onChange={(e) => handleChange(index, e)}
+                min="1"
+                required
+              />
+              <input
+                type="number"
+                name="reps"
+                placeholder="Reps"
+                value={item.reps}
+                onChange={(e) => handleChange(index, e)}
+                min="1"
+                required
+              />
+              <input
+                type="number"
+                name="weight"
+                placeholder="Weight (lbs)"
+                value={item.weight}
+                onChange={(e) => handleChange(index, e)}
+                min="0"
+                required
+              />
+              <input
+                type="text"
+                name="duration"
+                placeholder="Duration (minutes)"
+                value={item.duration}
+                onChange={(e) => handleChange(index, e)}
+              />
+              <input
+                type="number"
+                name="caloriesBurned"
+                placeholder="Calories Burned"
+                value={item.caloriesBurned}
+                onChange={(e) => handleChange(index, e)}
+                min="0"
+              />
+              <button
+                type="button"
+                className="delete-exercise-btn"
+                onClick={() => handleDelete(index)}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+          <button type="button" onClick={handleAdd}>Add More</button>
+          <button type="submit">Save Workout</button>
+        </form>
+        <Achievements achievements={achievements} />
+        <div className="summary">
+          <h3>Summary</h3>
+          <p>Total Weight Lifted: {totalWeightLifted.toFixed(0)} lbs</p>
+          <p>Total Calories Burned: {totalCaloriesBurned.toFixed(0)} kcal</p>
+        </div>
+      </div>
     </div>
   );
 };

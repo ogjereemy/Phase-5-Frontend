@@ -1,36 +1,75 @@
-/* src/components/dashboard/CoachDashboard.css */
-.coach-dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    padding: 20px;
-    box-sizing: border-box;
+
+.coach-dashboard {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* .coach-dashboard-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+} */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .users-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Adjust width as needed */
-    max-width: 800px; /* Adjust max width as needed */
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .user-card {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 10px;
-    width: 100%; /* Adjust width as needed */
-    max-width: 400px; /* Adjust max width as needed */
-    text-align: center; /* Center text inside card */
-  }
-  
-  .user-card h3 {
-    margin: 0 0 10px 0;
-  }
-  
-  .user-card p {
-    margin: 0;
-  }
-  
+}
+
+.clients-section {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.client-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.client-card {
+  background: burlywood; 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff; /* Ensure text is readable on dark background */
+}
+
+.client-picture {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.client-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.client-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  font-size: 0.9em;
+}
