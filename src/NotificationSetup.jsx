@@ -12,10 +12,11 @@ const requestNotificationPermission = async () => {
 
 const subscribeUserToPush = async () => {
     try {
-        const registration = await navigator.serviceWorker.register('/service-worker.js');
+        const registration = await navigator.serviceWorker.register('/service-worker.js')
+
         const subscription = await registration.pushManager.subscribe({
             userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array('your_public_key_here')
+            applicationServerKey: urlBase64ToUint8Array('BFGaoiHTu_EEsa3a5YpPSksJcGl11E_2kjnpqo_KW7RVXtcK4uSjrE4uxlrjWPXhN-K5uM16duDXiCcMCFNkPH4')
         });
 
         await axios.post('http://127.0.0.1:5000/push/subscribe', { subscription_info: subscription });
