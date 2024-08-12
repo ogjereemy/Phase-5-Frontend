@@ -9,16 +9,6 @@ const WorkoutLogging = () => {
   const [token, setToken] = useState('');
 
   useEffect(() => {
-<<<<<<< HEAD
-  
-    const storedWorkouts = JSON.parse(localStorage.getItem('loggedWorkouts')) || [];
-    setLoggedWorkouts(storedWorkouts);
-  }, []);
-
-  useEffect(() => {
- 
-    localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
-=======
     const storedToken = localStorage.getItem('jwtToken');
     setToken(storedToken);
 
@@ -43,7 +33,6 @@ const WorkoutLogging = () => {
   useEffect(() => {
     // Optionally, save workouts to local storage or sync with the backend
     // localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
->>>>>>> origin/main
   }, [loggedWorkouts]);
 
   const handleChange = (index, e) => {
