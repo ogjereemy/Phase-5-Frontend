@@ -1,10 +1,36 @@
-/* src/components/dashboard/CoachDashboard.css */
+
 .coach-dashboard {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* .coach-dashboard-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+} */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .clients-section {
   margin-top: 20px;
+  width: 100%;
 }
 
 .client-cards {
@@ -14,7 +40,7 @@
 }
 
 .client-card {
-  background: #fff;
+  background: burlywood; 
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
@@ -22,6 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #fff; 
 }
 
 .client-picture {
@@ -45,4 +72,36 @@
 .btn-small {
   padding: 5px 10px;
   font-size: 0.9em;
+}
+div.dashboard-links{
+  color:#ccc ;
+}
+
+@keyframes buttonHover {
+  0% {
+    background-color: brown;
+    transform: scale(1);
+  }
+  50% {
+    background-color: #a0522d; 
+    transform: scale(1.05);
+  }
+  100% {
+    background-color: brown;
+    transform: scale(1);
+  }
+}
+
+.btn-dashboard {
+  background-color: brown;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-dashboard:hover {
+  animation: buttonHover 0.6s ease-in-out forwards;
 }

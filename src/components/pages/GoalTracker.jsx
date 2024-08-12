@@ -1,140 +1,160 @@
-import React, { useState } from 'react';
-import './goaltracker.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Form, Button, Container, Alert } from 'react-bootstrap';
+
 
 const GoalTracker = () => {
-  const [goal, setGoal] = useState(null);
-  const [goals, setGoals] = useState([
-    { id: 1, type: 'Weight', metric: '61.2 kg', goal: '5.81 kg' },
-    { id: 2, type: 'Steps', metric: '3560/4000' },
-    { id: 3, type: 'Workout', metric: '19 min', average: '16 min' },
-    { id: 4, type: 'Calories', metric: '80 cal', average: '102 cal' }
-  ]);
+  const [goalTitle, setGoalTitle] = useState('');
+  const [goalDescription, setGoalDescription] = useState('');
+  const [goalTargetDate, setGoalTargetDate] = useState('');
+  const [goals, setGoals] = useState([]);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const addGoal = (goal) => {
-    setGoals([...goals, goal]);
+  // Fetch goals on component mount
+  useEffect(() => {
+    const fetchGoals = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:5000/app/goals', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+          }
+        });
+        setGoals(response.data);
+      } catch (error) {
+        console.error('Error fetching goals:', error.response ? error.response.data : error.message);
+      }
+    };
+
+    fetchGoals();
+  }, []);
+
+  const handleAddGoal = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+    
+    try {
+      const response = await axios.post('http://127.0.0.1:5000/app/goals', {
+        title: goalTitle,
+        description: goalDescription,
+        target_date: goalTargetDate
+      }, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+        }
+      });
+
+      setGoals([...goals, response.data]);
+      setSuccess('Goal added successfully!');
+      setGoalTitle('');
+      setGoalDescription('');
+      setGoalTargetDate('');
+    } catch (error) {
+      setError(error.response ? error.response.data.error : error.message);
+    }
   };
 
-  const deleteGoal = (goalId) => {
-    const updatedGoals = goals.filter((goal) => goal.id !== goalId);
-    setGoals(updatedGoals);
+  const handleUpdateGoal = async (goalId, updatedGoal) => {
+    try {
+      const response = await axios.patch('http://127.0.0.1:5000/app/goals', {
+        goal_id: goalId,
+        description: updatedGoal.description,
+        target_date: updatedGoal.target_date
+      }, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+        }
+      });
+
+      setGoals(goals.map(goal => goal.id === goalId ? response.data : goal));
+      setSuccess('Goal updated successfully!');
+    } catch (error) {
+      setError(error.response ? error.response.data.error : error.message);
+    }
   };
 
-  const updateGoal = (goalId, updatedGoal) => {
-    const updatedGoals = goals.map((goal) =>
-      goal.id === goalId ? updatedGoal : goal
-    );
-    setGoals(updatedGoals);
+  const handleDeleteGoal = async (goalId) => {
+    try {
+      await axios.delete('http://127.0.0.1:5000/app/goals', {
+        data: { goal_id: goalId },
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+        }
+      });
+
+      setGoals(goals.filter(goal => goal.id !== goalId));
+      setSuccess('Goal deleted successfully!');
+    } catch (error) {
+      setError(error.response ? error.response.data.error : error.message);
+    }
   };
 
   return (
-    <div className=''>
-      <div className="container">
-        <div className="header">
-          <h1>Goal Tracker</h1>
-          <h2>Record Changes</h2>
-        </div>
-        <div className="dailyContainer">
-          <h3>Daily</h3>
-          <div className="cardContainer">
-            {goals.map((goal) => (
-              <div className="card" key={goal.id}>
-                <h4>{goal.type}</h4>
-                <p className="metric">{goal.metric}</p>
-                {goal.goal && <p className="goal">Goal: {goal.goal}</p>}
-                {goal.average && <p>Weekly Average: {goal.average}</p>}
-                <div className="chart"></div>
-                <button onClick={() => deleteGoal(goal.id)}>Delete</button>
-                <button onClick={() => updateGoal(goal.id, { ...goal, metric: 'Updated Metric' })}>Update</button>
-              </div>
-            ))}
-          </div>
+    <div className='main-content'>
+
+    <Container className="mt-4">
+      <h1>Goal Tracker</h1>
+      <h2>Record Changes</h2>
+
+      <Form onSubmit={handleAddGoal} className="mb-4">
+        <Form.Group controlId="formGoalTitle">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            value={goalTitle}
+            onChange={(e) => setGoalTitle(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="formGoalDescription">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            value={goalDescription}
+            onChange={(e) => setGoalDescription(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="formGoalTargetDate">
+          <Form.Label>Target Date</Form.Label>
+          <Form.Control
+            type="date"
+            value={goalTargetDate}
+            onChange={(e) => setGoalTargetDate(e.target.value)}
+            required
+          />
+        </Form.Group>
+        {error && <Alert variant="danger">{error}</Alert>}
+        {success && <Alert variant="success">{success}</Alert>}
+        <Button variant="primary" type="submit">
+          Add Goal
+        </Button>
+      </Form>
+
+      <div className="dailyContainer">
+        <h3>Daily</h3>
+        <div className="cardContainer">
+          {goals.map((goal) => (
+            <div className="card" key={goal.id}>
+              <h4>{goal.title}</h4>
+              <p>{goal.description}</p>
+              <p>Target Date: {goal.target_date}</p>
+              <div className="chart"></div>
+              <Button onClick={() => handleDeleteGoal(goal.id)}>Delete</Button>
+              <Button onClick={() => handleUpdateGoal(goal.id, {
+                ...goal,
+                description: 'Updated Description', // Example update
+                target_date: '2024-12-31' // Example update
+              })}>Update</Button>
+            </div>
+          ))}
         </div>
       </div>
+    </Container>
     </div>
   );
 };
 
 export default GoalTracker;
-
-
-
-// import React, { useState, useEffect } from 'react';
-// import './goaltracker.css';
-// import axios from 'axios';
-
-// const GoalTracker = () => {
-//   const [goals, setGoals] = useState([]);
-
-//   useEffect(() => {
-//     const fetchGoals = async () => {
-//       try {
-//         const response = await axios.get('http://127.0.0.1:5000/app/goals');
-//         const data = response.data;
-//         setGoals(data);
-//       } catch (error) {
-//         console.error('Error fetching goals:', error);
-//       }
-//     };
-
-//     fetchGoals();
-//   }, []);
-
-//   const addGoal = async (goal) => {
-//     try {
-//       const response = await axios.post('http://127.0.0.1:5000/app/goals', goal);
-//       setGoals([...goals, response.data]);
-//     } catch (error) {
-//       console.error('Error adding goal:', error);
-//     }
-//   };
-
-//   const deleteGoal = async (goalId) => {
-//     try {
-//       await axios.delete(`http://127.0.0.1:5000/app/goals/${goalId}`);
-//       const updatedGoals = goals.filter((goal) => goal.id !== goalId);
-//       setGoals(updatedGoals);
-//     } catch (error) {
-//       console.error('Error deleting goal:', error);
-//     }
-//   };
-
-//   const updateGoal = async (goalId, updatedGoal) => {
-//     try {
-//       const response = await axios.put(`http://127.0.0.1:5000/app/goals/${goalId}`, updatedGoal);
-//       const updatedGoals = goals.map((goal) =>
-//         goal.id === goalId ? response.data : goal
-//       );
-//       setGoals(updatedGoals);
-//     } catch (error) {
-//       console.error('Error updating goal:', error);
-//     }
-//   };
-
-//   return (
-//     <div className="container">
-//       <div className="header">
-//         <h1>Goal Tracker</h1>
-//         <h2>Record Changes</h2>
-//       </div>
-//       <div className="dailyContainer">
-//         <h3>Daily</h3>
-//         <div className="cardContainer">
-//           {goals.map((goal) => (
-//             <div className="card" key={goal.id}>
-//               <h4>{goal.type}</h4>
-//               <p className="metric">{goal.metric}</p>
-//               {goal.goal && <p className="goal">Goal: {goal.goal}</p>}
-//               {goal.average && <p>Weekly Average: {goal.average}</p>}
-//               <div className="chart"></div>
-//               <button onClick={() => deleteGoal(goal.id)}>Delete</button>
-//               <button onClick={() => updateGoal(goal.id, { ...goal, metric: 'Updated Metric' })}>Update</button>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default GoalTracker;
-

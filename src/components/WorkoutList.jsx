@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../WorkoutList.css';
 import Achievements from './Achievement';
 
 const WorkoutLogging = () => {
   const [workout, setWorkout] = useState([{ date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);
   const [loggedWorkouts, setLoggedWorkouts] = useState([]);
+  const [token, setToken] = useState('');
 
   useEffect(() => {
+<<<<<<< HEAD
   
     const storedWorkouts = JSON.parse(localStorage.getItem('loggedWorkouts')) || [];
     setLoggedWorkouts(storedWorkouts);
@@ -15,6 +18,32 @@ const WorkoutLogging = () => {
   useEffect(() => {
  
     localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
+=======
+    const storedToken = localStorage.getItem('jwtToken');
+    setToken(storedToken);
+
+    if (storedToken) {
+      const loadWorkouts = async () => {
+        try {
+          const response = await axios.get('http://127.0.0.1:5000/app/workouts', {
+            headers: {
+              Authorization: `Bearer ${storedToken}`
+            }
+          });
+          setLoggedWorkouts(response.data);
+        } catch (error) {
+          console.error('Error fetching workouts:', error);
+        }
+      };
+
+      loadWorkouts();
+    }
+  }, []);
+
+  useEffect(() => {
+    // Optionally, save workouts to local storage or sync with the backend
+    // localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
+>>>>>>> origin/main
   }, [loggedWorkouts]);
 
   const handleChange = (index, e) => {
@@ -27,18 +56,46 @@ const WorkoutLogging = () => {
     setWorkout([...workout, { date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async (index) => {
     if (window.confirm('Are you sure you want to delete this entry?')) {
-      const values = [...workout];
-      values.splice(index, 1);
-      setWorkout(values);
+      const workoutToDelete = workout[index];
+      try {
+        await axios.delete('http://127.0.0.1:5000/app/workouts', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          data: { workout_id: workoutToDelete.id } // Assuming you have an ID for the workout to delete
+        });
+        const updatedWorkouts = loggedWorkouts.filter((_, i) => i !== index);
+        setLoggedWorkouts(updatedWorkouts);
+      } catch (error) {
+        console.error('Error deleting workout:', error);
+      }
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoggedWorkouts([...loggedWorkouts, ...workout]);
-    setWorkout([{ date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]); // Reset the form
+    if (!token) {
+      console.error('No JWT token found.');
+      return;
+    }
+    try {
+      await axios.post('http://127.0.0.1:5000/app/workouts', workout, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const response = await axios.get('http://127.0.0.1:5000/app/workouts', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setLoggedWorkouts(response.data);
+      setWorkout([{ date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]); // Reset the form
+    } catch (error) {
+      console.error('Error submitting workout:', error);
+    }
   };
 
   const totalWeightLifted = loggedWorkouts.reduce((acc, curr) => acc + (parseFloat(curr.weight) || 0) * (parseFloat(curr.sets) || 0) * (parseFloat(curr.reps) || 0), 0);
@@ -125,6 +182,7 @@ const WorkoutLogging = () => {
               </button>
             </div>
           ))}
+          <button type="button" onClick={handleAdd}>Add More</button>
           <button type="submit">Save Workout</button>
         </form>
         <Achievements achievements={achievements} />

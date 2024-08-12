@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import fitnessLogo from "../../src/picsvg_download.svg";
+import fitnessLogo from "../../src/svgs/picsvg_download.svg";
 import axios from 'axios';
 import './home.css';
 import CustomNavbar from './Navbar';
@@ -56,25 +56,44 @@ function Home() {
     navigate('/coaches-login');
   };
 
+  const handleCoachSignup = () => {
+    navigate('/coach-signup');
+  };
+
   return (
     <div className="home-container">
       <CustomNavbar />
       <div className="hero-section">
         <div className="hero-content">
-          <img src={fitnessLogo} className='' alt="calorie tracker logo" />
+          <img src={fitnessLogo} alt="calorie tracker logo" />
           <h2>Fit-Track</h2>
           <p className="p-t">
             A one-of-a-kind fitness program that combines strength, flexibility, and cardiovascular exercise to create a powerful, enduring workout.
           </p>
           <p className="p-t">25+ Years of Experience</p>
+        </div>
+      </div>
+
+      <div className="cards-section">
+        <div className="card user-card">
+          <h3>User Actions</h3>
+          <p>Ready to start your fitness journey? Join us today or log in to access your account.</p>
           <button className="cta-button" onClick={handleGetStarted}>
-            Sign UP
+            Sign Up
           </button>
           <button className="cta-button" onClick={handleLogin}>
             Log In
           </button>
+        </div>
+
+        <div className="card coach-card">
+          <h3>Coach Actions</h3>
+          <p>Are you a coach looking to manage your clients and provide expert guidance? Log in or sign up here.</p>
           <button className="cta-button" onClick={handleExpertCoaches}>
             Expert Coaches Login
+          </button>
+          <button className="cta-button" onClick={handleCoachSignup}>
+            Coach Sign Up
           </button>
         </div>
       </div>
@@ -104,42 +123,6 @@ function Home() {
           </div>
         </div>
       </div>
-
-      {/* <div className="featured-workouts-section">
-        <h2>Featured Workout Plans</h2>
-        <div className="workouts-container">
-          {featuredWorkouts.map((workout) => (
-            <div className="workout-card" key={workout.id}>
-              <h3>{workout.title}</h3>
-              <p>{workout.description}</p>
-            </div>
-          ))}
-        </div>
-      </div> */}
-
-      {/* <div className="top-coaches-section">
-        <h2>Top Coaches</h2>
-        <div className="coaches-container">
-          {topCoaches.map((coach) => (
-            <div className="coach-card" key={coach.id}>
-              <h3>{coach.name}</h3>
-              <p>{coach.bio}</p>
-            </div>
-          ))}
-        </div>
-      </div> */}
-
-      {/* <div className="success-stories-section">
-        <h2>Success Stories</h2>
-        <div className="stories-container">
-          {successStories.map((story) => (
-            <div className="story-card" key={story.id}>
-              <h3>{story.title}</h3>
-              <p>{story.content}</p>
-            </div>
-          ))}
-        </div> */}
-      {/* </div> */}
     </div>
   );
 }

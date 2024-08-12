@@ -4,14 +4,15 @@ import fitnessLogo from "../../../src/svgs/picsvg_download.svg";
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 
-const Signup = () => {
+const CoachSignup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [photo, setPhoto] = useState('');
-  const [coachId, setCoachId] = useState('');
-  const [coachName, setCoachName] = useState('');
+  const [bio, setBio] = useState('');
+  const [specialities, setSpecialities] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
@@ -22,7 +23,10 @@ const Signup = () => {
       setErrorMessage("Passwords do not match");
       return;
     }
-
+    if (!bio) {
+      setErrorMessage("Bio is required.");
+      return;
+    }
     try {
       const payload = {
         username,
@@ -30,18 +34,19 @@ const Signup = () => {
         password1: password,
         password2: confirmPassword,
         photo,
-        coach_id: coachId,
-        coach_name: coachName
+        bio,
+        specialities,
+        is_admin: isAdmin
       };
       // console.log(payload);
 
-      const endpoint = 'http://127.0.0.1:5000/auth/signup';
+      const endpoint = 'http://127.0.0.1:5000/auth/signup'; // Updated endpoint for coaches
       await axios.post(endpoint, payload);
-      setSuccessMessage('Signup successful! Redirecting...');
+      setSuccessMessage('Coach signup successful! Redirecting...');
       setErrorMessage('');  // Clear any previous error message
 
       // Redirect after a short delay to show the success message
-      setTimeout(() => navigate('/login'), 2000);
+      setTimeout(() => navigate('/coaches-login'), 2000);
     } catch (error) {
       console.error(error.response?.data || error.message); // Log error response for debugging
       setErrorMessage('Signup failed. Please try again.');
@@ -53,13 +58,13 @@ const Signup = () => {
     <div className="signup-container">
       <div className="signup-left">
         <img src={fitnessLogo} className='logo-1' alt="calorie tracker logo" />
-        <h1>Start Your Fitness Journey Today</h1>
-        <p>Join our Team!</p>
+        <h1>Become a Coach Today</h1>
+        <p>Join our team and help others achieve their fitness goals!</p>
       </div>
       <div className="signup-right">
         <Container>
           <Form className="signup-form" onSubmit={handleSubmit}>
-            <h2>Sign Up</h2>
+            <h2>Coach Sign Up</h2>
             {successMessage && <Alert variant="success">{successMessage}</Alert>}
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
             <Button variant="outline-primary" className="btn-google" block>
@@ -114,29 +119,40 @@ const Signup = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicCoachId">
-              <Form.Label>Coach ID</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Coach ID..."
-                value={coachId}
-                onChange={(e) => setCoachId(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicCoachName">
-              <Form.Label>Coach Name</Form.Label>
+            <Form.Group controlId="formBasicBio">
+              <Form.Label>Bio</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Coach Name..."
-                value={coachName}
-                onChange={(e) => setCoachName(e.target.value)}
+                placeholder="Tell us about yourself..."
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
               />
             </Form.Group>
+
+            <Form.Group controlId="formBasicSpecialities">
+              <Form.Label>Specialities</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Your specialities..."
+                value={specialities}
+                onChange={(e) => setSpecialities(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicIsAdmin">
+              <Form.Check
+                type="checkbox"
+                label="Admin"
+                checked={isAdmin}
+                onChange={(e) => setIsAdmin(e.target.checked)}
+              />
+            </Form.Group>
+
             <Button variant="primary" type="submit" block>
               Sign Up
             </Button>
             <div className="mt-2">
-              Already have an account? <a href="/login">Log In</a>
+              Already have an account? <a href="/coaches-login">Log In</a>
             </div>
           </Form>
         </Container>
@@ -145,4 +161,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default CoachSignup;

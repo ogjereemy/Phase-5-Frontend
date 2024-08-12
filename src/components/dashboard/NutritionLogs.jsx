@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import './NutritionLogging.css';
+
 
 const NutritionLogging = () => {
   const [logs, setLogs] = useState([]);
@@ -74,7 +74,6 @@ const NutritionLogging = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
-
       <div className="form-section">
         <input type="text" placeholder="User ID" value={userId} onChange={(e) => setUserId(e.target.value)} />
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
@@ -120,3 +119,6 @@ const NutritionLogging = () => {
 };
 
 export default NutritionLogging;
+
+        
+    

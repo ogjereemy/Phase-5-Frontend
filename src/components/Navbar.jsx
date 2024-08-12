@@ -1,5 +1,5 @@
 import React from 'react';
-import fitnessLogo from "../../src/picsvg_download.svg";
+import fitnessLogo from "../../src/svgs/picsvg_download.svg";
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 
