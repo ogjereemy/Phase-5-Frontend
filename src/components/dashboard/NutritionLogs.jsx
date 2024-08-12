@@ -13,7 +13,6 @@ const NutritionLogging = () => {
   const [carbs, setCarbs] = useState('');
   const [notes, setNotes] = useState('');
 
-  // Function to fetch nutrition data based on mealType
   const fetchNutritionInfo = async (mealType) => {
     try {
       const response = await fetch(`http://127.0.0.1:5000/app/nutrition_logs?mealType=${mealType}`);
@@ -31,9 +30,14 @@ const NutritionLogging = () => {
     }
   };
 
-  // Handle adding a log
   const handleAddLog = () => {
+    if (!userId || !date || !mealType) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
     const newLog = {
+      id: Date.now(),
       userId,
       date,
       mealType,
@@ -44,10 +48,8 @@ const NutritionLogging = () => {
       notes,
     };
 
-    // Add new log to state
     setLogs([...logs, newLog]);
 
-    // Clear form fields after submission
     setUserId('');
     setDate('');
     setMealType('');
@@ -58,7 +60,6 @@ const NutritionLogging = () => {
     setNotes('');
   };
 
-  // Fetch nutrition info whenever mealType changes
   useEffect(() => {
     if (mealType) {
       fetchNutritionInfo(mealType);
@@ -73,7 +74,7 @@ const NutritionLogging = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
-      
+
       <div className="form-section">
         <input type="text" placeholder="User ID" value={userId} onChange={(e) => setUserId(e.target.value)} />
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
@@ -90,18 +91,18 @@ const NutritionLogging = () => {
         <table>
           <thead>
             <tr>
-              <th>Food</th>
+              <th>User ID</th>
               <th>Meal</th>
               <th>Calories</th>
-              <th>Protein</th>
-              <th>Fat</th>
-              <th>Carbs</th>
+              <th>Protein (g)</th>
+              <th>Fat (g)</th>
+              <th>Carbs (g)</th>
               <th>Notes</th>
             </tr>
           </thead>
           <tbody>
-            {logs.map((log, index) => (
-              <tr key={index}>
+            {logs.map((log) => (
+              <tr key={log.id}>
                 <td>{log.userId}</td>
                 <td>{log.mealType}</td>
                 <td>{log.calories}</td>
