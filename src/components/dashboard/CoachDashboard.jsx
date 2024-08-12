@@ -36,11 +36,12 @@ function CoachDashboard() {
                     {clients.map(client => (
                         <div key={client.id} className="client-card">
                             <img src={client.photo} alt={client.username} className="client-picture" />
-                            <div className="client-info">
-                                <h3>{client.username}</h3>
+                            <div >
+                                <h3 className="client-info">{client.username}</h3>
                                 <div className="client-actions">
-                                    <Link to={`/workout-plans/${client.id}`} className="btn btn-primary btn-small">Manage Workout Plans</Link>
-                                    <Link to={`/client-progress/${client.id}`} className="btn btn-secondary btn-small">Track Client Progress</Link>
+                                    <Link to="/workouts"><button className="btn btn-dashboard">Manage Workouts</button></Link>
+                                    <Link to="/exercises"><button className="btn btn-dashboard">Manage Exercises</button></Link>
+                                    <Link to="/workout-plans"><button className="btn btn-dashboard">Create Workout Plan</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -48,21 +49,7 @@ function CoachDashboard() {
                 </div>
             </div>
 
-            <div className="dashboard-links">
-                
-                <Link to="/workouts">
-                    <button className="btn btn-dashboard">Manage Workouts</button>
-                </Link>
-
-                
-                <Link to="/exercises">
-                    <button className="btn btn-dashboard">Manage Exercises</button>
-                </Link>
-
-                <Link to="/workout-plans">
-                    <button className="btn btn-dashboard">Create Workout Plan</button>
-                </Link>
-            </div>
+            
         </div>
     );
 }
