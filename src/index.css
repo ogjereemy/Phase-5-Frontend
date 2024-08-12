@@ -297,6 +297,9 @@ body {
 .login-left {
   flex: 1;
   background: linear-gradient(135deg, #f1a32d, #e48509);
+  background-image: url("https://images.pexels.com/photos/6701941/pexels-photo-6701941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  border-radius: 20px;
   color: white;
   display: flex;
   align-items: center;
@@ -317,6 +320,7 @@ body {
 .login-left p {
   font-size: 18px;
   margin-bottom: 30px;
+
 }
 
 .login-right {
@@ -373,6 +377,9 @@ body {
 .signup-left {
   flex: 1;
   background: linear-gradient(135deg, #f1a32d, #e48509);
+  background-image: url("https://images.pexels.com/photos/7991673/pexels-photo-7991673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  border-radius: 20px;
   color: white;
   display: flex;
   align-items: center;
@@ -443,6 +450,9 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   color: #ff7f50;
+}
+.home-container{
+  padding: 10px;
 }
 
 .home-container p {
@@ -998,4 +1008,95 @@ div.mt-2{
 a.nav-link{
   color: #ff7f50;
   text-decoration: none;
+}
+
+img.logo-1{
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+/* Contact Page Styles */
+.contact-container {
+  padding: 50px ;
+  background-color: #f9f9f9;
+}
+
+.contact-container h1 {
+  /* padding: 20px; */
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.contact-container p {
+  font-size: 16px;
+  color: #666;
+}
+
+.contact-container .form-group label {
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-container .form-control {
+  border-radius: 0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.contact-container .form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+.contact-container .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contact-container .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.contact-container .alert {
+  border-radius: 0;
+  font-size: 14px;
+}
+
+.contact-container .office-info h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 20px;
+}
+
+.contact-container .office-info p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.contact-container .office-info strong {
+  color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 30px 0;
+  }
+
+  .contact-container h1 {
+    font-size: 28px;
+  }
+
+  .contact-container .btn-primary {
+    width: 100%;
+  }
 }

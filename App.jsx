@@ -30,12 +30,14 @@ import UserWorkoutPlans from './src/components/UserWorkoutPlans';
 import ExerciseList from './src/components/ExerciseList';
 import UserWorkouts from './src/components/UserWorkouts';
 import Help from './src/pages/Help';
+import NotificationSetup from './src/NotificationSetup';
 
 function App() {
     return (
         <AuthProvider>
             <div className="app-container">
                 <MainContent />
+                <NotificationSetup/>
             </div>
         </AuthProvider>
     );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import fitnessLogo from "../../../src/picsvg_download.svg";
+import fitnessLogo from "../../../src/svgs/picsvg_download.svg";
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 
@@ -11,7 +11,9 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [photo, setPhoto] = useState('');
   const [coachId, setCoachId] = useState('');
+  const [coachName, setCoachName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -20,7 +22,7 @@ const Signup = () => {
       setErrorMessage("Passwords do not match");
       return;
     }
-    
+
     try {
       const payload = {
         username,
@@ -28,23 +30,29 @@ const Signup = () => {
         password1: password,
         password2: confirmPassword,
         photo,
-        coach_id: coachId
+        coach_id: coachId,
+        coach_name: coachName
       };
-      console.log(payload);
+      // console.log(payload);
 
       const endpoint = 'http://127.0.0.1:5000/auth/signup';
       await axios.post(endpoint, payload);
-      navigate('/login');
+      setSuccessMessage('Signup successful! Redirecting...');
+      setErrorMessage('');  // Clear any previous error message
+
+      // Redirect after a short delay to show the success message
+      setTimeout(() => navigate('/login'), 2000);
     } catch (error) {
       console.error(error.response?.data || error.message); // Log error response for debugging
       setErrorMessage('Signup failed. Please try again.');
+      setSuccessMessage('');  // Clear any previous success message
     }
   };
 
   return (
     <div className="signup-container">
       <div className="signup-left">
-        <img src={fitnessLogo} alt="calorie tracker logo" />
+        <img src={fitnessLogo} className='logo-1' alt="calorie tracker logo" />
         <h1>Start Your Fitness Journey Today</h1>
         <p>Join our Team!</p>
       </div>
@@ -52,6 +60,7 @@ const Signup = () => {
         <Container>
           <Form className="signup-form" onSubmit={handleSubmit}>
             <h2>Sign Up</h2>
+            {successMessage && <Alert variant="success">{successMessage}</Alert>}
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
             <Button variant="outline-primary" className="btn-google" block>
               Use Google Account
@@ -104,14 +113,24 @@ const Signup = () => {
                 onChange={(e) => setPhoto(e.target.value)}
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicCoachId">
-                  <Form.Label>Coach ID</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="Coach ID..."
-                    value={coachId}
-                    onChange={(e) => setCoachId(e.target.value)}
-                  />
+              <Form.Label>Coach ID</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Coach ID..."
+                value={coachId}
+                onChange={(e) => setCoachId(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicCoachName">
+              <Form.Label>Coach Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Coach Name..."
+                value={coachName}
+                onChange={(e) => setCoachName(e.target.value)}
+              />
             </Form.Group>
             <Button variant="primary" type="submit" block>
               Sign Up
