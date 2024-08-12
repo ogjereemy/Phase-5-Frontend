@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import fitnessLogo from "../../src/picsvg_download.svg";
+import fitnessLogo from "../../src/svgs/picsvg_download.svg";
 import axios from 'axios';
 import './home.css';
 import CustomNavbar from './Navbar';

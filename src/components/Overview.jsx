@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
-import calLogo from "../../src/flTfAT01.svg";
-import workoutSvg from "../../src/8QQGMQ01.svg";
-import StepsSvg from "../../src/SkfdCw01.svg";
-import profile from "../../src/profile.svg";
+import calLogo from "../../src/svgs/flTfAT01.svg";
+import workoutSvg from "../../src/svgs/8QQGMQ01.svg";
+import StepsSvg from "../../src/svgs/SkfdCw01.svg";
+import profile from "../../src/svgs/profile.svg";
 import Progress from "../components/dashboard/ProgressCharts"
 import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';

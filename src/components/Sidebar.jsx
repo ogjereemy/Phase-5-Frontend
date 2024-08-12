@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import fitnessLogo from "../../src/picsvg_download.svg";
-import progressLogo from "../../src/progress.svg";
-import diet from "../../src/diet.svg";
-import goals from "../../src/goals.svg";
-import workout from "../../src/workout.svg";
-import overview from "../../src/overview.svg";
-import coach from "../../src/coach.svg";
-import help from "../../src/help.svg";
+import fitnessLogo from "../../src/svgs/picsvg_download.svg";
+import progressLogo from "../../src/svgs/progress.svg";
+import diet from "../../src/svgs/diet.svg";
+import goals from "../../src/svgs/goals.svg";
+import workout from "../../src/svgs/workout.svg";
+import overview from "../../src/svgs/overview.svg";
+import coach from "../../src/svgs/coach.svg";
+import help from "../../src/svgs/help.svg";
 
 const Sidebar = ({ logout }) => {
   const navigate = useNavigate(); 

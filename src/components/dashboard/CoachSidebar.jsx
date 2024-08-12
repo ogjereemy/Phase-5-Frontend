@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import fitnessLogo from "../../../src/picsvg_download.svg";
-import workout from "../../../src/workout.svg";
-import coach from "../../../src/coach.svg";
+import fitnessLogo from "../../../src/svgs/picsvg_download.svg";
+import workout from "../../../src/svgs/workout.svg";
+import coach from "../../../src/svgs/coach.svg";
 
 const CoachSidebar = ({ logout }) => {
   const navigate = useNavigate(); 

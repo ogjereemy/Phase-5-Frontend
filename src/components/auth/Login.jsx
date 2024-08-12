@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import fitnessLogo from "../../../src/picsvg_download.svg";
+import fitnessLogo from "../../../src/svgs/picsvg_download.svg";
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import CustomNavbar from '../Navbar';
@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -21,9 +22,14 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('role', 'user');  // Set role as 'user'
 
-      navigate('/overview'); // Redirect to user overview
+      setSuccessMessage('Login successful! Redirecting...');
+      setErrorMessage('');  // Clear any previous error message
+
+      // Redirect after a short delay to show the success message
+      setTimeout(() => navigate('/overview'), 2000);
     } catch (error) {
       setErrorMessage('Login failed. Please check your email and password.');
+      setSuccessMessage('');  // Clear any previous success message
     }
   };
 
@@ -32,7 +38,7 @@ const Login = () => {
       <CustomNavbar />
       <div className="login-container">
         <div className="login-left">
-          <img src={fitnessLogo} alt="calorie tracker logo" />
+          <img src={fitnessLogo} className='logo-1' alt="calorie tracker logo" />
           <h1>Welcome Back!!</h1>
           <p>Let's keep Fit</p>
         </div>
@@ -40,6 +46,7 @@ const Login = () => {
           <Container>
             <Form className="login-form" onSubmit={handleSubmit}>
               <h2>Log In</h2>
+              {successMessage && <Alert variant="success">{successMessage}</Alert>}
               {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
               <Button variant="outline-primary" className="btn-google" block>
                 Use Google Account

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import fitnessLogo from "../../../src/picsvg_download.svg";
+import fitnessLogo from "../../../src/svgs/picsvg_download.svg";
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 
@@ -14,6 +14,7 @@ const CoachSignup = () => {
   const [specialities, setSpecialities] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -35,23 +36,28 @@ const CoachSignup = () => {
         photo,
         bio,
         specialities,
-        is_admin: false
+        is_admin: isAdmin
       };
-      console.log(payload);
+      // console.log(payload);
 
       const endpoint = 'http://127.0.0.1:5000/auth/signup'; // Updated endpoint for coaches
       await axios.post(endpoint, payload);
-      navigate('/coaches-login');
+      setSuccessMessage('Coach signup successful! Redirecting...');
+      setErrorMessage('');  // Clear any previous error message
+
+      // Redirect after a short delay to show the success message
+      setTimeout(() => navigate('/coaches-login'), 2000);
     } catch (error) {
       console.error(error.response?.data || error.message); // Log error response for debugging
       setErrorMessage('Signup failed. Please try again.');
+      setSuccessMessage('');  // Clear any previous success message
     }
   };
 
   return (
     <div className="signup-container">
       <div className="signup-left">
-        <img src={fitnessLogo} alt="calorie tracker logo" />
+        <img src={fitnessLogo} className='logo-1' alt="calorie tracker logo" />
         <h1>Become a Coach Today</h1>
         <p>Join our team and help others achieve their fitness goals!</p>
       </div>
@@ -59,6 +65,7 @@ const CoachSignup = () => {
         <Container>
           <Form className="signup-form" onSubmit={handleSubmit}>
             <h2>Coach Sign Up</h2>
+            {successMessage && <Alert variant="success">{successMessage}</Alert>}
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
             <Button variant="outline-primary" className="btn-google" block>
               Use Google Account
