@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './NutritionLogging.css';
 
 const NutritionLogging = () => {
@@ -11,56 +12,60 @@ const NutritionLogging = () => {
   const [carbs, setCarbs] = useState('');
   const [notes, setNotes] = useState('');
 
-  const fetchNutritionInfo = async (mealType) => {
+  const fetchNutritionLogs = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/app/nutrition_logs?mealType=${mealType}`);
-      const data = await response.json();
-
-      if (data && data.hits && data.hits.length > 0) {
-        const { calories, protein, fat, carbs } = data.hits[0].fields;
-        setCalories(calories);
-        setProtein(protein);
-        setFat(fat);
-        setCarbs(carbs);
-      }
+      const response = await axios.get('http://127.0.0.1:5000/app/nutrition_logs', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      setLogs(response.data);
     } catch (error) {
-      console.error('Error fetching nutrition info:', error);
+      console.error('Error fetching nutrition logs:', error.response ? error.response.data : error.message);
     }
   };
 
-  const handleAddLog = () => {
+  const addNutritionLog = async () => {
     if (!date || !mealType) {
       alert('Please fill in all required fields.');
       return;
     }
 
-    const newLog = {
-      id: Date.now(),
-      date,
-      mealType,
-      calories,
-      protein,
-      fat,
-      carbs,
-      notes,
-    };
+    try {
+      const newLog = {
+        date,
+        meal_type: mealType,
+        calory_intake: calories,
+        protein,
+        fat,
+        carbs,
+        notes,
+      };
 
-    setLogs([...logs, newLog]);
+      const response = await axios.post('http://127.0.0.1:5000/app/nutrition_logs', newLog, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
 
-    setDate('');
-    setMealType('');
-    setCalories('');
-    setProtein('');
-    setFat('');
-    setCarbs('');
-    setNotes('');
+      setLogs([...logs, response.data]);
+
+      // Clear form fields after adding log
+      setDate('');
+      setMealType('');
+      setCalories('');
+      setProtein('');
+      setFat('');
+      setCarbs('');
+      setNotes('');
+    } catch (error) {
+      console.error('Error adding nutrition log:', error.response ? error.response.data : error.message);
+    }
   };
 
   useEffect(() => {
-    if (mealType) {
-      fetchNutritionInfo(mealType);
-    }
-  }, [mealType]);
+    fetchNutritionLogs();
+  }, []);
 
   return (
     <div className="food-logger-container">
@@ -71,14 +76,14 @@ const NutritionLogging = () => {
         </p>
       </div>
       <div className="form-section">
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-        <input type="text" placeholder="Meal Type" value={mealType} onChange={(e) => setMealType(e.target.value)} />
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+        <input type="text" placeholder="Meal Type" value={mealType} onChange={(e) => setMealType(e.target.value)} required />
         <input type="number" placeholder="Calories" value={calories} onChange={(e) => setCalories(e.target.value)} />
         <input type="number" placeholder="Protein (g)" value={protein} onChange={(e) => setProtein(e.target.value)} />
         <input type="number" placeholder="Fat (g)" value={fat} onChange={(e) => setFat(e.target.value)} />
         <input type="number" placeholder="Carbs (g)" value={carbs} onChange={(e) => setCarbs(e.target.value)} />
         <textarea placeholder="Notes" value={notes} onChange={(e) => setNotes(e.target.value)} />
-        <button onClick={handleAddLog}>Add Log</button>
+        <button onClick={addNutritionLog}>Add Log</button>
       </div>
 
       <div className="log-table">
@@ -96,8 +101,8 @@ const NutritionLogging = () => {
           <tbody>
             {logs.map((log) => (
               <tr key={log.id}>
-                <td>{log.mealType}</td>
-                <td>{log.calories}</td>
+                <td>{log.meal_type}</td>
+                <td>{log.calory_intake}</td>
                 <td>{log.protein}g</td>
                 <td>{log.fat}g</td>
                 <td>{log.carbs}g</td>
