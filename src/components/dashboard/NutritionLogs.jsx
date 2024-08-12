@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './NutritionLogging.css';
 
-
 const NutritionLogging = () => {
   const [logs, setLogs] = useState([]);
-  const [userId, setUserId] = useState('');
   const [date, setDate] = useState('');
   const [mealType, setMealType] = useState('');
   const [calories, setCalories] = useState('');
@@ -31,14 +29,13 @@ const NutritionLogging = () => {
   };
 
   const handleAddLog = () => {
-    if (!userId || !date || !mealType) {
+    if (!date || !mealType) {
       alert('Please fill in all required fields.');
       return;
     }
 
     const newLog = {
       id: Date.now(),
-      userId,
       date,
       mealType,
       calories,
@@ -50,7 +47,6 @@ const NutritionLogging = () => {
 
     setLogs([...logs, newLog]);
 
-    setUserId('');
     setDate('');
     setMealType('');
     setCalories('');
@@ -75,7 +71,6 @@ const NutritionLogging = () => {
         </p>
       </div>
       <div className="form-section">
-        <input type="text" placeholder="User ID" value={userId} onChange={(e) => setUserId(e.target.value)} />
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         <input type="text" placeholder="Meal Type" value={mealType} onChange={(e) => setMealType(e.target.value)} />
         <input type="number" placeholder="Calories" value={calories} onChange={(e) => setCalories(e.target.value)} />
@@ -90,7 +85,6 @@ const NutritionLogging = () => {
         <table>
           <thead>
             <tr>
-              <th>User ID</th>
               <th>Meal</th>
               <th>Calories</th>
               <th>Protein (g)</th>
@@ -102,7 +96,6 @@ const NutritionLogging = () => {
           <tbody>
             {logs.map((log) => (
               <tr key={log.id}>
-                <td>{log.userId}</td>
                 <td>{log.mealType}</td>
                 <td>{log.calories}</td>
                 <td>{log.protein}g</td>
@@ -119,6 +112,3 @@ const NutritionLogging = () => {
 };
 
 export default NutritionLogging;
-
-        
-    
