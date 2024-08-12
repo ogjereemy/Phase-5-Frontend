@@ -1,11 +1,9 @@
-// src/components/dashboard/CoachDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './CoachDashboard.css';
 
 function CoachDashboard() {
     const [clients, setClients] = useState([]);
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzIwMTI0NSwianRpIjoiMGQyODhjNzktNzEzNi00MTBmLThmNmQtOGY3ZjY2MzI2MTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6NCwidHlwZSI6ImNvYWNoIn0sIm5iZiI6MTcyMzIwMTI0NSwiY3NyZiI6IjYzNjk3MjIyLWI1MzgtNGMxYy05YjBiLTFkOTQ2YTgwMWI1ZSIsImV4cCI6MTcyMzIwMjc0NX0.9DALMg_VOsNcU95hgf-NOQKGII1km2jZe1Vh7if4IFQ';
 
     useEffect(() => {
         const fetchClients = async () => {
@@ -13,14 +11,12 @@ function CoachDashboard() {
                 const response = await fetch('http://127.0.0.1:5000/app/users', {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
+                        'Authorization': `Bearer ${localStorage.getItem('token')}` }
                 });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log('Fetched clients:', data);
                 setClients(data);
             } catch (error) {
                 console.error('Failed to load clients:', error);
@@ -28,7 +24,7 @@ function CoachDashboard() {
         };
 
         fetchClients();
-    }, [token]);
+    }, []);
 
     return (
         <div className="coach-dashboard">
@@ -51,9 +47,24 @@ function CoachDashboard() {
                     ))}
                 </div>
             </div>
+
+            <div className="dashboard-links">
+                
+                <Link to="/workouts">
+                    <button className="btn btn-dashboard">Manage Workouts</button>
+                </Link>
+
+                
+                <Link to="/exercises">
+                    <button className="btn btn-dashboard">Manage Exercises</button>
+                </Link>
+
+                <Link to="/workout-plans">
+                    <button className="btn btn-dashboard">Create Workout Plan</button>
+                </Link>
+            </div>
         </div>
     );
 }
 
 export default CoachDashboard;
-

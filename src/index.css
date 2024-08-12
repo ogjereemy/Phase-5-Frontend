@@ -1010,6 +1010,7 @@ a.nav-link{
   text-decoration: none;
 }
 
+
 img.logo-1{
   width: 300px;
   margin-bottom: 20px;
@@ -1100,3 +1101,8 @@ img.logo-1{
     width: 100%;
   }
 }
+
+button.btn.btn-dashboard{
+  color:#ccc ;
+}
+
