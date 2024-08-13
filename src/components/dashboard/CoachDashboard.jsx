@@ -39,8 +39,8 @@ function CoachDashboard() {
                             <div >
                                 <h3 className="client-info">{client.username}</h3>
                                 <div className="client-actions">
-                                    <Link to="/workouts"><button className="btn btn-dashboard">Manage Workouts</button></Link>
                                     <Link to="/exercises"><button className="btn btn-dashboard">Manage Exercises</button></Link>
+                                    <Link to="/workouts"><button className="btn btn-dashboard">Manage Workouts</button></Link>
                                     <Link to="/workout-plans"><button className="btn btn-dashboard">Create Workout Plan</button></Link>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 const ExerciseManager = () => {
     const [exercises, setExercises] = useState([]);
     const [selectedExercise, setSelectedExercise] = useState(null);
@@ -103,15 +104,19 @@ const ExerciseManager = () => {
                 <button type="submit">{selectedExercise ? 'Update Exercise' : 'Add Exercise'}</button>
             </form>
             <h2>Exercise List</h2>
-            <ul>
-                {Array.isArray(exercises) && exercises.map(exercise => (
-                    <li key={exercise.id}>
-                        {exercise.name}
+            <div className='exercise-list'>
+                {exercises.map(exercise => (
+                    <div key={exercise.id} className='exercise-card'>
+                        <h3>{exercise.name}</h3>
+                        <p><strong>Sets:</strong> {exercise.sets}</p>
+                        <p><strong>Reps:</strong> {exercise.reps}</p>
+                        <p><strong>Weight:</strong> {exercise.weight}</p>
+                        <p><strong>Description:</strong> {exercise.description}</p>
                         <button onClick={() => handleEdit(exercise)}>Edit</button>
                         <button onClick={() => handleDelete(exercise.id)}>Delete</button>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
