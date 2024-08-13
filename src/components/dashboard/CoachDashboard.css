@@ -52,7 +52,7 @@
 }
 
 .client-picture {
-  border-radius: 50%;
+  border-radius: 10px;
   width: 80px;
   height: 80px;
 }
