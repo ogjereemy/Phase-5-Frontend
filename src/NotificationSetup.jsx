@@ -3,23 +3,31 @@ import axios from 'axios';
 
 const requestNotificationPermission = async () => {
     if ('Notification' in window && navigator.serviceWorker) {
-        const permission = await Notification.requestPermission();
-        if (permission === 'granted') {
-            subscribeUserToPush();
+        try {
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+                await subscribeUserToPush();
+            } else {
+                console.error('Notification permission denied.');
+            }
+        } catch (error) {
+            console.error('Failed to request notification permission:', error);
         }
+    } else {
+        console.error('Notification or service worker not supported.');
     }
 };
 
 const subscribeUserToPush = async () => {
     try {
-        const registration = await navigator.serviceWorker.register('/service-worker.js')
-
+        const registration = await navigator.serviceWorker.register('/service-worker.js'); // Ensure correct path
         const subscription = await registration.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array('BFGaoiHTu_EEsa3a5YpPSksJcGl11E_2kjnpqo_KW7RVXtcK4uSjrE4uxlrjWPXhN-K5uM16duDXiCcMCFNkPH4')
         });
 
-        await axios.post('http://127.0.0.1:5000/push/subscribe', { subscription_info: subscription });
+        const response = await axios.post('http://127.0.0.1:5000/push/subscribe', { subscription_info: subscription });
+        console.log(response.data); // Log response data for debugging
     } catch (error) {
         console.error('Failed to subscribe to notifications:', error);
     }
