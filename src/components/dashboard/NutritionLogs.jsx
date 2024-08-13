@@ -67,8 +67,9 @@ const NutritionLogging = () => {
       <div className="header-section">
         <h2>Plan Your Diet Plan This Week</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        "My favorite exercise is a cross between a lunge and a crunch... I call it lunch." — Anonymous </p>
+        <p>Who says you can’t get a good workout while enjoying your favorite meal? It’s all about that multitasking!</p>
+        
       </div>
       <div className="form-section">
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
