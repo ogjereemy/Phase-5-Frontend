@@ -1295,3 +1295,22 @@ button:hover {
   color: #555; 
   margin: 4px 0; 
 }
+.exercise-list button {
+  background-color: #ff7f50; 
+  color: white;
+  border: none; 
+  border-radius: 4px; 
+  padding: 8px 12px; 
+  margin: 4px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  transition: background-color 0.3s ease; 
+}
+
+.exercise-list button:hover {
+  background-color: #e06c4f; 
+}
+
+.exercise-list button:active {
+  background-color: #d05b43; 
+}
