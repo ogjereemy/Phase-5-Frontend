@@ -28,7 +28,7 @@ const Overview = () => {
           <div className="top-section">
             <div className="activity-overview">
               <h2>Track Your Daily Activities</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              
             </div>
             <div className="activity-cards">
               <div className="activity-card">
