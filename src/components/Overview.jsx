@@ -6,8 +6,8 @@ import workoutSvg from '../../src/svgs/8QQGMQ01.svg';
 import StepsSvg from '../../src/svgs/SkfdCw01.svg';
 import profile from '../../src/svgs/profile.svg';
 import Progress from '../components/dashboard/ProgressCharts';
+import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
-import './Overview.css';
 
 const Overview = () => {
   const { logout } = useContext(AuthContext);

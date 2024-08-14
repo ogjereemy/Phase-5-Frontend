@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
-import axios from 'axios';
+import axios from '../../axiosInstance';
 import AddProgressLog from './AddProgressLog';
 import GoalTracker from '../GoalTracker';
 
@@ -55,7 +55,11 @@ const Progress = () => {
 
   return (
     <div className='main-content'>
-      <h1 className="progress-title">Your Progress</h1>
+      <div className='header-section'>  
+        <h1 className="progress-title">Your Progress</h1>
+        <p>Measuring every step forward, progress tracking illuminates your path to success, highlighting the dedication and effort that turns aspirations into reality.</p>
+        <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+      </div>
       <Container className="progress-container">
         <Card className="progress-card">
           <Card.Body>
@@ -77,7 +81,7 @@ const Progress = () => {
         </Card>
         <AddProgressLog/>
       </Container>
-        <GoalTracker />
+        {/* <GoalTracker /> */}
     </div>
   );
 };

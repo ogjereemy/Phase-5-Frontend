@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../../axiosInstance';
 import './NutritionLogging.css';
 
 const NutritionLogging = () => {
@@ -73,6 +73,8 @@ const NutritionLogging = () => {
         <h2>Plan Your Diet Plan This Week</h2>
         <p>
         "My favorite exercise is a cross between a lunge and a crunch... I call it lunch." — Anonymous </p>
+        <p>Start planning for your week ahead by tracking your food intake and finding healthy recipes. You'll also be able to see how your progress compares to your goals.</p>
+        <img src="https://images.pexels.com/photos/1153369/pexels-photo-1153369.jpeg?auto=compress&cs=tinysrgb&w=600"/>
         <p>Who says you can’t get a good workout while enjoying your favorite meal? It’s all about that multitasking!</p>
         
       </div>

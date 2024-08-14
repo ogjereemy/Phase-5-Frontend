@@ -112,23 +112,29 @@ body {
   margin-bottom: 20px;
 }
 
-.activity-overview h2, p, li{
+.activity-overview h2, p{
   margin-bottom: 10px;
   line-height: 1.5;
   font-weight: bold;
   font-size: 1.2rem;
   font-family: 'Roboto', sans-serif;
   padding: 20px;
+  color:#f1a32d;
 }
 
+.activity-overview p {
+  color:#f1a32d;
+}
+
+
 .activity-overview  {
-  background-image: url("https://images.pexels.com/photos/3076516/pexels-photo-3076516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-size: cover;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-right: 20px;
   margin-bottom: 40px;
-  color: azure;
+
 }
 
 .activity-cards {

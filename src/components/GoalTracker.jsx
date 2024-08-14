@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 
 
@@ -94,7 +94,13 @@ const GoalTracker = () => {
     <div className='main-content'>
 
     <Container className="mt-4">
-      <h1>Goal Tracker</h1>
+      <div className='header-section'>
+        <h1>Goal Tracker</h1>
+        <p>
+        Empowering your journey by transforming each milestone into a stepping stone, turning dreams into tangible achievements through focused goal tracking.
+        </p>
+        <img src="https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+      </div>
       <h2>Record Changes</h2>
 
       <Form onSubmit={handleAddGoal} className="mb-4">

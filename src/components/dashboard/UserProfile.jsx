@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form, Button, Col, Row, Card, Alert } from 'react-bootstrap';
-import axios from 'axios';
+import axios from '../../axiosInstance';
 import AddProgressLog from './AddProgressLog';
 
 const UserProfile = () => {
