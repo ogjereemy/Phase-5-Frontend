@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form, Button, Col, Row, Card, Alert } from 'react-bootstrap';
 import axios from 'axios';
-import './Dashboard.css';
+import AddProgressLog from './AddProgressLog';
 
 const UserProfile = () => {
   const [user, setUser] = useState({
@@ -55,11 +55,12 @@ const UserProfile = () => {
 
   return (
     <Container className="profile-container">
+      <h2 className="profile-title">My Profile</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}
       <Row>
         <Col md={6}>
-          <Card>
+          <Card className="profile-card">
             <Card.Body>
               <div className="d-flex align-items-center">
                 <img src={user.photo || 'path-to-default-image.jpg'} alt="User" className="user-image" />
@@ -67,39 +68,41 @@ const UserProfile = () => {
                   <h5 className="card-title">{user.username}</h5>
                   <p className="card-text">Coach: {user.coach_id || 'Not Assigned'}</p>
                   <p className="card-text">Coach: {user.coach_name || 'Not Assigned'}</p>
-
                 </div>
               </div>
               <Form onSubmit={handleSubmit} className="mt-4">
                 <Form.Group>
-                  <Form.Label>Username</Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder='Username'
                     name="username"
                     value={user.username}
                     onChange={handleChange}
+                    className="input-field"
                   />
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="email"
+                    placeholder='Email Address'
                     name="email"
                     value={user.email}
                     onChange={handleChange}
+                    className="input-field"
                     disabled
                   />
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Photo URL</Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder='Photo URL'
                     name="photo"
                     value={user.photo}
                     onChange={handleChange}
+                    className="input-field"
                   />
                 </Form.Group>
-                <Button type="submit" className="mt-3">
+                <Button type="submit" className="update-button">
                   Update Profile
                 </Button>
               </Form>
@@ -107,23 +110,7 @@ const UserProfile = () => {
           </Card>
         </Col>
         <Col md={6}>
-          <Card>
-            <Card.Body>
-              <Card.Title>Statistics</Card.Title>
-              <div className="stat-card">
-                <div className="stat-info">
-                  <h5>Total Workouts Completed</h5>
-                  <p>{user.totalWorkouts}</p>
-                </div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-info">
-                  <h5>Total Calories Burned</h5>
-                  <p>{user.totalCaloriesBurned}</p>
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
+          <AddProgressLog/>
         </Col>
       </Row>
     </Container>

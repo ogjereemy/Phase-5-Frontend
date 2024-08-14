@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 
+
 const AddProgressLog = () => {
   const [date, setDate] = useState('');
   const [weight, setWeight] = useState('');
@@ -42,41 +43,46 @@ const AddProgressLog = () => {
   };
 
   return (
-    <Container className="mt-4">
-      <h2>Add Progress Log</h2>
-      <Form onSubmit={handleSubmit}>
+    <Container className="mt-4 add-progress-log-container">
+      <h2 className="form-title">Add Progress Log</h2>
+      <Form onSubmit={handleSubmit} className="progress-log-form">
         <Form.Group controlId="formDate">
           <Form.Label>Date</Form.Label>
           <Form.Control 
             type="date" 
+            placeholder='Date' 
             value={date} 
             onChange={(e) => setDate(e.target.value)} 
             required 
+            className="input-field"
           />
         </Form.Group>
         <Form.Group controlId="formWeight">
-          <Form.Label>Weight</Form.Label>
           <Form.Control 
             type="number" 
+            placeholder='Weight'
             value={weight} 
             onChange={(e) => setWeight(e.target.value)} 
             required 
+            className="input-field"
           />
         </Form.Group>
         <Form.Group controlId="formBodyFatPercentage">
-          <Form.Label>Body Fat Percentage</Form.Label>
           <Form.Control 
             type="number" 
+            placeholder='Body Fat Percentage'
             value={bodyFatPercentage} 
             onChange={(e) => setBodyFatPercentage(e.target.value)} 
+            className="input-field"
           />
         </Form.Group>
         <Form.Group controlId="formMuscleMass">
-          <Form.Label>Muscle Mass</Form.Label>
           <Form.Control 
             type="number" 
+            placeholder='Muscle Mass'
             value={muscleMass} 
             onChange={(e) => setMuscleMass(e.target.value)} 
+            className="input-field"
           />
         </Form.Group>
         <Form.Group controlId="formNotes">
@@ -86,11 +92,12 @@ const AddProgressLog = () => {
             rows={3} 
             value={notes} 
             onChange={(e) => setNotes(e.target.value)} 
+            className="input-field"
           />
         </Form.Group>
-        {error && <Alert variant="danger">{error}</Alert>}
-        {success && <Alert variant="success">{success}</Alert>}
-        <Button variant="primary" type="submit">
+        {error && <Alert variant="danger" className="error-message">{error}</Alert>}
+        {success && <Alert variant="success" className="success-message">{success}</Alert>}
+        <Button variant="primary" type="submit" className="submit-button">
           Add Log
         </Button>
       </Form>

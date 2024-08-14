@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 
 const UserWorkoutPlans = () => {
     const [workoutPlans, setWorkoutPlans] = useState([]);
@@ -33,11 +33,11 @@ const UserWorkoutPlans = () => {
             ) : (
                 <ul>
                     {workoutPlans.map(workoutPlan => (
-                        <li key={workoutPlan.id}>
+                        <div key={workoutPlan.id}>
                             <h2>{workoutPlan.title}</h2>
                             <p>{workoutPlan.description}</p>
                             <p>Days per week: {workoutPlan.workout_days}</p>
-                        </li>
+                        </div>
                     ))}
                 </ul>
             )}

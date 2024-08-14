@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import AddProgressLog from './AddProgressLog';
-import GoalTracker from '../pages/GoalTracker';
+import GoalTracker from '../GoalTracker';
 
 const Progress = () => {
   const { clientId } = useParams();

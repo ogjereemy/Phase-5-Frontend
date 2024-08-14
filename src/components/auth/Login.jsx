@@ -74,9 +74,9 @@ const Login = () => {
               <Button variant="primary" type="submit" block>
                 Log In
               </Button>
-              <div className="mt-3">
+              {/* <div className="mt-3">
                 <a href="/password-reset">Forgot password?</a>
-              </div>
+              </div> */}
               <div className="mt-2">
                 Don’t have an account? <a href="/signup">Sign Up</a>
               </div>

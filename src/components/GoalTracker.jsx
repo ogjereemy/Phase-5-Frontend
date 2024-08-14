@@ -99,9 +99,9 @@ const GoalTracker = () => {
 
       <Form onSubmit={handleAddGoal} className="mb-4">
         <Form.Group controlId="formGoalTitle">
-          <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
+            placeholder="Title..."
             value={goalTitle}
             onChange={(e) => setGoalTitle(e.target.value)}
             required
@@ -133,21 +133,22 @@ const GoalTracker = () => {
         </Button>
       </Form>
 
-      <div className="dailyContainer">
+      <div className="daily-ccontainer">
         <h3>Daily</h3>
-        <div className="cardContainer">
+        <div className="goal-container">
           {goals.map((goal) => (
-            <div className="card" key={goal.id}>
+            <div className="goal-card" key={goal.id}>
               <h4>{goal.title}</h4>
               <p>{goal.description}</p>
               <p>Target Date: {goal.target_date}</p>
-              <div className="chart"></div>
-              <Button onClick={() => handleDeleteGoal(goal.id)}>Delete</Button>
-              <Button onClick={() => handleUpdateGoal(goal.id, {
-                ...goal,
-                description: 'Updated Description', // Example update
-                target_date: '2024-12-31' // Example update
-              })}>Update</Button>
+              <div className='btn-1'>
+                <Button onClick={() => handleDeleteGoal(goal.id)}>Delete</Button>
+                <Button onClick={() => handleUpdateGoal(goal.id, {
+                  ...goal,
+                  description: 'Updated Description', // Example update
+                  target_date: '2024-12-31' // Example update
+                })}>Update</Button>
+              </div>
             </div>
           ))}
         </div>

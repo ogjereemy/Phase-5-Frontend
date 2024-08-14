@@ -83,11 +83,11 @@ body {
   text-decoration: none;
 }
 
-.main-content {
+/* .main-content {
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
-}
+} */
 
 .header {
   display: flex;
@@ -644,7 +644,8 @@ body {
 }
 
 .add-button, .clear-button, .submit-button {
-  background-color: #007bff;
+    background-color: #ff7f50;
+    /* background-color: #007bff; */
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -662,7 +663,7 @@ body {
 
 .progress-container {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 
@@ -682,15 +683,34 @@ body {
   font-weight: bold;
 }
 
-.progress-card {
+div.progress-card.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 2rem;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 20px;
+  max-width: fit-content;
 }
 
-.progress-card .card-body {
-  padding: 2rem;
+
+
+div.card-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-left: -15px;
 }
+/* canvas{
+  width: 300px;
+  height: 300px;
+  margin-bottom: 20px;
+} */
 
 
 /* App.css */
@@ -843,6 +863,8 @@ body {
 }
 
 .card {
+  display: flex;
+  flex-wrap: wrap;
   background-color: #f8f9fa;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -860,7 +882,8 @@ body {
 }
 
 .cta-button {
-  background-color: #007bff;
+    background-color: #ff7f50;
+    /* background-color: #007bff; */
   border: none;
   color: white;
   padding: 10px 20px;
@@ -871,7 +894,8 @@ body {
 }
 
 .cta-button:hover {
-  background-color: #0056b3;
+    background-color: #ff7f50;
+    /* background-color: #0056b3; */
 }
 
 .about-section {
@@ -894,9 +918,6 @@ body {
   border-radius: 10px;
 }
 
-.main-content {
-  padding: 20px;
-}
 
 .exercise-list {
   display: flex;
@@ -937,9 +958,10 @@ body {
 
 .help-page {
   padding: 20px;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
   font-family: Arial, sans-serif;
+  background-color: #212529;
 }
 
 .help-page h1 {
@@ -963,8 +985,9 @@ body {
   padding-left: 20px;
 }
 
-.help-page ul li {
+.help-page li {
   margin-bottom: 10px;
+  color: #212529;
 }
 
 .help-page p {
@@ -1053,8 +1076,9 @@ img.logo-1{
 }
 
 .contact-container .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+    background-color: #ff7f50;
+    /* background-color: #007bff; */
+  /* border-color: #007bff; */
   border-radius: 0;
   padding: 10px 20px;
   font-size: 16px;
@@ -1062,8 +1086,9 @@ img.logo-1{
 }
 
 .contact-container .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+    background-color: #ff7f50;
+    /* background-color: #0056b3; */
+  /* border-color: #0056b3; */
 }
 
 .contact-container .alert {
@@ -1085,7 +1110,8 @@ img.logo-1{
 }
 
 .contact-container .office-info strong {
-  color: #007bff;
+    background-color: #ff7f50;
+    /* color: #007bff; */
 }
 
 @media (max-width: 768px) {
@@ -1113,16 +1139,18 @@ button.btn.btn-dashboard{
   color:  #ff7f50;
 }
 .main-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  /* max-width: 160vh; */
+  margin-right: 20px;
+  margin-left: 120px;
+  justify-content: center;
+  /* padding: 20px; */
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.main-content h1,
-.main-content h2 {
+
+.main-content h1, h4, p {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
@@ -1188,9 +1216,7 @@ ul li button {
 ul li button:hover {
   background-color: #e53935;
 }
-.main-content {
-  padding: 20px;
-}
+
 
 .exercise-list {
   display: grid;
@@ -1228,9 +1254,7 @@ button {
 button:hover {
   background-color: #5a6268;
 }
-.main-content {
-  padding: 20px;
-}
+
 
 .exercise-list {
   display: grid;
@@ -1313,4 +1337,248 @@ button:hover {
 
 .exercise-list button:active {
   background-color: #d05b43; 
+}
+button.btn.btn-primary{
+  background-color: #ff7f50;
+  border-color: #d05b43;
+}
+button.btn.btn-primary:hover{
+  background-color: #d05b43;
+}
+
+
+div.card{
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+div.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  display: grid;
+}
+
+.user-workouts {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  color: #333;
+}
+
+.workout-section, .plans-section, .exercises-section {
+  margin-bottom: 40px;
+}
+
+h2, h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.workout-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* list-style-type: none; */
+  padding: 0;
+}
+
+.workout-item {
+  border: 1px solid #ddd; 
+  margin: 8px; 
+  text-align: center;
+  background-color: #ecf0f1;
+  padding: 15px;
+  width: 250px; 
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.workout-title {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  color: #2980b9;
+}
+
+.workout-day, .workout-exercises {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+.workout-exercises {
+  color: #27ae60;
+}
+.text{
+  color: #ff7f50;
+}
+.goal-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* list-style-type: none; */
+  padding: 0;
+}
+.goal-card{
+  border: 1px solid #ddd; 
+  margin: 8px; 
+  text-align: center;
+  background-color: #ecf0f1;
+  padding: 15px;
+  width: 250px; 
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-1{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+
+/* AddProgressLog.css */
+
+.add-progress-log-container {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+.progress-log-form .form-group {
+  margin-bottom: 15px;
+}
+
+.input-field {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #007bff;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message, .success-message {
+  margin-top: 20px;
+}
+
+/* UserProfile.css */
+
+.profile-container {
+  padding: 30px;
+  background-color: #f4f4f9;
+  border-radius: 10px;
+}
+
+.profile-card, .stats-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.card-text {
+  margin: 0;
+  color: #555;
+}
+
+.input-field {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.update-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #007bff;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.update-button:hover {
+  background-color: #0056b3;
+}
+
+.stats-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  margin-bottom: 15px;
+}
+
+.stat-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #007bff;
 }

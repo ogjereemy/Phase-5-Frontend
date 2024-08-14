@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 import '../WorkoutList.css';
-import Achievements from './Achievement';
+// import Achievements from './Achievement';
 
 const WorkoutLogging = () => {
   const [workout, setWorkout] = useState([{ date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);

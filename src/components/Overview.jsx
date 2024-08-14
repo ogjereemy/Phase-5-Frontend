@@ -21,14 +21,15 @@ const Overview = () => {
           <div className="profile-info">
             <Link to="/user-profile" className="sidebar-link">
             <img src={profile} className="logo-profile" alt="Workout logo" />
+            <p>profile</p>
             </Link>
           </div>
         </header>
         <div className="content">
           <div className="top-section">
             <div className="activity-overview">
-              <h2>Track Your Daily Activities</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <h2 className='text'>Track Your Daily Activities</h2>
+              <p className='text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
             <div className="activity-cards">
               <div className="activity-card">
