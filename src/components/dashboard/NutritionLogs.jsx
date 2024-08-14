@@ -50,7 +50,7 @@ const NutritionLogging = () => {
 
       setLogs([...logs, response.data]);
 
-      // Clear form fields after adding log
+  
       setDate('');
       setMealType('');
       setCalories('');

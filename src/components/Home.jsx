@@ -10,6 +10,7 @@ function Home() {
   const [featuredWorkouts, setFeaturedWorkouts] = useState([]);
   const [topCoaches, setTopCoaches] = useState([]);
   const [successStories, setSuccessStories] = useState([]);
+  const [showCoachActions, setShowCoachActions] = useState(false); // Toggle visibility
 
   useEffect(() => {
     const fetchFeaturedWorkouts = async () => {
@@ -44,9 +45,14 @@ function Home() {
     fetchSuccessStories();
   }, []);
 
+  const handleToggleCoachActions = () => {
+    setShowCoachActions(!showCoachActions);
+  };
+  
   const handleGetStarted = () => {
     navigate('/signup');
   };
+
 
   const handleLogin = () => {
     navigate('/login');
@@ -66,7 +72,7 @@ function Home() {
       <div className="hero-section">
         <div className="hero-content">
           <img src={fitnessLogo} alt="calorie tracker logo" />
-          <h2>Fit-Track</h2>
+          <h2 className='p-t'>Fit-Track</h2>
           <p className="p-t">
             A one-of-a-kind fitness program that combines strength, flexibility, and cardiovascular exercise to create a powerful, enduring workout.
           </p>
@@ -85,18 +91,24 @@ function Home() {
             Log In
           </button>
         </div>
-
-        <div className="card coach-card">
-          <h3>Coach Actions</h3>
-          <p>Are you a coach looking to manage your clients and provide expert guidance? Log in or sign up here.</p>
-          <button className="cta-button" onClick={handleExpertCoaches}>
-            Expert Coaches Login
-          </button>
-          <button className="cta-button" onClick={handleCoachSignup}>
-            Coach Sign Up
-          </button>
-        </div>
+        
+        {/* Conditionally render the coach card based on showCoachActions */}
+        {showCoachActions && (
+          <div className="card coach-card">
+            <h3>Coach Actions</h3>
+            <p>Are you a coach looking to manage your clients and provide expert guidance? Log in or sign up here.</p>
+            <button className="cta-button" onClick={handleExpertCoaches}>
+              Expert Coaches Login
+            </button>
+            <button className="cta-button" onClick={handleCoachSignup}>
+              Coach Sign Up
+            </button>
+          </div>
+        )}
       </div>
+      <button onClick={handleToggleCoachActions}>
+        {showCoachActions ? 'Hide Coach Actions' : 'Show Coach Actions'}
+      </button>
 
       <div className="about-section">
         <h2>About Us</h2>

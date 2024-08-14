@@ -15,7 +15,7 @@ const UserWorkoutPlans = () => {
                     setError('No workout plans have been assigned by your coach.');
                 } else {
                     setWorkoutPlans(response.data);
-                    setError(''); // Clear error if workout plans are found
+                    setError(''); 
                 }
             } catch (error) {
                 console.error('Error fetching workout plans:', error);
@@ -29,7 +29,7 @@ const UserWorkoutPlans = () => {
         <div className='main-content'>
             <h1>My Workout Plans</h1>
             {error ? (
-                <p>{error}</p> // Display error message if no workout plans are assigned
+                <p>{error}</p> 
             ) : (
                 <ul>
                     {workoutPlans.map(workoutPlan => (

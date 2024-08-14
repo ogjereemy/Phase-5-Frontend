@@ -11,13 +11,13 @@ const GoalTracker = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  // Fetch goals on component mount
+ 
   useEffect(() => {
     const fetchGoals = async () => {
       try {
         const response = await axios.get('http://127.0.0.1:5000/app/goals', {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+            'Authorization': `Bearer ${localStorage.getItem('token')}` 
           }
         });
         setGoals(response.data);
@@ -41,7 +41,7 @@ const GoalTracker = () => {
         target_date: goalTargetDate
       }, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
 
@@ -63,7 +63,7 @@ const GoalTracker = () => {
         target_date: updatedGoal.target_date
       }, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
 
@@ -79,7 +79,7 @@ const GoalTracker = () => {
       await axios.delete('http://127.0.0.1:5000/app/goals', {
         data: { goal_id: goalId },
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
 
@@ -148,12 +148,12 @@ const GoalTracker = () => {
               <p>{goal.description}</p>
               <p>Target Date: {goal.target_date}</p>
               <div className='btn-1'>
-                <Button onClick={() => handleDeleteGoal(goal.id)}>Delete</Button>
                 <Button onClick={() => handleUpdateGoal(goal.id, {
                   ...goal,
-                  description: 'Updated Description', // Example update
-                  target_date: '2024-12-31' // Example update
+                  description: 'Updated Description', 
+                  target_date: '2024-12-31' 
                 })}>Update</Button>
+                <Button className='btn-2' onClick={() => handleDeleteGoal(goal.id)}>Delete</Button>
               </div>
             </div>
           ))}

@@ -20,12 +20,12 @@ const Progress = () => {
       try {
         const response = await axios.get('http://127.0.0.1:5000/app/progress_logs', {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // JWT token
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         });
         const data = response.data;
     
-        // Parse and set data
+  
 
         setProgressData({
           weight: data.map(log => ({ date: log.date, value: log.weight })),

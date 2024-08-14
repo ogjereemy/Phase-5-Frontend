@@ -17,18 +17,18 @@ const CoachLogin = () => {
       const payload = { username, email, password };
       const response = await axios.post('http://127.0.0.1:5000/auth/login', payload);
 
-      // Set the role and token in localStorage
+      
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('role', 'coach');  // Set role as 'coach'
+      localStorage.setItem('role', 'coach');  
 
       setSuccessMessage('Coach login successful! Redirecting...');
-      setErrorMessage('');  // Clear any previous error message
+      setErrorMessage('');  
 
-      // Redirect after a short delay to show the success message
+      
       setTimeout(() => window.location.href = '/coach-dashboard', 2000);
     } catch (error) {
       setErrorMessage('Login failed. Please check your username, email, and password.');
-      setSuccessMessage('');  // Clear any previous success message
+      setSuccessMessage('');  
     }
   };
 

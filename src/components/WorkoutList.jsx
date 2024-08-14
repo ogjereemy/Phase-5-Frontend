@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../axiosInstance';
 import '../WorkoutList.css';
-// import Achievements from './Achievement';
+
 
 const WorkoutLogging = () => {
   const [workout, setWorkout] = useState([{ date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);
@@ -31,8 +31,7 @@ const WorkoutLogging = () => {
   }, []);
 
   useEffect(() => {
-    // Optionally, save workouts to local storage or sync with the backend
-    // localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
+
   }, [loggedWorkouts]);
 
   const handleChange = (index, e) => {
@@ -53,7 +52,7 @@ const WorkoutLogging = () => {
           headers: {
             Authorization: `Bearer ${token}`
           },
-          data: { workout_id: workoutToDelete.id } // Assuming you have an ID for the workout to delete
+          data: { workout_id: workoutToDelete.id } 
         });
         const updatedWorkouts = loggedWorkouts.filter((_, i) => i !== index);
         setLoggedWorkouts(updatedWorkouts);

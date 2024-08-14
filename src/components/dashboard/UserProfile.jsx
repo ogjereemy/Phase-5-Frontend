@@ -1,34 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Container, Form, Button, Col, Row, Card, Alert } from 'react-bootstrap';
 import axios from '../../axiosInstance';
+import { UserContext } from '../../context/UserContext';
 import AddProgressLog from './AddProgressLog';
 
 const UserProfile = () => {
-  const [user, setUser] = useState({
-    username: '',
-    email: '',
-    photo: '', // Add photo field
-    coach: '', // Add coach field
-    totalWorkouts: 0,
-    totalCaloriesBurned: 0,
-  });
-
+  const { user, setUser } = useContext(UserContext);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
   useEffect(() => {
-    // Fetch user profile on component mount
     axios.get('http://127.0.0.1:5000/app/profile', {
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}` // JWT token
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     }).then(response => {
-      setUser(response.data);
+      setUser(response.data); // Update the context with fetched user data
     }).catch(error => {
       setError('Failed to fetch user profile');
       console.error('Error fetching user profile:', error.response ? error.response.data : error.message);
     });
-  }, []);
+  }, [setUser]);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -41,12 +33,12 @@ const UserProfile = () => {
       photo: user.photo
     }, {
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`, // JWT token
-        'Content-Type': 'application/json' // Specify content type
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
       }
     }).then(response => {
       setSuccess('Profile updated successfully!');
-      setUser(response.data); // Update user state with response data
+      setUser(response.data); // Update the context with updated user data
     }).catch(error => {
       setError('Failed to update profile');
       console.error('Error updating profile:', error.response ? error.response.data : error.message);
@@ -65,9 +57,8 @@ const UserProfile = () => {
               <div className="d-flex align-items-center">
                 <img src={user.photo || 'path-to-default-image.jpg'} alt="User" className="user-image" />
                 <div className="ms-3">
-                  <h5 className="card-title">{user.username}</h5>
-                  <p className="card-text">Coach: {user.coach_id || 'Not Assigned'}</p>
-                  <p className="card-text">Coach: {user.coach_name || 'Not Assigned'}</p>
+                  <h5 className="card-title">{user.username}</h5> {/* Using the username from context */}
+                  <p className="card-text">Coach: {user.coach || 'Not Assigned'}</p>
                 </div>
               </div>
               <Form onSubmit={handleSubmit} className="mt-4">
@@ -110,7 +101,7 @@ const UserProfile = () => {
           </Card>
         </Col>
         <Col md={6}>
-          <AddProgressLog/>
+          <AddProgressLog />
         </Col>
       </Row>
     </Container>

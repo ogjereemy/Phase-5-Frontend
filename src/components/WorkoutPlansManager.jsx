@@ -17,10 +17,10 @@ const WorkoutPlansManager = () => {
                 const response = await axios.get('http://127.0.0.1:5000/app/workout_plans', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
-                setWorkoutPlans(response.data || []); // Ensure response data is an array
+                setWorkoutPlans(response.data || []); 
             } catch (error) {
                 console.error('Error fetching workout plans:', error);
-                setWorkoutPlans([]); // Handle errors by setting an empty array
+                setWorkoutPlans([]); 
             }
         };
         fetchWorkoutPlans();
@@ -46,7 +46,7 @@ const WorkoutPlansManager = () => {
             const response = await axios.get('http://127.0.0.1:5000/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
-            setWorkoutPlans(response.data || []); // Ensure response data is an array
+            setWorkoutPlans(response.data || []); 
             setSelectedWorkoutPlan(null);
             setFormData({
                 user_id: '',
@@ -78,7 +78,7 @@ const WorkoutPlansManager = () => {
             const response = await axios.get('http://127.0.0.1:5000/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
-            setWorkoutPlans(response.data || []); // Ensure response data is an array
+            setWorkoutPlans(response.data || []); 
         } catch (error) {
             console.error('Error deleting workout plan:', error);
         }

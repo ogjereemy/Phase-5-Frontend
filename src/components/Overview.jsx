@@ -1,16 +1,17 @@
+
+import Chart from 'chart.js/auto';
+import { Bar } from 'react-chartjs-2';
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { UserContext } from '../context/UserContext';
 import { Link } from 'react-router-dom';
 import calLogo from '../../src/svgs/flTfAT01.svg';
 import workoutSvg from '../../src/svgs/8QQGMQ01.svg';
 import StepsSvg from '../../src/svgs/SkfdCw01.svg';
 import profile from '../../src/svgs/profile.svg';
 import Progress from '../components/dashboard/ProgressCharts';
-import Chart from 'chart.js/auto';
-import { Bar } from 'react-chartjs-2';
 
 const Overview = () => {
-  const { logout } = useContext(AuthContext);
+  const { user } = useContext(UserContext); // Accessing the user data
 
   const quote = "Success is in every step of your journey—every drop of sweat, sore muscle, and conquered doubt. Embrace challenges, celebrate small victories, and become the strongest, healthiest version of yourself.";
 
@@ -28,11 +29,11 @@ const Overview = () => {
     <div className="dashboard">
       <div className="main-content">
         <header className="header">
-          <h1>Welcome Back!</h1>
+          <h1>Welcome Back, {user.username}!</h1> {/* Displaying the username */}
           <div className="profile-info">
             <Link to="/user-profile" className="sidebar-link">
-            <img src={profile} className="logo-profile" alt="Workout logo" />
-            <p>profile</p>
+              <img src={profile} className="logo-profile" alt="Profile logo" />
+              <p>Profile</p>
             </Link>
           </div>
         </header>
@@ -90,14 +91,8 @@ const Overview = () => {
               <div className="premium-membership">
                 <h2>50% off on Premium Membership</h2>
                 <p>
-                  Unlock your best self with our Premium Membership. Access
-                  advanced tracking tools, personalized plans, and an ad-free
-                  experience to stay focused on your goals. Join an elite
-                  community, enjoy exclusive content, and get priority support
-                  as you elevate your fitness journey. Invest in a stronger,
-                  healthier you—start your transformation today!
+                  Unlock your best self with our Premium Membership. Access advanced tracking tools, personalized plans, and an ad-free experience. Hurry, this limited-time offer won’t last!
                 </p>
-                <button className="btn btn-upgrade">Upgrade</button>
               </div>
             </div>
           </div>

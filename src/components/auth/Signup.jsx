@@ -3,6 +3,7 @@ import axios from 'axios';
 import fitnessLogo from "../../../src/svgs/picsvg_download.svg";
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+import CustomNavbar from '../Navbar';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -33,28 +34,30 @@ const Signup = () => {
         coach_id: coachId,
         coach_name: coachName
       };
-      // console.log(payload);
+      
 
       const endpoint = 'http://127.0.0.1:5000/auth/signup';
       await axios.post(endpoint, payload);
       setSuccessMessage('Signup successful! Redirecting...');
-      setErrorMessage('');  // Clear any previous error message
+      setErrorMessage('');  
 
-      // Redirect after a short delay to show the success message
+      
       setTimeout(() => navigate('/login'), 2000);
     } catch (error) {
-      console.error(error.response?.data || error.message); // Log error response for debugging
+      console.error(error.response?.data || error.message); 
       setErrorMessage('Signup failed. Please try again.');
-      setSuccessMessage('');  // Clear any previous success message
+      setSuccessMessage('');  
     }
   };
 
   return (
+    <div>
+      <CustomNavbar/>
     <div className="signup-container">
       <div className="signup-left">
         <img src={fitnessLogo} className='logo-1' alt="calorie tracker logo" />
-        <h1>Start Your Fitness Journey Today</h1>
-        <p>Join our Team!</p>
+        <h2 className='p-t'>Start Your Fitness Journey Today</h2>
+        <p className='p-t'>Join our Team!</p>
       </div>
       <div className="signup-right">
         <Container>
@@ -66,7 +69,7 @@ const Signup = () => {
               Use Google Account
             </Button>
             <Form.Group controlId="formBasicUsername">
-              <Form.Label>Username</Form.Label>
+
               <Form.Control
                 type="text"
                 placeholder="Username..."
@@ -75,7 +78,7 @@ const Signup = () => {
               />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email</Form.Label>
+
               <Form.Control
                 type="email"
                 placeholder="Email..."
@@ -85,7 +88,7 @@ const Signup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+
               <Form.Control
                 type="password"
                 placeholder="Password..."
@@ -95,7 +98,7 @@ const Signup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicConfirmPassword">
-              <Form.Label>Confirm Password</Form.Label>
+    
               <Form.Control
                 type="password"
                 placeholder="Confirm Password..."
@@ -105,7 +108,7 @@ const Signup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicPhoto">
-              <Form.Label>Photo URL</Form.Label>
+
               <Form.Control
                 type="text"
                 placeholder="Photo URL..."
@@ -115,7 +118,7 @@ const Signup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicCoachId">
-              <Form.Label>Coach ID</Form.Label>
+
               <Form.Control
                 type="number"
                 placeholder="Coach ID..."
@@ -124,7 +127,7 @@ const Signup = () => {
               />
             </Form.Group>
             <Form.Group controlId="formBasicCoachName">
-              <Form.Label>Coach Name</Form.Label>
+
               <Form.Control
                 type="text"
                 placeholder="Coach Name..."
@@ -141,6 +144,7 @@ const Signup = () => {
           </Form>
         </Container>
       </div>
+    </div>
     </div>
   );
 };

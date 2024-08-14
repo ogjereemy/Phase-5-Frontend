@@ -26,12 +26,12 @@ const AddProgressLog = () => {
         notes
       }, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
 
       setSuccess('Progress log added successfully!');
-      // Clear form fields or redirect user
+   
       setDate('');
       setWeight('');
       setBodyFatPercentage('');

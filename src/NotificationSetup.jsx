@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import axios from './axiosInstance';
+import axios from 'axios';
 
 const requestNotificationPermission = async () => {
     if ('Notification' in window && navigator.serviceWorker) {
@@ -20,17 +20,22 @@ const requestNotificationPermission = async () => {
 
 const subscribeUserToPush = async () => {
     try {
-        const registration = await navigator.serviceWorker.register('/service-worker.js'); // Ensure correct path
-        const subscription = await registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array('BFGaoiHTu_EEsa3a5YpPSksJcGl11E_2kjnpqo_KW7RVXtcK4uSjrE4uxlrjWPXhN-K5uM16duDXiCcMCFNkPH4')
+        const swRegistration = await navigator.serviceWorker.ready;
+        const subscription = await swRegistration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array("BFGaoiHTu_EEsa3a5YpPSksJcGl11E_2kjnpqo_KW7RVXtcK4uSjrE4uxlrjWPXhN-K5uM16duDXiCcMCFNkPH4") // Replace with your VAPID public key
         });
-
-        const response = await axios.post('http://127.0.0.1:5000/push/subscribe', { subscription_info: subscription });
-        console.log(response.data); // Log response data for debugging
-    } catch (error) {
-        console.error('Failed to subscribe to notifications:', error);
-    }
+    
+        await axios.post('http://127.0.0.1:5000/push/subscribe', subscription, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+    
+        console.log('User subscribed to push notifications');
+      } catch (error) {
+        console.error('Failed to subscribe to push notifications:', error);
+      }
 };
 
 const urlBase64ToUint8Array = (base64String) => {
