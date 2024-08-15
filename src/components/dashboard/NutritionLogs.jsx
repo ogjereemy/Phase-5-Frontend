@@ -42,7 +42,7 @@ const NutritionLogging = () => {
         notes,
       };
 
-      const response = await axios.post('http://127.0.0.1:5000/app/nutrition_logs', newLog, {
+      const response = await axios.post('https://fitt-track.onrender.com/app/nutrition_logs', newLog, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
