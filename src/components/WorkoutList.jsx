@@ -15,7 +15,7 @@ const WorkoutLogging = () => {
     if (storedToken) {
       const loadWorkouts = async () => {
         try {
-          const response = await axios.get('http://127.0.0.1:5000/app/workouts', {
+          const response = await axios.get('https://fitt-track.onrender.com/app/workouts', {
             headers: {
               Authorization: `Bearer ${storedToken}`
             }
@@ -48,7 +48,7 @@ const WorkoutLogging = () => {
     if (window.confirm('Are you sure you want to delete this entry?')) {
       const workoutToDelete = workout[index];
       try {
-        await axios.delete('http://127.0.0.1:5000/app/workouts', {
+        await axios.delete('https://fitt-track.onrender.com/app/workouts', {
           headers: {
             Authorization: `Bearer ${token}`
           },
@@ -69,12 +69,12 @@ const WorkoutLogging = () => {
       return;
     }
     try {
-      await axios.post('http://127.0.0.1:5000/app/workouts', workout, {
+      await axios.post('https://fitt-track.onrender.com/app/workouts', workout, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      const response = await axios.get('http://127.0.0.1:5000/app/workouts', {
+      const response = await axios.get('https://fitt-track.onrender.com/app/workouts', {
         headers: {
           Authorization: `Bearer ${token}`
         }

@@ -11,7 +11,7 @@ const PasswordReset = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://127.0.0.1:5000/auth/reset-password/${token}`, { password });
+      await axios.post(`https://fitt-track.onrender.com/auth/reset-password/${token}`, { password });
       setMessage('Password has been reset successfully');
     } catch (error) {
       setMessage('Failed to reset password');

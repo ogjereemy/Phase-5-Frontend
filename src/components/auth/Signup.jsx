@@ -36,7 +36,7 @@ const Signup = () => {
       };
       
 
-      const endpoint = 'http://127.0.0.1:5000/auth/signup';
+      const endpoint = 'https://fitt-track.onrender.com/auth/signup';
       await axios.post(endpoint, payload);
       setSuccessMessage('Signup successful! Redirecting...');
       setErrorMessage('');  

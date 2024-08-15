@@ -10,7 +10,7 @@ const UserProfile = () => {
   const [success, setSuccess] = useState('');
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/app/profile', {
+    axios.get('https://fitt-track.onrender.com/app/profile', {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -28,7 +28,7 @@ const UserProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.patch('http://127.0.0.1:5000/app/profile', {
+    axios.patch('https://fitt-track.onrender.com/app/profile', {
       username: user.username,
       photo: user.photo
     }, {

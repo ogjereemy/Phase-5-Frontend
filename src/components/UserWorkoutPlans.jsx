@@ -8,7 +8,7 @@ const UserWorkoutPlans = () => {
     useEffect(() => {
         const fetchWorkoutPlans = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:5000/app/workout_plans', {
+                const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 if (response.data.length === 0) {

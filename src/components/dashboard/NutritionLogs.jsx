@@ -14,7 +14,7 @@ const NutritionLogging = () => {
 
   const fetchNutritionLogs = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/app/nutrition_logs', {
+      const response = await axios.get('https://fitt-track.onrender.com/app/nutrition_logs', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

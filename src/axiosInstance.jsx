@@ -3,7 +3,7 @@ import axios from 'axios';
 import { logout } from './auth';
 
 const instance = axios.create({
-  baseURL: 'http://127.0.0.1:5000',
+  baseURL: 'https://fitt-track.onrender.com',
 });
 
 instance.interceptors.response.use(

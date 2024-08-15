@@ -17,7 +17,7 @@ const ExerciseManager = () => {
     useEffect(() => {
         const fetchExercises = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:5000/app/exercises', {
+                const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setExercises(response.data || []);

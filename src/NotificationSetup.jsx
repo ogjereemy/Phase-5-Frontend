@@ -26,7 +26,7 @@ const subscribeUserToPush = async () => {
           applicationServerKey: urlBase64ToUint8Array("BFGaoiHTu_EEsa3a5YpPSksJcGl11E_2kjnpqo_KW7RVXtcK4uSjrE4uxlrjWPXhN-K5uM16duDXiCcMCFNkPH4") // Replace with your VAPID public key
         });
     
-        await axios.post('http://127.0.0.1:5000/push/subscribe', subscription, {
+        await axios.post('https://fitt-track.onrender.com/push/subscribe', subscription, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

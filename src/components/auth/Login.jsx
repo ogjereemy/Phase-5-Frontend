@@ -16,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const payload = { email, password };
-      const response = await axios.post('http://127.0.0.1:5000/auth/login', payload);
+      const response = await axios.post('https://fitt-track.onrender.com/auth/login', payload);
 
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('role', 'user');  
