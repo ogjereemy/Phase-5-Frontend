@@ -27,7 +27,8 @@ function CoachDashboard() {
     }, []);
 
     return (
-        <div className="coach-dashboard">
+        <div className='main-content'>
+             <div className="coach-dashboard">
             <h1>Coach Dashboard</h1>
 
             <div className="clients-section">
@@ -50,7 +51,9 @@ function CoachDashboard() {
             </div>
 
             
+         </div>
         </div>
+       
     );
 }
 

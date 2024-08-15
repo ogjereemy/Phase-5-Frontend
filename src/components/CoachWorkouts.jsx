@@ -17,7 +17,7 @@ const CoachWorkouts = () => {
 
     const fetchWorkouts = async () => {
         try {
-            const response = await axios.get('/api/workouts'); 
+            const response = await axios.get('https://fitt-track.onrender.com/app/workouts'); 
             setWorkouts(response.data);
         } catch (error) {
             console.error('Error fetching workouts:', error);
@@ -34,7 +34,7 @@ const CoachWorkouts = () => {
 
     const handleCreateWorkout = async () => {
         try {
-            const response = await axios.post('/api/workouts', formData);
+            const response = await axios.post('https://fitt-track.onrender.com/app/workouts', formData);
             setWorkouts([...workouts, response.data]);
             setFormData({ workout_plan_id: '', user_id: '', title: '', day_of_week: '', exercises: '' });
         } catch (error) {
@@ -44,7 +44,7 @@ const CoachWorkouts = () => {
 
     const handleUpdateWorkout = async (id) => {
         try {
-            const response = await axios.patch(`/api/workouts`, { workout_id: id, ...formData });
+            const response = await axios.patch(`https://fitt-track.onrender.com/app/workouts`, { workout_id: id, ...formData });
             setWorkouts(workouts.map(workout => workout.id === id ? response.data : workout));
         } catch (error) {
             console.error('Error updating workout:', error);
@@ -53,7 +53,7 @@ const CoachWorkouts = () => {
 
     const handleDeleteWorkout = async (id) => {
         try {
-            await axios.delete(`/api/workouts`, { data: { workout_id: id } });
+            await axios.delete(`https://fitt-track.onrender.com/app/workouts`, { data: { workout_id: id } });
             setWorkouts(workouts.filter(workout => workout.id !== id));
         } catch (error) {
             console.error('Error deleting workout:', error);
@@ -61,7 +61,8 @@ const CoachWorkouts = () => {
     };
 
     return (
-        <div>
+        <div className='main-content'>
+            <div>
             <h2>Manage Workouts</h2>
             <div>
                 <input
@@ -113,7 +114,10 @@ const CoachWorkouts = () => {
                     </li>
                 ))}
             </ul>
+         </div>
+
         </div>
+        
     );
 };
 
