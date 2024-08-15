@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../axiosInstance';
 
-
 const ExerciseManager = () => {
     const [exercises, setExercises] = useState([]);
     const [selectedExercise, setSelectedExercise] = useState(null);
@@ -13,6 +12,7 @@ const ExerciseManager = () => {
         weight: '',
         description: ''
     });
+    const [successMessage, setSuccessMessage] = useState(''); // Added state for success messages
 
     useEffect(() => {
         const fetchExercises = async () => {
@@ -41,10 +41,12 @@ const ExerciseManager = () => {
                 await axios.patch('https://fitt-track.onrender.com/app/exercises', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
+                setSuccessMessage('Exercise updated successfully!');
             } else {
                 await axios.post('https://fitt-track.onrender.com/app/exercises', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
+                setSuccessMessage('Exercise added successfully!');
             }
             const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -74,6 +76,7 @@ const ExerciseManager = () => {
             weight: exercise.weight || '',
             description: exercise.description || ''
         });
+        setSuccessMessage(''); // Clear success message on edit
     };
 
     const handleDelete = async (id) => {
@@ -82,6 +85,7 @@ const ExerciseManager = () => {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 data: { exercise_id: id }
             });
+            setSuccessMessage('Exercise deleted successfully!');
             const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
@@ -94,6 +98,7 @@ const ExerciseManager = () => {
     return (
         <div className='main-content'>
             <h1>Manage Exercises</h1>
+            {successMessage && <p className="success-message">{successMessage}</p>} {/* Display success message */}
             <form onSubmit={handleSubmit}>
                 <input type="text" name="workout_id" value={formData.workout_id} onChange={handleChange} placeholder="Workout ID" />
                 <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
