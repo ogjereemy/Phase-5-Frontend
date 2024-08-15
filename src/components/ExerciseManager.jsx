@@ -38,15 +38,15 @@ const ExerciseManager = () => {
         e.preventDefault();
         try {
             if (selectedExercise) {
-                await axios.patch('http://127.0.0.1:5000/app/exercises', formData, {
+                await axios.patch('https://fitt-track.onrender.com/app/exercises', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
             } else {
-                await axios.post('http://127.0.0.1:5000/app/exercises', formData, {
+                await axios.post('https://fitt-track.onrender.com/app/exercises', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
             }
-            const response = await axios.get('http://127.0.0.1:5000/app/exercises', {
+            const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setExercises(response.data || []);
@@ -78,11 +78,11 @@ const ExerciseManager = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete('http://127.0.0.1:5000/app/exercises', {
+            await axios.delete('https://fitt-track.onrender.com/app/exercises', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 data: { exercise_id: id }
             });
-            const response = await axios.get('http://127.0.0.1:5000/app/exercises', {
+            const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setExercises(response.data || []);

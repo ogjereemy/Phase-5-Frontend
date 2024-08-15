@@ -10,17 +10,24 @@ const WorkoutPlansManager = () => {
         description: '',
         workout_days: ''
     });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchWorkoutPlans = async () => {
+            setLoading(true);
             try {
                 const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
-                setWorkoutPlans(response.data || []); 
+                setWorkoutPlans(response.data || []);
+                setError(null);
             } catch (error) {
                 console.error('Error fetching workout plans:', error);
-                setWorkoutPlans([]); 
+                setError('Error fetching workout plans');
+                setWorkoutPlans([]);
+            } finally {
+                setLoading(false);
             }
         };
         fetchWorkoutPlans();
@@ -33,6 +40,11 @@ const WorkoutPlansManager = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!formData.user_id || !formData.title || !formData.workout_days) {
+            setError('Please fill out all required fields.');
+            return;
+        }
+        setLoading(true);
         try {
             if (selectedWorkoutPlan) {
                 await axios.patch('https://fitt-track.onrender.com/app/workout_plans', formData, {
@@ -46,7 +58,7 @@ const WorkoutPlansManager = () => {
             const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
-            setWorkoutPlans(response.data || []); 
+            setWorkoutPlans(response.data || []);
             setSelectedWorkoutPlan(null);
             setFormData({
                 user_id: '',
@@ -54,8 +66,12 @@ const WorkoutPlansManager = () => {
                 description: '',
                 workout_days: ''
             });
+            setError(null);
         } catch (error) {
             console.error('Error saving workout plan:', error);
+            setError('Error saving workout plan');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -70,6 +86,7 @@ const WorkoutPlansManager = () => {
     };
 
     const handleDelete = async (id) => {
+        setLoading(true);
         try {
             await axios.delete('https://fitt-track.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
@@ -78,15 +95,21 @@ const WorkoutPlansManager = () => {
             const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
-            setWorkoutPlans(response.data || []); 
+            setWorkoutPlans(response.data || []);
+            setError(null);
         } catch (error) {
             console.error('Error deleting workout plan:', error);
+            setError('Error deleting workout plan');
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className='main-content'>
             <h1>Manage Workout Plans</h1>
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <input type="text" name="user_id" value={formData.user_id} onChange={handleChange} placeholder="User ID" />
                 <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Title" />
@@ -95,15 +118,19 @@ const WorkoutPlansManager = () => {
                 <button type="submit">{selectedWorkoutPlan ? 'Update Workout Plan' : 'Add Workout Plan'}</button>
             </form>
             <h2>Workout Plan List</h2>
-            <ul>
-                {Array.isArray(workoutPlans) && workoutPlans.map(workoutPlan => (
-                    <li key={workoutPlan.id}>
-                        {workoutPlan.title}
-                        <button onClick={() => handleEdit(workoutPlan)}>Edit</button>
-                        <button onClick={() => handleDelete(workoutPlan.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+            {workoutPlans.length === 0 ? (
+                <p>No workout plans available.</p>
+            ) : (
+                <ul>
+                    {workoutPlans.map(workoutPlan => (
+                        <li key={workoutPlan.id}>
+                            {workoutPlan.title}
+                            <button onClick={() => handleEdit(workoutPlan)}>Edit</button>
+                            <button onClick={() => handleDelete(workoutPlan.id)}>Delete</button>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };

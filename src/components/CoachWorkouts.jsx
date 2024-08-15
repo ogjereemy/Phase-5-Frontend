@@ -10,17 +10,44 @@ const CoachWorkouts = () => {
         day_of_week: '',
         exercises: ''
     });
+    const [selectedWorkout, setSelectedWorkout] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
+        // Load state from localStorage
+        const savedFormData = localStorage.getItem('formData');
+        const savedSelectedWorkout = localStorage.getItem('selectedWorkout');
+        if (savedFormData) {
+            setFormData(JSON.parse(savedFormData));
+        }
+        if (savedSelectedWorkout) {
+            setSelectedWorkout(JSON.parse(savedSelectedWorkout));
+        }
+
         fetchWorkouts();
     }, []);
 
+    useEffect(() => {
+        // Save state to localStorage
+        localStorage.setItem('formData', JSON.stringify(formData));
+        localStorage.setItem('selectedWorkout', JSON.stringify(selectedWorkout));
+    }, [formData, selectedWorkout]);
+
     const fetchWorkouts = async () => {
+        setLoading(true);
         try {
-            const response = await axios.get('https://fitt-track.onrender.com/app/workouts'); 
-            setWorkouts(response.data);
+            const response = await axios.get('https://fitt-track.onrender.com/app/workouts', {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            });
+            setWorkouts(response.data || []);
+            setError(null);
         } catch (error) {
             console.error('Error fetching workouts:', error);
+            setError('Error fetching workouts');
+            setWorkouts([]);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -32,38 +59,72 @@ const CoachWorkouts = () => {
         });
     };
 
-    const handleCreateWorkout = async () => {
+    const handleCreateOrUpdateWorkout = async () => {
+        setLoading(true);
         try {
-            const response = await axios.post('https://fitt-track.onrender.com/app/workouts', formData);
-            setWorkouts([...workouts, response.data]);
-            setFormData({ workout_plan_id: '', user_id: '', title: '', day_of_week: '', exercises: '' });
+            if (selectedWorkout) {
+                // Update existing workout
+                await axios.patch('https://fitt-track.onrender.com/app/workouts', { workout_id: selectedWorkout.id, ...formData }, {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                });
+                setWorkouts(workouts.map(workout => workout.id === selectedWorkout.id ? { ...workout, ...formData } : workout));
+            } else {
+                // Create new workout
+                const response = await axios.post('https://fitt-track.onrender.com/app/workouts', formData, {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                });
+                setWorkouts([...workouts, response.data]);
+            }
+            setFormData({
+                workout_plan_id: '',
+                user_id: '',
+                title: '',
+                day_of_week: '',
+                exercises: ''
+            });
+            setSelectedWorkout(null);
+            setError(null);
         } catch (error) {
-            console.error('Error creating workout:', error);
+            console.error('Error saving workout:', error);
+            setError('Error saving workout');
+        } finally {
+            setLoading(false);
         }
     };
 
-    const handleUpdateWorkout = async (id) => {
-        try {
-            const response = await axios.patch(`https://fitt-track.onrender.com/app/workouts`, { workout_id: id, ...formData });
-            setWorkouts(workouts.map(workout => workout.id === id ? response.data : workout));
-        } catch (error) {
-            console.error('Error updating workout:', error);
-        }
+    const handleEdit = (workout) => {
+        setSelectedWorkout(workout);
+        setFormData({
+            workout_plan_id: workout.workout_plan_id || '',
+            user_id: workout.user_id || '',
+            title: workout.title || '',
+            day_of_week: workout.day_of_week || '',
+            exercises: workout.exercises || ''
+        });
     };
 
-    const handleDeleteWorkout = async (id) => {
+    const handleDelete = async (id) => {
+        setLoading(true);
         try {
-            await axios.delete(`https://fitt-track.onrender.com/app/workouts`, { data: { workout_id: id } });
+            await axios.delete('https://fitt-track.onrender.com/app/workouts', {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+                data: { workout_id: id }
+            });
             setWorkouts(workouts.filter(workout => workout.id !== id));
+            setError(null);
         } catch (error) {
             console.error('Error deleting workout:', error);
+            setError('Error deleting workout');
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className='main-content'>
-            <div>
             <h2>Manage Workouts</h2>
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
             <div>
                 <input
                     type="text"
@@ -100,24 +161,27 @@ const CoachWorkouts = () => {
                     onChange={handleInputChange}
                     placeholder="Exercises"
                 />
-                <button onClick={handleCreateWorkout}>Create Workout</button>
+                <button onClick={handleCreateOrUpdateWorkout}>
+                    {selectedWorkout ? 'Update Workout' : 'Create Workout'}
+                </button>
             </div>
             <h3>Existing Workouts</h3>
             <ul>
-                {workouts.map(workout => (
-                    <li key={workout.id}>
-                        <h4>{workout.title}</h4>
-                        <p>Day: {workout.day_of_week}</p>
-                        <p>Exercises: {workout.exercises}</p>
-                        <button onClick={() => handleUpdateWorkout(workout.id)}>Update</button>
-                        <button onClick={() => handleDeleteWorkout(workout.id)}>Delete</button>
-                    </li>
-                ))}
+                {workouts && workouts.length > 0 ? (
+                    workouts.map(workout => (
+                        <li key={workout.id}>
+                            <h4>{workout.title}</h4>
+                            <p>Day: {workout.day_of_week}</p>
+                            <p>Exercises: {workout.exercises}</p>
+                            <button onClick={() => handleEdit(workout)}>Edit</button>
+                            <button onClick={() => handleDelete(workout.id)}>Delete</button>
+                        </li>
+                    ))
+                ) : (
+                    <p>No workouts available</p>
+                )}
             </ul>
-         </div>
-
         </div>
-        
     );
 };
 
