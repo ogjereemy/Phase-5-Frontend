@@ -3,6 +3,7 @@ import axios from 'axios';
 import fitnessLogo from "../../../src/svgs/picsvg_download.svg";
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+import CustomNavbar from '../Navbar';
 
 const CoachSignup = () => {
   const [username, setUsername] = useState('');
@@ -38,23 +39,25 @@ const CoachSignup = () => {
         specialities,
         is_admin: isAdmin
       };
-      // console.log(payload);
+ 
 
-      const endpoint = 'http://127.0.0.1:5000/auth/signup'; // Updated endpoint for coaches
+      const endpoint = 'https://fitt-track.onrender.com/auth/signup'; 
       await axios.post(endpoint, payload);
       setSuccessMessage('Coach signup successful! Redirecting...');
-      setErrorMessage('');  // Clear any previous error message
+      setErrorMessage('');  
 
-      // Redirect after a short delay to show the success message
+      
       setTimeout(() => navigate('/coaches-login'), 2000);
     } catch (error) {
-      console.error(error.response?.data || error.message); // Log error response for debugging
+      console.error(error.response?.data || error.message); 
       setErrorMessage('Signup failed. Please try again.');
-      setSuccessMessage('');  // Clear any previous success message
+      setSuccessMessage('');  
     }
   };
 
   return (
+    <div>
+      <CustomNavbar/>
     <div className="signup-container">
       <div className="signup-left">
         <img src={fitnessLogo} className='logo-1' alt="calorie tracker logo" />
@@ -71,7 +74,7 @@ const CoachSignup = () => {
               Use Google Account
             </Button>
             <Form.Group controlId="formBasicUsername">
-              <Form.Label>Username</Form.Label>
+
               <Form.Control
                 type="text"
                 placeholder="Username..."
@@ -80,7 +83,7 @@ const CoachSignup = () => {
               />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email</Form.Label>
+
               <Form.Control
                 type="email"
                 placeholder="Email..."
@@ -90,7 +93,7 @@ const CoachSignup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+
               <Form.Control
                 type="password"
                 placeholder="Password..."
@@ -100,7 +103,7 @@ const CoachSignup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicConfirmPassword">
-              <Form.Label>Confirm Password</Form.Label>
+
               <Form.Control
                 type="password"
                 placeholder="Confirm Password..."
@@ -110,7 +113,7 @@ const CoachSignup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicPhoto">
-              <Form.Label>Photo URL</Form.Label>
+    
               <Form.Control
                 type="text"
                 placeholder="Photo URL..."
@@ -120,7 +123,7 @@ const CoachSignup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicBio">
-              <Form.Label>Bio</Form.Label>
+          
               <Form.Control
                 type="text"
                 placeholder="Tell us about yourself..."
@@ -130,7 +133,7 @@ const CoachSignup = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicSpecialities">
-              <Form.Label>Specialities</Form.Label>
+           
               <Form.Control
                 type="text"
                 placeholder="Your specialities..."
@@ -157,6 +160,7 @@ const CoachSignup = () => {
           </Form>
         </Container>
       </div>
+    </div>
     </div>
   );
 };

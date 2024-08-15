@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import fitnessLogo from "../../src/svgs/picsvg_download.svg";
-import axios from 'axios';
+import axios from '../axiosInstance';
 import './home.css';
 import CustomNavbar from './Navbar';
 
@@ -10,11 +10,12 @@ function Home() {
   const [featuredWorkouts, setFeaturedWorkouts] = useState([]);
   const [topCoaches, setTopCoaches] = useState([]);
   const [successStories, setSuccessStories] = useState([]);
+  const [showCoachActions, setShowCoachActions] = useState(false); // Toggle visibility
 
   useEffect(() => {
     const fetchFeaturedWorkouts = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/app/featured-workouts');
+        const response = await axios.get('https://fitt-track.onrender.com/app/featured-workouts');
         setFeaturedWorkouts(response.data);
       } catch (error) {
         console.error('Error fetching featured workouts:', error);
@@ -23,7 +24,7 @@ function Home() {
 
     const fetchTopCoaches = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/app/top-coaches');
+        const response = await axios.get('https://fitt-track.onrender.com/app/top-coaches');
         setTopCoaches(response.data);
       } catch (error) {
         console.error('Error fetching top coaches:', error);
@@ -32,7 +33,7 @@ function Home() {
 
     const fetchSuccessStories = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/app/success-stories');
+        const response = await axios.get('https://fitt-track.onrender.com/app/success-stories');
         setSuccessStories(response.data);
       } catch (error) {
         console.error('Error fetching success stories:', error);
@@ -44,9 +45,14 @@ function Home() {
     fetchSuccessStories();
   }, []);
 
+  const handleToggleCoachActions = () => {
+    setShowCoachActions(!showCoachActions);
+  };
+  
   const handleGetStarted = () => {
     navigate('/signup');
   };
+
 
   const handleLogin = () => {
     navigate('/login');
@@ -66,7 +72,7 @@ function Home() {
       <div className="hero-section">
         <div className="hero-content">
           <img src={fitnessLogo} alt="calorie tracker logo" />
-          <h2>Fit-Track</h2>
+          <h2 className='p-t'>Fit-Track</h2>
           <p className="p-t">
             A one-of-a-kind fitness program that combines strength, flexibility, and cardiovascular exercise to create a powerful, enduring workout.
           </p>
@@ -85,18 +91,24 @@ function Home() {
             Log In
           </button>
         </div>
-
-        <div className="card coach-card">
-          <h3>Coach Actions</h3>
-          <p>Are you a coach looking to manage your clients and provide expert guidance? Log in or sign up here.</p>
-          <button className="cta-button" onClick={handleExpertCoaches}>
-            Expert Coaches Login
-          </button>
-          <button className="cta-button" onClick={handleCoachSignup}>
-            Coach Sign Up
-          </button>
-        </div>
+        
+        {/* Conditionally render the coach card based on showCoachActions */}
+        {showCoachActions && (
+          <div className="card coach-card">
+            <h3>Coach Actions</h3>
+            <p>Are you a coach looking to manage your clients and provide expert guidance? Log in or sign up here.</p>
+            <button className="cta-button" onClick={handleExpertCoaches}>
+              Expert Coaches Login
+            </button>
+            <button className="cta-button" onClick={handleCoachSignup}>
+              Coach Sign Up
+            </button>
+          </div>
+        )}
       </div>
+      <button onClick={handleToggleCoachActions}>
+        {showCoachActions ? 'Hide Coach Actions' : 'Show Coach Actions'}
+      </button>
 
       <div className="about-section">
         <h2>About Us</h2>

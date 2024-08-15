@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 
 
@@ -11,13 +11,13 @@ const GoalTracker = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  // Fetch goals on component mount
+ 
   useEffect(() => {
     const fetchGoals = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/app/goals', {
+        const response = await axios.get('https://fitt-track.onrender.com/app/goals', {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+            'Authorization': `Bearer ${localStorage.getItem('token')}` 
           }
         });
         setGoals(response.data);
@@ -35,13 +35,13 @@ const GoalTracker = () => {
     setSuccess('');
     
     try {
-      const response = await axios.post('http://127.0.0.1:5000/app/goals', {
+      const response = await axios.post('https://fitt-track.onrender.com/app/goals', {
         title: goalTitle,
         description: goalDescription,
         target_date: goalTargetDate
       }, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
 
@@ -57,13 +57,13 @@ const GoalTracker = () => {
 
   const handleUpdateGoal = async (goalId, updatedGoal) => {
     try {
-      const response = await axios.patch('http://127.0.0.1:5000/app/goals', {
+      const response = await axios.patch('https://fitt-track.onrender.com/app/goals', {
         goal_id: goalId,
         description: updatedGoal.description,
         target_date: updatedGoal.target_date
       }, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
 
@@ -76,10 +76,10 @@ const GoalTracker = () => {
 
   const handleDeleteGoal = async (goalId) => {
     try {
-      await axios.delete('http://127.0.0.1:5000/app/goals', {
+      await axios.delete('https://fitt-track.onrender.com/app/goals', {
         data: { goal_id: goalId },
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add JWT token for authorization
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
 
@@ -94,14 +94,20 @@ const GoalTracker = () => {
     <div className='main-content'>
 
     <Container className="mt-4">
-      <h1>Goal Tracker</h1>
+      <div className='header-section'>
+        <h1>Goal Tracker</h1>
+        <p>
+        Empowering your journey by transforming each milestone into a stepping stone, turning dreams into tangible achievements through focused goal tracking.
+        </p>
+        <img src="https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+      </div>
       <h2>Record Changes</h2>
 
       <Form onSubmit={handleAddGoal} className="mb-4">
         <Form.Group controlId="formGoalTitle">
-          <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
+            placeholder="Title..."
             value={goalTitle}
             onChange={(e) => setGoalTitle(e.target.value)}
             required
@@ -133,21 +139,22 @@ const GoalTracker = () => {
         </Button>
       </Form>
 
-      <div className="dailyContainer">
+      <div className="daily-ccontainer">
         <h3>Daily</h3>
-        <div className="cardContainer">
+        <div className="goal-container">
           {goals.map((goal) => (
-            <div className="card" key={goal.id}>
+            <div className="goal-card" key={goal.id}>
               <h4>{goal.title}</h4>
               <p>{goal.description}</p>
               <p>Target Date: {goal.target_date}</p>
-              <div className="chart"></div>
-              <Button onClick={() => handleDeleteGoal(goal.id)}>Delete</Button>
-              <Button onClick={() => handleUpdateGoal(goal.id, {
-                ...goal,
-                description: 'Updated Description', // Example update
-                target_date: '2024-12-31' // Example update
-              })}>Update</Button>
+              <div className='btn-1'>
+                <Button onClick={() => handleUpdateGoal(goal.id, {
+                  ...goal,
+                  description: 'Updated Description', 
+                  target_date: '2024-12-31' 
+                })}>Update</Button>
+                <Button className='btn-2' onClick={() => handleDeleteGoal(goal.id)}>Delete</Button>
+              </div>
             </div>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 import '../WorkoutList.css';
-import Achievements from './Achievement';
+
 
 const WorkoutLogging = () => {
   const [workout, setWorkout] = useState([{ date: '', exercise: '', sets: '', reps: '', weight: '', duration: '', category: '', caloriesBurned: '' }]);
@@ -15,7 +15,7 @@ const WorkoutLogging = () => {
     if (storedToken) {
       const loadWorkouts = async () => {
         try {
-          const response = await axios.get('http://127.0.0.1:5000/app/workouts', {
+          const response = await axios.get('https://fitt-track.onrender.com/app/workouts', {
             headers: {
               Authorization: `Bearer ${storedToken}`
             }
@@ -31,8 +31,7 @@ const WorkoutLogging = () => {
   }, []);
 
   useEffect(() => {
-    // Optionally, save workouts to local storage or sync with the backend
-    // localStorage.setItem('loggedWorkouts', JSON.stringify(loggedWorkouts));
+
   }, [loggedWorkouts]);
 
   const handleChange = (index, e) => {
@@ -49,11 +48,11 @@ const WorkoutLogging = () => {
     if (window.confirm('Are you sure you want to delete this entry?')) {
       const workoutToDelete = workout[index];
       try {
-        await axios.delete('http://127.0.0.1:5000/app/workouts', {
+        await axios.delete('https://fitt-track.onrender.com/app/workouts', {
           headers: {
             Authorization: `Bearer ${token}`
           },
-          data: { workout_id: workoutToDelete.id } // Assuming you have an ID for the workout to delete
+          data: { workout_id: workoutToDelete.id } 
         });
         const updatedWorkouts = loggedWorkouts.filter((_, i) => i !== index);
         setLoggedWorkouts(updatedWorkouts);
@@ -70,12 +69,12 @@ const WorkoutLogging = () => {
       return;
     }
     try {
-      await axios.post('http://127.0.0.1:5000/app/workouts', workout, {
+      await axios.post('https://fitt-track.onrender.com/app/workouts', workout, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      const response = await axios.get('http://127.0.0.1:5000/app/workouts', {
+      const response = await axios.get('https://fitt-track.onrender.com/app/workouts', {
         headers: {
           Authorization: `Bearer ${token}`
         }

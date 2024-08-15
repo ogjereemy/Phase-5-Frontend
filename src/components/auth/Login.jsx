@@ -16,20 +16,19 @@ const Login = () => {
     e.preventDefault();
     try {
       const payload = { email, password };
-      const response = await axios.post('http://127.0.0.1:5000/auth/login', payload);
+      const response = await axios.post('https://fitt-track.onrender.com/auth/login', payload);
 
-      // Set the role and token in localStorage
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('role', 'user');  // Set role as 'user'
+      localStorage.setItem('role', 'user');  
 
       setSuccessMessage('Login successful! Redirecting...');
-      setErrorMessage('');  // Clear any previous error message
+      setErrorMessage(''); 
 
-      // Redirect after a short delay to show the success message
+      
       setTimeout(() => navigate('/overview'), 2000);
     } catch (error) {
       setErrorMessage('Login failed. Please check your email and password.');
-      setSuccessMessage('');  // Clear any previous success message
+      setSuccessMessage('');  
     }
   };
 
@@ -39,8 +38,8 @@ const Login = () => {
       <div className="login-container">
         <div className="login-left">
           <img src={fitnessLogo} className='logo-1' alt="calorie tracker logo" />
-          <h1>Welcome Back!!</h1>
-          <p>Let's keep Fit</p>
+          <h2 className='p-t'>Welcome Back!!</h2>
+          <p className='p-t'>Let's keep Fit</p>
         </div>
         <div className="login-right">
           <Container>
@@ -74,9 +73,9 @@ const Login = () => {
               <Button variant="primary" type="submit" block>
                 Log In
               </Button>
-              <div className="mt-3">
+              {/* <div className="mt-3">
                 <a href="/password-reset">Forgot password?</a>
-              </div>
+              </div> */}
               <div className="mt-2">
                 Don’t have an account? <a href="/signup">Sign Up</a>
               </div>

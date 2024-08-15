@@ -8,7 +8,7 @@ import UserProfile from './src/components/dashboard/UserProfile';
 import CoachDashboard from './src/components/dashboard/CoachDashboard';
 import CoachLogin from './src/components/dashboard/CoachesLogin';
 import Overview from './src/components/Overview';
-import GoalTracker from './src/components/pages/GoalTracker';
+import GoalTracker from './src/components/GoalTracker';
 import WorkoutLogging from './src/components/WorkoutList';
 import NutritionLogs from './src/components/dashboard/NutritionLogs';
 import ProgressCharts from './src/components/dashboard/ProgressCharts';

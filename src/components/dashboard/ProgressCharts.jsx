@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Container, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
-import axios from 'axios';
+import axios from '../../axiosInstance';
 import AddProgressLog from './AddProgressLog';
-import GoalTracker from '../pages/GoalTracker';
+import GoalTracker from '../GoalTracker';
 
 const Progress = () => {
   const { clientId } = useParams();
@@ -18,14 +18,14 @@ const Progress = () => {
   useEffect(() => {
     const fetchProgressData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/app/progress_logs', {
+        const response = await axios.get('https://fitt-track.onrender.com/app/progress_logs', {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // JWT token
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         });
         const data = response.data;
     
-        // Parse and set data
+  
 
         setProgressData({
           weight: data.map(log => ({ date: log.date, value: log.weight })),
@@ -55,7 +55,11 @@ const Progress = () => {
 
   return (
     <div className='main-content'>
-      <h1 className="progress-title">Your Progress</h1>
+      <div className='header-section'>  
+        <h1 className="progress-title">Your Progress</h1>
+        <p>Measuring every step forward, progress tracking illuminates your path to success, highlighting the dedication and effort that turns aspirations into reality.</p>
+        <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+      </div>
       <Container className="progress-container">
         <Card className="progress-card">
           <Card.Body>
@@ -77,7 +81,7 @@ const Progress = () => {
         </Card>
         <AddProgressLog/>
       </Container>
-        <GoalTracker />
+        {/* <GoalTracker /> */}
     </div>
   );
 };

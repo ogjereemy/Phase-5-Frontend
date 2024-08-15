@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 
 const WorkoutPlansManager = () => {
     const [workoutPlans, setWorkoutPlans] = useState([]);
@@ -14,13 +14,13 @@ const WorkoutPlansManager = () => {
     useEffect(() => {
         const fetchWorkoutPlans = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:5000/app/workout_plans', {
+                const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
-                setWorkoutPlans(response.data || []); // Ensure response data is an array
+                setWorkoutPlans(response.data || []); 
             } catch (error) {
                 console.error('Error fetching workout plans:', error);
-                setWorkoutPlans([]); // Handle errors by setting an empty array
+                setWorkoutPlans([]); 
             }
         };
         fetchWorkoutPlans();
@@ -35,18 +35,18 @@ const WorkoutPlansManager = () => {
         e.preventDefault();
         try {
             if (selectedWorkoutPlan) {
-                await axios.patch('http://127.0.0.1:5000/app/workout_plans', formData, {
+                await axios.patch('https://fitt-track.onrender.com/app/workout_plans', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
             } else {
-                await axios.post('http://127.0.0.1:5000/app/workout_plans', formData, {
+                await axios.post('https://fitt-track.onrender.com/app/workout_plans', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
             }
-            const response = await axios.get('http://127.0.0.1:5000/app/workout_plans', {
+            const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
-            setWorkoutPlans(response.data || []); // Ensure response data is an array
+            setWorkoutPlans(response.data || []); 
             setSelectedWorkoutPlan(null);
             setFormData({
                 user_id: '',
@@ -71,14 +71,14 @@ const WorkoutPlansManager = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete('http://127.0.0.1:5000/app/workout_plans', {
+            await axios.delete('https://fitt-track.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 data: { workout_plan_id: id }
             });
-            const response = await axios.get('http://127.0.0.1:5000/app/workout_plans', {
+            const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
-            setWorkoutPlans(response.data || []); // Ensure response data is an array
+            setWorkoutPlans(response.data || []); 
         } catch (error) {
             console.error('Error deleting workout plan:', error);
         }

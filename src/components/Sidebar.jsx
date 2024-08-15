@@ -6,7 +6,6 @@ import diet from "../../src/svgs/diet.svg";
 import goals from "../../src/svgs/goals.svg";
 import workout from "../../src/svgs/workout.svg";
 import overview from "../../src/svgs/overview.svg";
-import coach from "../../src/svgs/coach.svg";
 import help from "../../src/svgs/help.svg";
 
 const Sidebar = ({ logout }) => {
@@ -25,9 +24,6 @@ const Sidebar = ({ logout }) => {
         <Link to="/users-workouts" className="sidebar-link">
         <img src={workout} className='side-svg' alt="workout logo" />
         Workout</Link>
-        {/* <Link to="/coach-dashboard" className='sidebar-link'>
-        <img src={coach} className='side-svg' alt="coach logo" />
-        Coach</Link> */}
         <Link to="/diet-plan" className="sidebar-link">
         <img src={diet} className='side-svg' alt="diet logo" />
         Diet Plan</Link>

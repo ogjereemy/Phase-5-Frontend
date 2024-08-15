@@ -1,6 +1,6 @@
 // src/components/dashboard/ClientList.jsx
 import React, { useState, useEffect } from 'react';
-import './ClientList.css'; // Import the CSS file for styling
+import './ClientList.css';
 
 function ClientList() {
     const [clients, setClients] = useState([]);
@@ -8,12 +8,12 @@ function ClientList() {
     useEffect(() => {
         const fetchClients = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:5000/app/users'); // Updated API endpoint
+                const response = await fetch('https://fitt-track.onrender.com/app/users'); 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log('Fetched clients:', data); // Log the fetched data
+                console.log('Fetched clients:', data); 
                 setClients(data);
             } catch (error) {
                 console.error('Failed to load clients:', error);

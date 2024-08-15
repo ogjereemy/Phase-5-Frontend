@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 import UserWorkoutPlans from './UserWorkoutPlans';
 import ExerciseList from './ExerciseList';
+
 
 const UserWorkouts = () => {
     const [workouts, setWorkouts] = useState([]);
@@ -13,14 +14,14 @@ const UserWorkouts = () => {
 
     const fetchWorkouts = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:5000/app/workouts', { 
+            const response = await axios.get('https://fitt-track.onrender.com/app/workouts', { 
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             if (response.data.length === 0) {
                 setError('No workouts have been assigned by your coach.');
             } else {
                 setWorkouts(response.data);
-                setError(''); // Clear error if workouts are found
+                setError(''); 
             }
         } catch (error) {
             console.error('Error fetching workouts:', error);
@@ -30,26 +31,32 @@ const UserWorkouts = () => {
 
     return (
         <div className='main-content'>
-            <div>
+        <div className="user-workouts">
+            <div className="workout-section">
                 <h2>Your Workouts</h2>
                 {error ? (
-                    <p>{error}</p> // Display error message if no workouts are assigned
+                    <p className="error-message">{error}</p> 
                 ) : (
-                    <ul>
+                    <ul className="workout-list">
                         {workouts.map(workout => (
-                            <li key={workout.id}>
-                                <h4>{workout.title}</h4>
-                                <p>Day: {workout.day_of_week}</p>
-                                <p>Exercises: {workout.exercises}</p>
-                            </li>
+                            <div key={workout.id} className="workout-item">
+                                <h4 className="workout-title">{workout.title}</h4>
+                                <p className="workout-day">Day: {workout.day_of_week}</p>
+                                <p className="workout-exercises">Exercises: {workout.exercises}</p>
+                            </div>
                         ))}
                     </ul>
                 )}
             </div>
-            <h3>Workout Plans</h3>
-            <UserWorkoutPlans />
-            <h3>Exercises</h3>
-            <ExerciseList />
+            <div className="plans-section">
+                <h3>Workout Plans</h3>
+                <UserWorkoutPlans />
+            </div>
+            <div className="exercises-section">
+                <h3>Exercises</h3>
+                <ExerciseList />
+            </div>
+        </div>
         </div>
     );
 };

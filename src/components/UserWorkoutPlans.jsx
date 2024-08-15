@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 
 const UserWorkoutPlans = () => {
     const [workoutPlans, setWorkoutPlans] = useState([]);
@@ -8,14 +8,14 @@ const UserWorkoutPlans = () => {
     useEffect(() => {
         const fetchWorkoutPlans = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:5000/app/workout_plans', {
+                const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 if (response.data.length === 0) {
                     setError('No workout plans have been assigned by your coach.');
                 } else {
                     setWorkoutPlans(response.data);
-                    setError(''); // Clear error if workout plans are found
+                    setError(''); 
                 }
             } catch (error) {
                 console.error('Error fetching workout plans:', error);
@@ -29,15 +29,15 @@ const UserWorkoutPlans = () => {
         <div className='main-content'>
             <h1>My Workout Plans</h1>
             {error ? (
-                <p>{error}</p> // Display error message if no workout plans are assigned
+                <p>{error}</p> 
             ) : (
                 <ul>
                     {workoutPlans.map(workoutPlan => (
-                        <li key={workoutPlan.id}>
+                        <div key={workoutPlan.id}>
                             <h2>{workoutPlan.title}</h2>
                             <p>{workoutPlan.description}</p>
                             <p>Days per week: {workoutPlan.workout_days}</p>
-                        </li>
+                        </div>
                     ))}
                 </ul>
             )}

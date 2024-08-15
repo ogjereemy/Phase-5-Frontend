@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../../axiosInstance';
 import './NutritionLogging.css';
 
 const NutritionLogging = () => {
@@ -14,7 +14,7 @@ const NutritionLogging = () => {
 
   const fetchNutritionLogs = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/app/nutrition_logs', {
+      const response = await axios.get('https://fitt-track.onrender.com/app/nutrition_logs', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -50,7 +50,7 @@ const NutritionLogging = () => {
 
       setLogs([...logs, response.data]);
 
-      // Clear form fields after adding log
+  
       setDate('');
       setMealType('');
       setCalories('');
@@ -70,10 +70,13 @@ const NutritionLogging = () => {
   return (
     <div className="food-logger-container">
       <div className="header-section">
-        <h2>Plan Your Diet Plan This Week</h2>
+        <h2>Plan Your Diet This Week</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        "My favorite exercise is a cross between a lunge and a crunch... I call it lunch." </p>
+        <p>Start planning for your week ahead by tracking your food intake and finding healthy recipes. You'll also be able to see how your progress compares to your goals.</p>
+        <img src="https://images.pexels.com/photos/1153369/pexels-photo-1153369.jpeg?auto=compress&cs=tinysrgb&w=600"/>
+        <p>Who says you can’t get a good workout while enjoying your favorite meal? It’s all about that multitasking!</p>
+        
       </div>
       <div className="form-section">
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />

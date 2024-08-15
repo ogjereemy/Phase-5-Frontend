@@ -17,7 +17,7 @@ const CoachWorkouts = () => {
 
     const fetchWorkouts = async () => {
         try {
-            const response = await axios.get('/api/workouts'); // Fetch all workouts
+            const response = await axios.get('/api/workouts'); 
             setWorkouts(response.data);
         } catch (error) {
             console.error('Error fetching workouts:', error);

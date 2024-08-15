@@ -9,7 +9,7 @@ const PasswordResetRequest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://127.0.0.1:5000/auth/request-reset', { email });
+      await axios.post('https://fitt-track.onrender.com/auth/request-reset', { email });
       setMessage('Password reset email sent');
     } catch (error) {
       setMessage('Failed to send password reset email');
