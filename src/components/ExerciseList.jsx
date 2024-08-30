@@ -10,7 +10,7 @@ const ExerciseList = () => {
     useEffect(() => {
         const fetchExercises = async () => {
             try {
-                const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
+                const response = await axios.get('https://phase-5-backend-2.onrender.com/app/exercises', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setExercises(response.data || []);

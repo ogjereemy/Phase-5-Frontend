@@ -37,7 +37,7 @@ const CoachWorkouts = () => {
     const fetchWorkouts = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('https://fitt-track.onrender.com/app/workouts', {
+            const response = await axios.get('https://phase-5-backend-2.onrender.com/app/workouts', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setWorkouts(response.data || []);
@@ -64,13 +64,13 @@ const CoachWorkouts = () => {
         try {
             if (selectedWorkout) {
                 // Update existing workout
-                await axios.patch('https://fitt-track.onrender.com/app/workouts', { workout_id: selectedWorkout.id, ...formData }, {
+                await axios.patch('https://phase-5-backend-2.onrender.com/app/workouts', { workout_id: selectedWorkout.id, ...formData }, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setWorkouts(workouts.map(workout => workout.id === selectedWorkout.id ? { ...workout, ...formData } : workout));
             } else {
                 // Create new workout
-                const response = await axios.post('https://fitt-track.onrender.com/app/workouts', formData, {
+                const response = await axios.post('https://phase-5-backend-2.onrender.com/app/workouts', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setWorkouts([...workouts, response.data]);
@@ -106,7 +106,7 @@ const CoachWorkouts = () => {
     const handleDelete = async (id) => {
         setLoading(true);
         try {
-            await axios.delete('https://fitt-track.onrender.com/app/workouts', {
+            await axios.delete('https://phase-5-backend-2.onrender.com/app/workouts', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 data: { workout_id: id }
             });

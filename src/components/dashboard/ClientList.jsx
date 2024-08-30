@@ -8,7 +8,7 @@ function ClientList() {
     useEffect(() => {
         const fetchClients = async () => {
             try {
-                const response = await fetch('https://fitt-track.onrender.com/app/users'); 
+                const response = await fetch('https://phase-5-backend-2.onrender.com/app/users'); 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

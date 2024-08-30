@@ -10,7 +10,7 @@ const UserProfile = () => {
   const [success, setSuccess] = useState('');
 
   useEffect(() => {
-    axios.get('https://fitt-track.onrender.com/app/profile', {
+    axios.get('https://phase-5-backend-2.onrender.com/app/profile', {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -28,7 +28,7 @@ const UserProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.patch('https://fitt-track.onrender.com/app/profile', {
+    axios.patch('https://phase-5-backend-2.onrender.com/app/profile', {
       username: user.username,
       photo: user.photo
     }, {

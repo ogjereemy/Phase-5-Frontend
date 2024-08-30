@@ -17,7 +17,7 @@ const ExerciseManager = () => {
     useEffect(() => {
         const fetchExercises = async () => {
             try {
-                const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
+                const response = await axios.get('https://phase-5-backend-2.onrender.com/app/exercises', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setExercises(response.data || []);
@@ -38,17 +38,17 @@ const ExerciseManager = () => {
         e.preventDefault();
         try {
             if (selectedExercise) {
-                await axios.patch('https://fitt-track.onrender.com/app/exercises', formData, {
+                await axios.patch('https://phase-5-backend-2.onrender.com/app/exercises', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setSuccessMessage('Exercise updated successfully!');
             } else {
-                await axios.post('https://fitt-track.onrender.com/app/exercises', formData, {
+                await axios.post('https://phase-5-backend-2.onrender.com/app/exercises', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setSuccessMessage('Exercise added successfully!');
             }
-            const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
+            const response = await axios.get('https://phase-5-backend-2.onrender.com/app/exercises', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setExercises(response.data || []);
@@ -81,12 +81,12 @@ const ExerciseManager = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete('https://fitt-track.onrender.com/app/exercises', {
+            await axios.delete('https://phase-5-backend-2.onrender.com/app/exercises', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 data: { exercise_id: id }
             });
             setSuccessMessage('Exercise deleted successfully!');
-            const response = await axios.get('https://fitt-track.onrender.com/app/exercises', {
+            const response = await axios.get('https://phase-5-backend-2.onrender.com/app/exercises', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setExercises(response.data || []);

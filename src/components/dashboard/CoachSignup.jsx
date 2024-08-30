@@ -41,7 +41,7 @@ const CoachSignup = () => {
       };
  
 
-      const endpoint = 'https://fitt-track.onrender.com/auth/signup'; 
+      const endpoint = 'https://phase-5-backend-2.onrender.com/auth/signup'; 
       await axios.post(endpoint, payload);
       setSuccessMessage('Coach signup successful! Redirecting...');
       setErrorMessage('');  

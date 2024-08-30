@@ -18,7 +18,7 @@ const AddProgressLog = () => {
     setSuccess('');
     
     try {
-      const response = await axios.post('https://fitt-track.onrender.com/app/progress_logs', {
+      const response = await axios.post('https://phase-5-backend-2.onrender.com/app/progress_logs', {
         date,
         weight,
         body_fat_percentage: bodyFatPercentage,
