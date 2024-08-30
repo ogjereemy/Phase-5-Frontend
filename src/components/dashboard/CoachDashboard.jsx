@@ -8,7 +8,7 @@ function CoachDashboard() {
     useEffect(() => {
         const fetchClients = async () => {
             try {
-                const response = await fetch('https://fitt-track.onrender.com/app/users', {
+                const response = await fetch('https://phase-5-backend-2.onrender.com/app/users', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}` }

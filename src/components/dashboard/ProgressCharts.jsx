@@ -18,7 +18,7 @@ const Progress = () => {
   useEffect(() => {
     const fetchProgressData = async () => {
       try {
-        const response = await axios.get('https://fitt-track.onrender.com/app/progress_logs', {
+        const response = await axios.get('https://phase-5-backend-2.onrender.com/app/progress_logs', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

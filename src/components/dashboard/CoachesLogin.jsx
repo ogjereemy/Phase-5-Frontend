@@ -15,7 +15,7 @@ const CoachLogin = () => {
     e.preventDefault();
     try {
       const payload = { username, email, password };
-      const response = await axios.post('https://fitt-track.onrender.com/auth/login', payload);
+      const response = await axios.post('https://phase-5-backend-2.onrender.com/auth/login', payload);
 
       
       localStorage.setItem('token', response.data.token);

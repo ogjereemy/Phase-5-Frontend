@@ -17,7 +17,7 @@ const WorkoutPlansManager = () => {
         const fetchWorkoutPlans = async () => {
             setLoading(true);
             try {
-                const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
+                const response = await axios.get('https://phase-5-backend-2.onrender.com/app/workout_plans', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setWorkoutPlans(response.data || []);
@@ -47,15 +47,15 @@ const WorkoutPlansManager = () => {
         setLoading(true);
         try {
             if (selectedWorkoutPlan) {
-                await axios.patch('https://fitt-track.onrender.com/app/workout_plans', formData, {
+                await axios.patch('https://phase-5-backend-2.onrender.com/app/workout_plans', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
             } else {
-                await axios.post('https://fitt-track.onrender.com/app/workout_plans', formData, {
+                await axios.post('https://phase-5-backend-2.onrender.com/app/workout_plans', formData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
             }
-            const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
+            const response = await axios.get('https://phase-5-backend-2.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setWorkoutPlans(response.data || []);
@@ -88,11 +88,11 @@ const WorkoutPlansManager = () => {
     const handleDelete = async (id) => {
         setLoading(true);
         try {
-            await axios.delete('https://fitt-track.onrender.com/app/workout_plans', {
+            await axios.delete('https://phase-5-backend-2.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 data: { workout_plan_id: id }
             });
-            const response = await axios.get('https://fitt-track.onrender.com/app/workout_plans', {
+            const response = await axios.get('https://phase-5-backend-2.onrender.com/app/workout_plans', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setWorkoutPlans(response.data || []);

@@ -15,7 +15,7 @@ const GoalTracker = () => {
   useEffect(() => {
     const fetchGoals = async () => {
       try {
-        const response = await axios.get('https://fitt-track.onrender.com/app/goals', {
+        const response = await axios.get('https://phase-5-backend-2.onrender.com/app/goals', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}` 
           }
@@ -35,7 +35,7 @@ const GoalTracker = () => {
     setSuccess('');
     
     try {
-      const response = await axios.post('https://fitt-track.onrender.com/app/goals', {
+      const response = await axios.post('https://phase-5-backend-2.onrender.com/app/goals', {
         title: goalTitle,
         description: goalDescription,
         target_date: goalTargetDate
@@ -57,7 +57,7 @@ const GoalTracker = () => {
 
   const handleUpdateGoal = async (goalId, updatedGoal) => {
     try {
-      const response = await axios.patch('https://fitt-track.onrender.com/app/goals', {
+      const response = await axios.patch('https://phase-5-backend-2.onrender.com/app/goals', {
         goal_id: goalId,
         description: updatedGoal.description,
         target_date: updatedGoal.target_date
@@ -76,7 +76,7 @@ const GoalTracker = () => {
 
   const handleDeleteGoal = async (goalId) => {
     try {
-      await axios.delete('https://fitt-track.onrender.com/app/goals', {
+      await axios.delete('https://phase-5-backend-2.onrender.com/app/goals', {
         data: { goal_id: goalId },
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}` 

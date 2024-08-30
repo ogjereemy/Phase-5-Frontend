@@ -14,7 +14,7 @@ const NutritionLogging = () => {
 
   const fetchNutritionLogs = async () => {
     try {
-      const response = await axios.get('https://fitt-track.onrender.com/app/nutrition_logs', {
+      const response = await axios.get('https://phase-5-backend-2.onrender.com/app/nutrition_logs', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -42,7 +42,7 @@ const NutritionLogging = () => {
         notes,
       };
 
-      const response = await axios.post('https://fitt-track.onrender.com/app/nutrition_logs', newLog, {
+      const response = await axios.post('https://phase-5-backend-2.onrender.com/app/nutrition_logs', newLog, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

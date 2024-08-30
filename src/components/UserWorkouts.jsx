@@ -14,7 +14,7 @@ const UserWorkouts = () => {
 
     const fetchWorkouts = async () => {
         try {
-            const response = await axios.get('https://fitt-track.onrender.com/app/workouts', { 
+            const response = await axios.get('https://phase-5-backend-2.onrender.com/app/workouts', { 
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             if (response.data.length === 0) {

@@ -15,7 +15,7 @@ function Home() {
   useEffect(() => {
     const fetchFeaturedWorkouts = async () => {
       try {
-        const response = await axios.get('https://fitt-track.onrender.com/app/featured-workouts');
+        const response = await axios.get('https://phase-5-backend-2.onrender.com/app/featured-workouts');
         setFeaturedWorkouts(response.data);
       } catch (error) {
         console.error('Error fetching featured workouts:', error);
@@ -24,7 +24,7 @@ function Home() {
 
     const fetchTopCoaches = async () => {
       try {
-        const response = await axios.get('https://fitt-track.onrender.com/app/top-coaches');
+        const response = await axios.get('https://phase-5-backend-2.onrender.com/app/top-coaches');
         setTopCoaches(response.data);
       } catch (error) {
         console.error('Error fetching top coaches:', error);
@@ -33,7 +33,7 @@ function Home() {
 
     const fetchSuccessStories = async () => {
       try {
-        const response = await axios.get('https://fitt-track.onrender.com/app/success-stories');
+        const response = await axios.get('https://phase-5-backend-2.onrender.com/app/success-stories');
         setSuccessStories(response.data);
       } catch (error) {
         console.error('Error fetching success stories:', error);
