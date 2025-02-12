@@ -31,6 +31,7 @@ import ExerciseList from './src/components/ExerciseList';
 import UserWorkouts from './src/components/UserWorkouts';
 import Help from './src/pages/Help';
 import NotificationSetup from './src/NotificationSetup';
+import PrivateRoute from './src/components/auth/PrivateRoute';
 
 function App() {
     return (
@@ -65,30 +66,31 @@ const MainContent = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/login" element={<Login />} />
+
                     <Route path="/password-reset" element={<PasswordResetRequest />} />
-                    <Route path="/overview" element={<Overview />} />
-                    <Route path='/workout' element={<WorkoutLogging />} />
-                    <Route path="/diet-plan" element={<NutritionLogs />} />
-                    <Route path="/progress" element={<ProgressCharts />} />
-                    <Route path="/add-progress" element={<AddProgressLog />} />
-                    <Route path='/goals' element={<GoalTracker />} />
-                    <Route path="/user-dashboard" element={<UserDashboard />} />
-                    <Route path="/user-profile" element={<UserProfile />} />
-                    <Route path="/coach-dashboard" element={<CoachDashboard />} />
-                    <Route path='/coaches-login' element={<CoachLogin />} />
+                    <Route path="/overview" element={<PrivateRoute><Overview /></PrivateRoute>} />
+                    <Route path='/workout' element={<PrivateRoute><WorkoutLogging /></PrivateRoute>} />
+                    <Route path="/diet-plan" element={<PrivateRoute><NutritionLogs /></PrivateRoute>} />
+                    <Route path="/progress" element={<PrivateRoute><ProgressCharts /></PrivateRoute>} />
+                    <Route path="/add-progress" element={<PrivateRoute><AddProgressLog /></PrivateRoute>} />
+                    <Route path='/goals' element={<PrivateRoute><GoalTracker /></PrivateRoute>} />
+                    <Route path="/user-dashboard" element={<PrivateRoute><UserDashboard /></PrivateRoute>} />
+                    <Route path="/user-profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+                    <Route path="/coach-dashboard" element={<PrivateRoute><CoachDashboard /></PrivateRoute>} />
+                    <Route path='/coaches-login' element={<PrivateRoute><CoachLogin /></PrivateRoute>} />
                     <Route path='/about' element={<About/>}/>
-                    <Route path='/help' element={<Help/>}/>
+                    <Route path='/help' element={<PrivateRoute><Help/></PrivateRoute>}/>
                     <Route path='/contact' element={<Contact/>}/>
-                    <Route path="/client-list" element={<ClientList />} />
-                    <Route path="/workout-plans/:clientId" element={<WorkoutLogging/>} />
-                    <Route path="/coach-signup" element={<CoachSignup/>} />
-                    <Route path="/client-progress/:clientId" element={<ProgressCharts/>} />
-                    <Route path="/exercises" element={<ExercisesManager/>} />
-                    <Route path="/user-exercises" element={<ExerciseList/>} />
-                    <Route path="/workout-plans" element={<WorkoutPlansManager/>} />
-                    <Route path="/user-workouts" element={<UserWorkoutPlans/>} />
-                    <Route path="/workouts" element={<CoachWorkouts/>} />
-                    <Route path='users-workouts' element={<UserWorkouts/>}/>
+                    <Route path="/client-list" element={<PrivateRoute><ClientList /></PrivateRoute>} />
+                    <Route path="/workout-plans/:clientId" element={<PrivateRoute><WorkoutLogging/></PrivateRoute>} />
+                    <Route path="/coach-signup" element={<PrivateRoute><CoachSignup/></PrivateRoute>} />
+                    <Route path="/client-progress/:clientId" element={<PrivateRoute><ProgressCharts/></PrivateRoute>} />
+                    <Route path="/exercises" element={<PrivateRoute><ExercisesManager/></PrivateRoute>} />
+                    <Route path="/user-exercises" element={<PrivateRoute><ExerciseList/></PrivateRoute>} />
+                    <Route path="/workout-plans" element={<PrivateRoute><WorkoutPlansManager/></PrivateRoute>} />
+                    <Route path="/user-workouts" element={<PrivateRoute><UserWorkoutPlans/></PrivateRoute>} />
+                    <Route path="/workouts" element={<PrivateRoute><CoachWorkouts/></PrivateRoute>} />
+                    <Route path='users-workouts' element={<PrivateRoute><UserWorkouts/></PrivateRoute>}/>
                 </Routes>
             </div>
         </>

@@ -13,7 +13,9 @@ const Sidebar = ({ logout }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    localStorage.removeItem('user');
+    navigate('/login', {replace: true});
+    window.location.reload();
   }
   return (
     <div className="sidebar">
